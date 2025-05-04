@@ -8,7 +8,7 @@ const ProjectSection = () => {
       url:"/codexa",
       type:"web app",
       techStack:["react","nodejs","express","mongodb"],
-      thumbnail:"src/assets/images/codexa_1.webp",
+      thumbnail:"../assets/images/codexa_1.webp",
     },
     {
       name:"MERN Chat App",
