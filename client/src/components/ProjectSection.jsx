@@ -1,6 +1,6 @@
 import React from 'react'
 import ProjectCard from './ProjectCard'
-
+import codexa_1 from '../assets/images/codexa_1.webp'
 const ProjectSection = () => {
   const projects = [
     {
@@ -8,7 +8,7 @@ const ProjectSection = () => {
       url:"/codexa",
       type:"web app",
       techStack:["react","nodejs","express","mongodb"],
-      thumbnail:"../assets/images/codexa_1.webp",
+      thumbnail: codexa_1
     },
     {
       name:"MERN Chat App",
