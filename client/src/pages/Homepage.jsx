@@ -1,17 +1,20 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import HeroSection from '../components/HeroSection'
-import AboutSection from '../components/AboutSection'
-import ProjectsSection from '../components/ProjectSection'
+import React from 'react';
+import { motion } from 'framer-motion';
+import HeroSection from '../components/HeroSection';
+import ProjectsSection from '../components/ProjectSection';
 
 const Homepage = () => {
   return (
-    <>
-          <HeroSection/>
-          <ProjectsSection/>
-    </>
-  )
-}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }} // Initial state: fade in and slight move from bottom
+      animate={{ opacity: 1, y: 0 }} // Final state: fully visible and normal position
+      exit={{ opacity: 0, y: -20 }} // Exit state: fade out and move up
+      transition={{ duration: 0.5 }} // Transition duration
+    >
+      <HeroSection />
+      <ProjectsSection />
+    </motion.div>
+  );
+};
 
-export default Homepage
+export default Homepage;

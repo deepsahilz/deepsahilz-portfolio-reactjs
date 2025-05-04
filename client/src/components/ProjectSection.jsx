@@ -36,10 +36,11 @@ const ProjectSection = () => {
     },
   ]
   return (
-    <div className='  w-full font-neue bg-zinc-50 text-zinc-800 px-10 pb-40 rounded-b-2xl'>
+    <div className='  w-full font-neue bg-zinc-50 text-zinc-800 px-6 md:px-10 pb-40 rounded-b-2xl'>
       <h1 className='text-2xl font-semibold text-zinc-800 mb-10'>Projects</h1>
-        <div className=' flex'>
+        <div className='relative'>
             <div className='grid lg:grid-cols-4 grid-cols-1 gap-x-7 gap-y-16 w-full'>
+              {/* <div className='absolute top-0 left-[50%]'>hello</div> */}
             {projects.map((project, i) => (
                 // <ProjectCard className={`${i==1||i==2?"col-span-1":"col-span-2"}`} key={i} project={project} />
                 <ProjectCard className={`col-span-2`} key={i} project={project} />

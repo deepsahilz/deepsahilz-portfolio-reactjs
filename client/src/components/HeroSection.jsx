@@ -2,7 +2,7 @@ import React from 'react'
 
 const HeroSection = () => {
   return (
-    <div className='  w-full bg-zinc-50 font-nb  text-zinc-800 px-10'>
+    <div className='  w-full bg-zinc-50 font-nb  text-zinc-800 px-6 md:px-10'>
         <div className=' flex items-end '>
             <div className=' pt-20 mb-20'>
                 <h1 className='text-4xl font-bold font-neue  pt-20 '>

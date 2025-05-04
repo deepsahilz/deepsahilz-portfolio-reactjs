@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react';
 import Lenis from '@studio-freight/lenis';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import Homepage from './pages/Homepage';
-import { BrowserRouter as Router, Routes,Route} from 'react-router-dom';
 import Codexa from './pages/Codexa';
 import Layout from './components/Layout';
+import CatGame from './pages/CatGame';
 
 const App = () => {
+  const location = useLocation();
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -23,16 +27,17 @@ const App = () => {
     return () => lenis.destroy();
   }, []);
 
-  return( 
-    <Router>
-      <Routes>
-        <Route element={<Layout/>}>
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+          <Route path="/*" element={<CatGame />} />
+        <Route element={<Layout />}>
           <Route path="/" element={<Homepage />} />
           <Route path="/codexa" element={<Codexa />} />
         </Route>
       </Routes>
-    </Router>
-);
+    </AnimatePresence>
+  );
 };
 
 export default App;
