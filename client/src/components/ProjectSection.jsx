@@ -1,6 +1,9 @@
 import React from 'react'
 import ProjectCard from './ProjectCard'
 import codexa_1 from '../assets/images/codexa_1.webp'
+import chatapp from '../assets/images/chatapp.webp'
+import compass from '../assets/images/compass.webp'
+import game404 from '../assets/images/404game.webp'
 const ProjectSection = () => {
   const projects = [
     {
@@ -15,21 +18,21 @@ const ProjectSection = () => {
       url:"/chatapp",
       type:"web app",
       techStack:["react","nodejs","express","mongodb"],
-      thumbnail:"src/assets/images/chatapp.webp",
+      thumbnail:chatapp,
     },
     {
       name:"MySQL compass",
       url:"/mysqlCompass",
       type:"Desktop app",
       techStack:["react","nodejs","electron"],
-      thumbnail:"src/assets/images/compass.webp",
+      thumbnail:compass,
     },
     {
       name:"404 mini interaction game",
       url:"/404game",
       type:"mini web game",
       techStack:["react","nodejs","electron"],
-      thumbnail:"src/assets/images/404game.webp",
+      thumbnail:game404,
     },
   ]
   return (
