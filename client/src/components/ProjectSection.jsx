@@ -41,7 +41,8 @@ const ProjectSection = () => {
         <div className=' flex'>
             <div className='grid lg:grid-cols-4 grid-cols-1 gap-x-7 gap-y-16 w-full'>
             {projects.map((project, i) => (
-                <ProjectCard className={`${i==1||i==2?"col-span-1":"col-span-2"}`} key={i} project={project} />
+                // <ProjectCard className={`${i==1||i==2?"col-span-1":"col-span-2"}`} key={i} project={project} />
+                <ProjectCard className={`col-span-2`} key={i} project={project} />
                 ))}
             </div>
         </div>
