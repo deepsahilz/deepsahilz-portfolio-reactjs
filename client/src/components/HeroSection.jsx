@@ -107,7 +107,7 @@ const HeroSection = () => {
               <h1 className='text-xl font-semibold font-nb mb-6 md:mb-4 md:ml-2 text-zinc-500 dark:text-zinc-400'>
                 Sahildeep Singh
               </h1>
-              <h1 className='text-3xl md:max-w-[48rem] mb-20 md:mb-0 font-neue text-zinc-600 dark:text-zinc-300 md:ml-2'>
+              <h1 className='text-3xl md:max-w-[48rem] mb-24 md:mb-0 font-neue text-zinc-600 dark:text-zinc-300 md:ml-2'>
                 A full stack developer & designer focused on building fast, functional, and damn good-looking web apps.
               </h1>
             </div>
