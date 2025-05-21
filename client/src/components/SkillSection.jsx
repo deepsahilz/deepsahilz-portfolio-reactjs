@@ -24,7 +24,7 @@ const SkillSection = () => {
           Things I’m<br className='md:hidden'/> goooood at
         </h1>
 
-        <div className="mt-18 flex gap-4 md:gap-8 flex-wrap">
+        <div className=" mt-12 md:mt-18 flex gap-4 md:gap-8 flex-wrap">
           {skills.map((skill, index) => (
             <div key={index} className="flex  flex-col border      py-2 md:py-4 px-4 md:px-8 rounded-2xl hover:scale-90 transition-transform duration-400 border-zinc-400 text-2xl md:text-7xl items-center">
               {skill.icon}

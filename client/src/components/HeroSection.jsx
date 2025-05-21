@@ -99,27 +99,26 @@ const HeroSection = () => {
           <div className='flex justify-between items-end'>
             <div className='mt-20'>
               <div className='flex gap-6'>
-                <h1 className='text-8xl flex h-[6.5rem] font-semibold mb-2'>
-                  Hi there, I am <span className='bg-[#9f0] ml-2 text-zinc-900'>Sahil</span>
-                </h1>
+                <div className='md:flex text-6xl md:text-8xl md:h-[6.5rem] font-semibold mb-3 '>
+                  <h1 className=''>Hi there, </h1>
+                  <h1 className='mt-2 md:mt-0 md:ml-4'> I am<span className='bg-[#9f0] ml-3 text-zinc-900'>Sahil</span></h1>
+                </div>
               </div>
-              <h1 className='text-xl font-semibold font-nb mb-4 ml-2 text-zinc-500 dark:text-zinc-400'>
-                <span className='text-lg mr-2 text-zinc-400 hidden'>FULL NAME</span>
+              <h1 className='text-xl font-semibold font-nb mb-6 md:mb-4 md:ml-2 text-zinc-500 dark:text-zinc-400'>
                 Sahildeep Singh
               </h1>
-              <h1 className='text-3xl max-w-[48rem] font-neue text-zinc-600 dark:text-zinc-300 ml-2'>
-                <span className='text-lg mr-2 text-zinc-400 font-semibold hidden'>ABOUT ME</span>
+              <h1 className='text-3xl md:max-w-[48rem] font-neue text-zinc-600 dark:text-zinc-300 md:ml-2'>
                 A full stack developer & designer focused on building fast, functional, and damn good-looking web apps.
               </h1>
             </div>
           </div>
 
-          <div className='absolute bottom-10 text-right right-0 w-full'>
+          <div className='absolute bottom-10 text-right hidden md:visible right-0 w-full'>
             <div className='flex justify-between items-end'>
               <div className='w-[13rem] h-[13rem] -mb-10 -ml-10'>
                 <AnimatedD />
               </div>
-              <div className='justify-end'>
+              <div className='justify-end '>
                 <h1 className='text-2xl text-zinc-600 dark:text-zinc-300 font-nb'>
                   <span className='text-zinc-600 dark:text-zinc-400 text-[1.32rem] font-semibold'>@deepsahilz<br /></span> everywhere
                 </h1>
