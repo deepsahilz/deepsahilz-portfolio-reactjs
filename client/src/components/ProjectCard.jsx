@@ -16,14 +16,14 @@ const ProjectCard = ({project,className}) => {
         {/* <h1 className='flex justify-center items-center bg-zinc-200 rounded-lg px-3'>{project.type}</h1> */}
       </div>
       <div onClick={()=>{navigate(`${project.url}`)}} 
-      className=' h-[20rem] group cursor-pointer   flex justify-center items-center  overflow-hidden text-zinc-700 '>
+      className='h-[17rem] md:h-[20rem] group cursor-pointer   flex justify-center items-center  overflow-hidden text-zinc-700 '>
         <div className='w-full h-full group-hover:scale-95 duration-800 overflow-hidden bg-blue-300 transition-transform rounded-xl'>
         <img className='w-full h-full object-cover group-hover:scale-110 duration-900 transition-transform' src={project.thumbnail}/>
         </div>
      </div>
      <div className='flex gap-2 flex-wrap'>
       {project.tools.map((tool,i)=>(
-        <div key={i} className=' px-4 py-1 border rounded-full border-zinc-600'>{tool}</div>
+        <div key={i} className=' px-3 md:px-4 uppercase md:py-1 py-0.5 border text-sm rounded-full border-zinc-800'>{tool}</div>
       ))}
     </div>  
     </div>

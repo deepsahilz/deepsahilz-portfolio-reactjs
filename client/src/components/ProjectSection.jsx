@@ -15,7 +15,7 @@ const ProjectSection = () => {
       name:"Codexa: Social platform",
       url:"/codexa",
       type:"web app",
-      tools:["react","nodejs","express","mongodb"],
+      tools:["Full stack app","mern app","web sockets"],
       thumbnail: codexa_1
     },
     {
@@ -47,7 +47,7 @@ const ProjectSection = () => {
       name:"Ochi Clone",
       url:"/404game",
       type:"mini web game",
-      tools:["react","nodejs","electron"],
+      tools:["Landing page","react","tailwind css","Awwwards clone"],
       thumbnail:"",
     },
     {
@@ -55,7 +55,7 @@ const ProjectSection = () => {
       name:"URL shortener",
       url:"/404game",
       type:"mini web game",
-      tools:["react","nodejs","electron"],
+      tools:["Full stack app","mern stack","idk"],
       thumbnail:"",
     },
     
@@ -145,7 +145,7 @@ const ProjectSection = () => {
         </div>
       </div>
         <div className='relative px-6 md:px-10'>
-            <div className='grid lg:grid-cols-6 grid-cols-1 gap-x-7 gap-y-16 w-full'>
+            <div className='grid lg:grid-cols-6 grid-cols-1 gap-x-7 md:gap-y-16 gap-y-10 w-full'>
               {/* <div className='absolute top-0 left-[50%]'>hello</div> */}
             {projects.map((project, i) => (
                 // <ProjectCard className={`${i==0||i==1?"col-span-2":"col-span-1"}`} key={i} project={project} />
