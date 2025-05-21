@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import gsap from "gsap";
 import { FaArrowTurnDown } from "react-icons/fa6";
 
@@ -93,7 +93,7 @@ const HeroSection = () => {
       scroll down
     </div>
 
-    <div className='flex items-end w-full h-screen pt-20 px-6 md:px-10'>
+    <div className='flex items-end w-full md:h-screen pt-20 px-6 md:px-10'>
       <div className='relative h-full w-full'>
         <div className='w-full'>
           <div className='flex justify-between items-end'>
@@ -107,13 +107,13 @@ const HeroSection = () => {
               <h1 className='text-xl font-semibold font-nb mb-6 md:mb-4 md:ml-2 text-zinc-500 dark:text-zinc-400'>
                 Sahildeep Singh
               </h1>
-              <h1 className='text-3xl md:max-w-[48rem] font-neue text-zinc-600 dark:text-zinc-300 md:ml-2'>
+              <h1 className='text-3xl md:max-w-[48rem] mb-20 md:mb-0 font-neue text-zinc-600 dark:text-zinc-300 md:ml-2'>
                 A full stack developer & designer focused on building fast, functional, and damn good-looking web apps.
               </h1>
             </div>
           </div>
 
-          <div className='absolute bottom-10 text-right hidden md:visible right-0 w-full'>
+          <div className='absolute bottom-10 text-right hidden md:block right-0 w-full'>
             <div className='flex justify-between items-end'>
               <div className='w-[13rem] h-[13rem] -mb-10 -ml-10'>
                 <AnimatedD />

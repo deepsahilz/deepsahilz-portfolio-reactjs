@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <div className={`fixed flex justify-center w-full z-50 transition-transform duration-300 ${showNavbar ? 'translate-y-0' : '-translate-y-full'}`}>
       <div className='rounded-xl w-full mix-blend-difference '>
-        <div className='flex justify-between items-center py-5 px-6 md:px-10 text-zinc-800'>
+        <div className='flex justify-between items-center py-5 px-6 md:px-10 text-zinc-800 dark:text-zinc-100'>
           <div onClick={() => navigate("/")} className='font-bold overflow-hidden relative h-7  cursor-pointer text-2xl font-neue'>
             <span className='block  transition-transform  duration-300 ease-in-out hover:-translate-y-full'>
                   <span className='block '>deepsahilz</span>
