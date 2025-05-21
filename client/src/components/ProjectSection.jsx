@@ -136,11 +136,11 @@ const ProjectSection = () => {
     <div className='  w-full font-neue bg-zinc-50 rounded-t-4xl border-t border-zinc-300 text-zinc-800  rounded-b-2xl'>
       <div className='mb-15 pt-[7rem] border-b pb-10 border-zinc-400'>
         <div className="flex justify-between items-end px-6 md:px-10">
-          <h1 className='text-5xl font-semibold text-zinc-800 bg-[#9f0]'>Featured Projects</h1>
+          <h1 className='text-4xl md:text-5xl font-semibold text-zinc-800 bg-[#9f0]'>Featured<br className='md:hidden'/> Projects</h1>
           <h1 className='text-md  text-zinc-100 flex items-center gap-2 bg-zinc-800  uppercase rounded-full px-6 py-2'>
             {/* <FaGithub className='text-xl mb-[2px]'/> */}
-            View all projects
-            <MdArrowOutward className='text-xl'/>
+            View all<span className='hidden md:visible'>projects</span> 
+              <MdArrowOutward className='text-xl'/>
             </h1>
         </div>
       </div>

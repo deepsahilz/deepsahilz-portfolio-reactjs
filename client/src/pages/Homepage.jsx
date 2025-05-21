@@ -18,7 +18,7 @@ const Homepage = () => {
 
   return (
     <>
-    <div className='bg-zinc-100'>
+    <div className='bg-zinc-100 w-[100%] overflow-hidden'>
         <HeroSection />
         <ProjectsSection />
         <SkillSection />

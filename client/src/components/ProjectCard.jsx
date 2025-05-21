@@ -21,7 +21,7 @@ const ProjectCard = ({project,className}) => {
         <img className='w-full h-full object-cover group-hover:scale-110 duration-900 transition-transform' src={project.thumbnail}/>
         </div>
      </div>
-     <div className='flex gap-2'>
+     <div className='flex gap-2 flex-wrap'>
       {project.tools.map((tool,i)=>(
         <div key={i} className=' px-4 py-1 border rounded-full border-zinc-600'>{tool}</div>
       ))}
