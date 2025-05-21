@@ -1,0 +1,200 @@
+import React, { useEffect, useRef, useState } from 'react'
+
+
+const HeroSection = () => {
+
+  const [trail, setTrail] = useState([]);
+//   const cursorRef = useRef(null);
+  const lastPointerPos = useRef({ x: 0, y: 0 });
+  const frameId = useRef(null);
+  
+  // Configuration for the trail effect
+  const config = {
+    numberOfSquares: 40,  // Number of squares in the trail
+    maxSize: 45,          // Maximum size of each square
+    minSize: 10,           // Minimum size of each square
+    maxLifespan: 1000,    // Maximum lifespan of each square in ms
+    spawnInterval: 20,    // Interval between spawning new squares in ms
+    lastSpawnTime: 0      // Last time a square was spawned
+  };
+  
+  // Function to create a new trail square
+  const createTrailSquare = (x, y) => {
+    const size = Math.random() * (config.maxSize - config.minSize) + config.minSize;
+    const id = Date.now() + Math.random();
+    const lifespan = Math.random() * config.maxLifespan + 300;
+    
+    return {
+      id,
+      x: x - size / 2,
+      y: y - size / 2,
+      size,
+      createdAt: Date.now(),
+      lifespan,
+      // Generate a random green gradient
+    //   color: `linear-gradient(circle, rgba(120,255,0,0.8) 0%, rgba(0,200,0,${Math.random() * 0.6 + 0.2}) 100%)`
+      color: `#9f0`
+    };
+  };
+  
+  // Update trail based on animation frame
+  const updateTrail = () => {
+    setTrail(prevTrail => {
+      const now = Date.now();
+      // Remove expired squares
+      return prevTrail
+        .filter(square => now - square.createdAt < square.lifespan)
+        .map(square => {
+          // Calculate opacity based on remaining lifespan
+          const progress = (now - square.createdAt) / square.lifespan;
+          const opacity = 1 - progress;
+          return { ...square, opacity };
+        });
+    });
+    
+    frameId.current = requestAnimationFrame(updateTrail);
+  };
+  
+  // Setup and cleanup effect
+//   useEffect(() => {
+//     const handlePointerMove = (e) => {
+//       const { clientX, clientY } = e;
+//       lastPointerPos.current = { x: clientX, y: clientY };
+      
+//       const now = Date.now();
+//       if (now - config.lastSpawnTime > config.spawnInterval) {
+//         setTrail(prevTrail => [
+//           ...prevTrail, 
+//           createTrailSquare(clientX, clientY)
+//         ]);
+//         config.lastSpawnTime = now;
+//       }
+//     };
+    
+//     // Start animation and add event listeners
+//     document.addEventListener('pointermove', handlePointerMove);
+//     frameId.current = requestAnimationFrame(updateTrail);
+    
+//     // Cleanup function
+//     return () => {
+//       document.removeEventListener('pointermove', handlePointerMove);
+//       if (frameId.current) {
+//         cancelAnimationFrame(frameId.current);
+//       }
+//     };
+//   }, []);
+
+  
+   // SVG for animated D with circles
+ const AnimatedD = React.memo(() => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 300" className="w-full h-full">
+    <style>
+      {`
+        .eye {
+          transform-origin: center;
+          animation: blink 1.8s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+          0%, 100% { transform: scaleY(1); }
+          38% { transform: scaleY(1); }
+          50% { transform: scaleY(0.1); }
+          62% { transform: scaleY(1); }
+        }
+      `}
+    </style>
+
+    {/* D shape */}
+<path d="M65,50 L145,50 C235,50 255,120 253,150 C255,180 230,240 165,250 L65,250 Z" fill="black" />
+
+    {/* Blinking "eyes" using scale */}
+    <g className="eye">
+      <circle  cx="120" cy="130" r="25" fill="white" />
+      <circle cx="185" cy="130" r="25" fill="white" />
+    </g>
+  </svg>
+));
+
+
+
+
+  return (
+    <div className='w-full bg-zinc-50 font-nb border-b text-zinc-800'>
+         {/* Cursor trail squares */}
+      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 9999 }}>
+        {trail.map(square => (
+          <div
+            key={square.id}
+            style={{
+              position: 'absolute',
+              left: `${square.x}px`,
+              top: `${square.y}px`,
+              width: `${square.size}px`,
+              height: `${square.size}px`,
+              background: square.color,
+              opacity: square.opacity-0.3,
+              borderRadius: '0px',
+            //   transform: `rotate(${Math.random() * 90}deg)`,
+              transition: 'opacity 0.3s ease-out'
+            }}
+          />
+        ))}
+      </div>
+      <div className='flex items-end w-full h-screen pt-20 px-6 md:px-10'>
+        <div className='relative h-full w-full'>
+          <div className='w-full'>
+            <div className='flex justify-between items-end'>
+              <div className='mt-20'>
+                <div className='flex gap-6 '>
+                  <h1 className='text-8xl flex h-[6.5rem]  font-semibold mb-2'>
+                    Hi there, I am <span className='bg-[#9f0] ml-2'>Sahil</span>
+                    {/* Hi there, I am <span className='bg-blue-400 ml-2'>Sahil</span> */}
+                    {/* Who is Sahil?<br /> */}
+                    {/* <div className='bg-[#9f0] w-20 h-20'></div> */}
+                  </h1>
+                  {/* <h1 className=''>{renderSahilWithHover()}</h1> */}
+                </div>
+                <h1 className='text-xl font-semibold font-nb mb-4 ml-2  text-zinc-500'><span className='text-lg mr-2  text-zinc-400 hidden'>FULL NAME</span>Sahildeep Singh</h1>
+            <h1 className='text-3xl max-w-[48rem] font-neue text-zinc-600 ml-2 '>
+                <span className='text-lg mr-2 text-zinc-400 font-semibold hidden'>ABOUT ME</span>A full stack developer & designer focused on building fast, functional, and damn good-looking web apps.
+            </h1>
+            
+              </div>
+             
+            </div>
+            <div className='absolute bottom-10 text-right right-0 w-full '>
+                <div className='flex justify-between items-end'>
+                    {/* <img className='h-[7.9rem]' src='./Deepcodes4.png'/> */}
+                    <div className=' w-[13rem] h-[13rem] -mb-10 -ml-10' >
+                        <AnimatedD/>
+                    </div>
+                    <div className='justify-end'>
+                        <h1 className='text-2xl text-zinc-600 font-nb'>
+                            <span className='text-zinc-600 text-[1.32rem] font-semibold'>@deepsahilz<br/></span> everywhere
+                        </h1>
+                    </div>
+                </div>
+              {/* <h1 className='font-milker text-[13.4rem] text-zinc-700 -mr-[10px] w-full leading-none'>deepsahilz</h1> */}
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+            <div className='absolute pointer-events-none  hidden md:block md:absolute top-0 bottom-0 w-full h-full'>
+                <div className='border-zinc-400 absolute top-0 left-12 rounded-br-4xl border-r-3 border-b-3  w-[9.5rem] h-[82px]'></div>
+                <div className='border-zinc-400 absolute top-20 left-[25.5px] rounded-tl-4xl border-l-3 border-t-3  w-7 h-[25rem]'></div>
+                <div className='border-zinc-400 absolute bottom-[12.8rem] left-[25.5px]  rounded-bl-4xl border-b-3 border-l-3   w-[9rem] h-20'></div>
+                <div className='border-zinc-400 absolute bottom-[95.5px] left-[75px]  rounded-tr-4xl border-r-3 border-t-3   w-[8rem] h-[7rem]'></div>
+                <div className='border-zinc-400 absolute bottom-[2.5rem] left-[12.4999rem]  rounded-b-4xl border-b-3 border-r-3 border-l-3   w-[70rem] h-14'></div>
+
+                <div className='border-zinc-400 absolute bottom-[7.76rem] right-[25.5px]  rounded-br-4xl border-b-3 border-r-3   w-[9rem] h-20'></div>
+                <div className='border-zinc-400 absolute bottom-[78.5px] right-[75px]  rounded-tl-4xl border-l-3 border-t-3   w-[8rem] h-[3rem]'></div>
+                <div className='border-zinc-400 absolute top-20 right-[26px] rounded-tr-4xl border-r-3 border-t-3  w-7 h-[28rem]'></div>
+                <div className='border-zinc-400 absolute top-0 right-[3rem]  rounded-bl-4xl border-b-3 border-l-3   w-[16.5rem] h-[82px]'></div>
+            </div>
+    </div>
+  )
+}
+
+export default HeroSection

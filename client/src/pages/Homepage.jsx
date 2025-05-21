@@ -1,20 +1,31 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import HeroSection from '../components/HeroSection';
-import ProjectsSection from '../components/ProjectSection';
+import React, { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import HeroSection from '../components/HeroSection'
+import ProjectsSection from '../components/ProjectSection'
+import SkillSection from '../components/SkillSection'
+import AboutSection from '../components/AboutSection'
 
 const Homepage = () => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }} // Initial state: fade in and slight move from bottom
-      animate={{ opacity: 1, y: 0 }} // Final state: fully visible and normal position
-      exit={{ opacity: 0, y: -20 }} // Exit state: fade out and move up
-      transition={{ duration: 0.5 }} // Transition duration
-    >
-      <HeroSection />
-      <ProjectsSection />
-    </motion.div>
-  );
-};
 
-export default Homepage;
+  const containerRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  })
+
+  // Make Projects scroll over Hero *very slowly*
+  // const y = useTransform(scrollYProgress, [0, 0.3], ["100vh", "0vh"])
+
+  return (
+    <>
+    <div className='bg-zinc-100'>
+        <HeroSection />
+        <ProjectsSection />
+        <SkillSection />
+        <AboutSection/>
+    </div>
+    </>
+  )
+}
+
+export default Homepage

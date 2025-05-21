@@ -16,9 +16,21 @@
   font-family: 'rejouice';
   src: url('./assets/fonts/Rejouice-Headline.woff2') format('woff2' );
 }
+@font-face {
+  font-family: 'milker';
+  src: url('./assets/fonts/Milker.otf');
+}
+@font-face {
+  font-family: 'arcade';
+  src: url('./assets/fonts/arcade.TTF');
+}
 
 
 @theme {
   --font-nb: 'nb', sans-serif;
+  --font-arcade: 'arcade', sans-serif;
+  --font-milker: 'milker', sans-serif;
   --font-neue: 'neue', sans-serif;
+  --font-founders: 'founders', sans-serif;
+  --font-rejouice: 'rejouice', sans-serif;
 }

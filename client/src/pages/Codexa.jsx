@@ -43,31 +43,31 @@ const Codexa = () => {
           </h1>
           {/* <p>A project sharing/ social media platform </p> */}
         </div>
+        <div className='mb-10'>
+            <h1 className='text-4xl font-semibold mb-5'>Concept</h1>
+            <h2 className='text-3xl text-zinc-700'>{project.concept}</h2>
+        </div>
 
         {/* <div className=' h-[40rem] mx-auto bg-zinc-900 rounded-2xl w-full mb-20 overflow-hidden'>
           {/* <img src="src/assets/images/codexa_1.webp" className='w-full h-full object-cover' /> 
         </div> */}
 
         <div>
-          {/* <div className='mb-10'>
-            <h1 className='text-4xl font-semibold mb-5'>Description</h1>
-            <p className='text-xl'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores eaque dicta dolorem culpa repellendus. Perferendis repudiandae voluptates ipsum, sed velit aut aliquid! Nisi odit expedita deleniti! Quas autem perferendis vero.</p>
-          </div>
           <div className='mb-10'>
             <h1 className='text-4xl font-semibold mb-5'>Tech Stack</h1>
             <div className='flex gap-2'>
-              {["React","Tailwind","ExpressJs",""].map((tag,i)=>( 
+              {["React","TailwindCSS","ExpressJs","Nodejs"].map((tag,i)=>( 
                 <div key={i} className='px-4 py-1 bg-purple-50 border rounded-lg border-zinc-300 shadow-md'>{tag}</div>
               ))}
             </div>
-          </div> */}
+          </div>
 
           <div className='mb-10'>
-            <h1 className='text-2xl md:text-4xl font-semibold mb-5'>See the Highlights<br /> of this Project</h1>
+            <h1 className='text-2xl md:text-4xl font-semibold mb-5'>Project Highlights</h1>
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-10 md:gap-y-5'>
               {project.highlights.map((item, i) => (
                 <div key={i}>
-                  <div className="bg-zinc-800 cursor-pointer relative md:grayscale hover:grayscale-0 group hover:scale-95 duration-500 transition-all flex justify-center items-center h-[15rem] md:h-[30rem] border border-zinc-300 md:p-10  shadow-md rounded-xl">
+                  <div className="bg-zinc-800 cursor-pointer relative group hover:scale-95 duration-500 transition-all flex justify-center items-center h-[15rem] md:h-[30rem] border border-zinc-300 md:p-10  shadow-md rounded-xl">
                     {/* <div className='w-full z-20 h-full bg-red-700/60 group-hover:hidden absolute'/> */}
                     <div className="relative overflow-hidden w-full h-full transition-transform duration-700 group-hover:scale-110 rounded-lg flex justify-center items-center">
                       <img
