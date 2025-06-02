@@ -52,8 +52,8 @@ const ProjectCard = ({ project, className }) => {
           onMouseLeave={() => setHovering(false)}
           className="h-[17rem] md:h-[22rem] group cursor-pointer flex justify-center items-center overflow-hidden text-zinc-700"
         >
-          <div className="w-full h-full group-hover:scale-95 duration-800 overflow-hidden bg-blue-300 transition-transform rounded-lg">
-            <img className="w-full h-full object-cover group-hover:scale-110 duration-900 transition-transform" src={project.thumbnail} />
+          <div className="w-full h-full group-hover:scale-95 duration-800 overflow-hidden bg-zinc-900 transition-transform rounded-lg">
+            <img className="w-full h-full object-cover group-hover:opacity-50 group-hover:scale-110 duration-900 transition-all" src={project.thumbnail} />
           </div>
         </div>
 
