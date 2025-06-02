@@ -12,7 +12,7 @@ const ProjectSection = () => {
   const projects = [
     {
       id:1,
-      name:"Codexa: Social platform",
+      name:"CODEXA (Project showcasing/Social platform)",
       url:"/codexa",
       type:"web app",
       tools:["Full stack app","mern app","web sockets"],
@@ -31,7 +31,7 @@ const ProjectSection = () => {
       name:"MySQL compass",
       url:"/mysqlCompass",
       type:"Desktop app",
-      tools:["react","nodejs","electron"],
+      tools:["Desktop app","react","nodejs","electron"],
       thumbnail:compass,
     },
     {
@@ -133,19 +133,19 @@ const ProjectSection = () => {
   //   },
   // ]
   return (
-    <div className='  w-full font-neue bg-zinc-50 rounded-t-4xl border-t border-zinc-300 text-zinc-800  rounded-b-2xl'>
-      <div className='mb-15 pt-[5rem] md:pt-[7rem] border-b pb-10 border-zinc-400'>
+    <div className='  w-full font-neue bg-zinc-100  rounded-t-4xl border-t overflow-hidden border-zinc-300 pb-20 text-zinc-800 '>
+      <div className='mb-15 pt-[5rem] md:pt-[7rem] border-b pb-10   border-zinc-400'>
         <div className="flex justify-between items-end px-6 md:px-10">
-          <h1 className='text-4xl md:text-5xl font-semibold text-zinc-800 bg-[#9f0]'>Featured<br className='md:hidden'/> Projects</h1>
-          <h1 className='text-md  text-zinc-100 flex items-center gap-2 bg-zinc-800  uppercase rounded-full px-6 py-2'>
-            {/* <FaGithub className='text-xl mb-[2px]'/> */}
+          <h1 className='text-4xl md:text-3xl font-semibold text-zinc-800 bg-[#9f0]'>Featured<br className='md:hidden'/> Projects</h1>
+          <h1 className='text-md  text-zinc-100 flex items-center gap-2 bg-zinc-800 uppercase rounded-full px-6 py-2'>
+            <FaGithub className='text-xl mb-[2px]'/>
             View all<span className='hidden md:visible'>projects</span> 
               <MdArrowOutward className='text-xl'/>
             </h1>
         </div>
       </div>
         <div className='relative px-6 md:px-10'>
-            <div className='grid lg:grid-cols-6 grid-cols-1 gap-x-7 md:gap-y-16 gap-y-10 w-full'>
+            <div className='grid lg:grid-cols-6 grid-cols-1 gap-x-5 md:gap-y-16 gap-y-10 w-full'>
               {/* <div className='absolute top-0 left-[50%]'>hello</div> */}
             {projects.map((project, i) => (
                 // <ProjectCard className={`${i==0||i==1?"col-span-2":"col-span-1"}`} key={i} project={project} />

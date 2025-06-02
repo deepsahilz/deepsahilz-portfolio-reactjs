@@ -1,33 +1,74 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-// import codexa_ss1 from '../assets/images/codexa_ss1.jpg'
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import gsap from 'gsap';
 
-const ProjectCard = ({project,className}) => {
-
+const ProjectCard = ({ project, className }) => {
   const navigate = useNavigate();
+  const cursorRef = useRef(null);
+  const [hovering, setHovering] = useState(false);
+
+  useEffect(() => {
+    const move = (e) => {
+      gsap.to(cursorRef.current, {
+        x: e.clientX,
+        y: e.clientY,
+        ease: "power2.out",
+        duration: 0.3,
+        
+      });
+    };
+    window.addEventListener("mousemove", move);
+    return () => window.removeEventListener("mousemove", move);
+  }, []);
+
+  useEffect(() => {
+    gsap.to(cursorRef.current, {
+      autoAlpha: hovering ? 1 : 0,
+      scale: hovering ? 1 : 0.6,
+      duration: 0.2,
+      
+      ease: "power2.out"
+    });
+  }, [hovering]);
 
   return (
-    <div className={`flex flex-col gap-3 font-neue text-zinc-800 ${className}`}>
-      <div className='flex justify-between'>
-        <h1 className='text-lg uppercase flex gap-3  items-center'>
-          <div className='w-3 h-3 rounded-full bg-zinc-800'></div>
-          {/* <div className='font-semibold'>0{project.id}</div> */}
-        {project.name}</h1>
-        {/* <h1 className='flex justify-center items-center bg-zinc-200 rounded-lg px-3'>{project.type}</h1> */}
-      </div>
-      <div onClick={()=>{navigate(`${project.url}`)}} 
-      className='h-[17rem] md:h-[20rem] group cursor-pointer   flex justify-center items-center  overflow-hidden text-zinc-700 '>
-        <div className='w-full h-full group-hover:scale-95 duration-800 overflow-hidden bg-blue-300 transition-transform rounded-xl'>
-        <img className='w-full h-full object-cover group-hover:scale-110 duration-900 transition-transform' src={project.thumbnail}/>
+    <>
+      {/* Cursor follower */}
+      <div
+        ref={cursorRef}
+        className="fixed z-50 pointer-events-none "
+        style={{ left: 0, top: 0 }}
+      >
+        <div className="bg-white text-black px-3 py-2 text-sm rounded-full font-medium shadow-md">
+          View Details  
         </div>
-     </div>
-     <div className='flex gap-2 flex-wrap'>
-      {project.tools.map((tool,i)=>(
-        <div key={i} className=' px-3 md:px-4 uppercase md:py-1 py-0.5 border text-sm rounded-full border-zinc-800'>{tool}</div>
-      ))}
-    </div>  
-    </div>
-  )
-}
+      </div>
 
-export default ProjectCard
+      {/* Project Card */}
+      <div className={`flex flex-col gap-3 font-neue text-zinc-800 ${className}`}>
+        <div
+          onClick={() => navigate(project.url)}
+          onMouseEnter={() => setHovering(true)}
+          onMouseLeave={() => setHovering(false)}
+          className="h-[17rem] md:h-[22rem] group cursor-pointer flex justify-center items-center overflow-hidden text-zinc-700"
+        >
+          <div className="w-full h-full group-hover:scale-95 duration-800 overflow-hidden bg-blue-300 transition-transform rounded-lg">
+            <img className="w-full h-full object-cover group-hover:scale-110 duration-900 transition-transform" src={project.thumbnail} />
+          </div>
+        </div>
+
+        <div className='flex justify-between'>
+          <h1 className='text-lg flex mt-1 font-semibold items-center'>{project.name}</h1>
+        </div>
+
+        <div className='flex gap-2 flex-wrap'>
+          {project.tools.map((tool, i) => (
+            <div key={i} className='px-3 md:px-4 uppercase md:py-1 py-0.5 border text-sm rounded-lg border-zinc-800'>{tool}</div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default ProjectCard;

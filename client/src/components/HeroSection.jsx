@@ -5,45 +5,52 @@ import { FaArrowTurnDown } from "react-icons/fa6";
 const HeroSection = () => {
     const followerRef = useRef(null);
 
-
-  useEffect(() => {
-  const follower = followerRef.current;
-  const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-  const mouse = { x: pos.x, y: pos.y };
-
-
-  const padding = 100;
-
-  const move = () => {
-    pos.x += (mouse.x - pos.x) * 0.1;
-    pos.y += (mouse.y - pos.y) * 0.1;
-
-    const dx = Math.min(pos.x, window.innerWidth - pos.x);
-    const dy = Math.min(pos.y, window.innerHeight - pos.y);
-    const minDist = Math.min(dx, dy);
-    const opacity = Math.max(0, Math.min(1, (minDist - 20) / (padding - 20)));
-
-    gsap.set(follower, {
-      x: pos.x + 20,
-      y: pos.y + 20,
-      opacity,
-    });
-
-    requestAnimationFrame(move);
-  };
-
-  const handleMouseMove = (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-  };
-
-  window.addEventListener('pointermove', handleMouseMove);
-  requestAnimationFrame(move);
-
-  return () => {
-    window.removeEventListener('pointermove', handleMouseMove);
-  };
+useEffect(() => {
+  gsap.to(".dpImg", {
+    width: 150,
+    duration:0.9,
+  });
 }, []);
+
+
+//   useEffect(() => {
+//   const follower = followerRef.current;
+//   const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+//   const mouse = { x: pos.x, y: pos.y };
+
+
+//   const padding = 100;
+
+//   const move = () => {
+//     pos.x += (mouse.x - pos.x) * 0.1;
+//     pos.y += (mouse.y - pos.y) * 0.1;
+
+//     const dx = Math.min(pos.x, window.innerWidth - pos.x);
+//     const dy = Math.min(pos.y, window.innerHeight - pos.y);
+//     const minDist = Math.min(dx, dy);
+//     const opacity = Math.max(0, Math.min(1, (minDist - 20) / (padding - 20)));
+
+//     gsap.set(follower, {
+//       x: pos.x + 20,
+//       y: pos.y + 20,
+//       opacity,
+//     });
+
+//     requestAnimationFrame(move);
+//   };
+
+//   const handleMouseMove = (e) => {
+//     mouse.x = e.clientX;
+//     mouse.y = e.clientY;
+//   };
+
+//   window.addEventListener('pointermove', handleMouseMove);
+//   requestAnimationFrame(move);
+
+//   return () => {
+//     window.removeEventListener('pointermove', handleMouseMove);
+//   };
+// }, []);
 
 
 
@@ -81,7 +88,8 @@ const HeroSection = () => {
 
 
   return (
-  <div className='w-full bg-zinc-100 dark:bg-zinc-900 font-nb text-zinc-800 dark:text-zinc-100'>
+  // <div className='w-full bg-zinc-100 dark:bg-zinc-950 font-nb text-zinc-800 dark:text-zinc-100'>
+  <div className='w-full bg-zinc-200  font-nb text-zinc-800 '>
     <div
       ref={followerRef}
       className="fixed z-[9999] top-0 left-0 pointer-events-none hidden md:flex items-center gap-2 justify-center px-2 py-2 text-sm text-zinc-100 bg-zinc-950/80 border border-zinc-300 dark:border-zinc-700 rounded-lg backdrop-blur-md shadow-md font-medium"
@@ -100,14 +108,18 @@ const HeroSection = () => {
             <div className='mt-20'>
               <div className='flex gap-6'>
                 <div className='md:flex text-6xl md:text-8xl md:h-[6.5rem] font-semibold mb-3 '>
+                  {/* here */}
+                  <div className=' dpImg w-1 h-24 overflow-hidden flex items-center rounded-3xl mr-2'>
+                  <img src='../src/assets/images/myPic.png' className='min-w-40'/>
+                  </div>
                   <h1 className=''>Hi there, </h1>
                   <h1 className='mt-2 md:mt-0 md:ml-4'> I am<span className='bg-[#9f0] ml-3 text-zinc-900'>Sahil</span></h1>
                 </div>
               </div>
-              <h1 className='text-xl font-semibold font-nb mb-6 md:mb-4 md:ml-2 text-zinc-500 dark:text-zinc-400'>
-                Sahildeep Singh
+              <h1 className='text-xl font-semibold font-nb mb-6 md:mb-4 md:ml-2 text-zinc-500 '>
+                21, Sahildeep Singh
               </h1>
-              <h1 className='text-3xl md:max-w-[48rem] mb-24 md:mb-0 font-neue text-zinc-600 dark:text-zinc-300 md:ml-2'>
+              <h1 className='text-3xl md:max-w-[48rem] mb-24 md:mb-0 font-neue text-zinc-600  md:ml-2'>
                 A full stack developer & designer focused on building fast, functional, and damn good-looking web apps.
               </h1>
             </div>
@@ -118,11 +130,11 @@ const HeroSection = () => {
               <div className='w-[13rem] h-[13rem] -mb-10 -ml-10'>
                 <AnimatedD />
               </div>
-              <div className='justify-end '>
+              {/* <div className='justify-end '>
                 <h1 className='text-2xl text-zinc-600 dark:text-zinc-300 font-nb'>
                   <span className='text-zinc-600 dark:text-zinc-400 text-[1.32rem] font-semibold'>@deepsahilz<br /></span> everywhere
                 </h1>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -130,15 +142,15 @@ const HeroSection = () => {
     </div>
 
     <div className='absolute pointer-events-none hidden md:block top-0 bottom-0 w-full h-full'>
-      <div className='border-zinc-400 dark:border-zinc-700 absolute top-0 left-12 rounded-br-4xl border-r-3 border-b-3 w-[9.5rem] h-[82px]'></div>
-      <div className='border-zinc-400 dark:border-zinc-700 absolute top-20 left-[25.5px] rounded-tl-4xl border-l-3 border-t-3 w-7 h-[25rem]'></div>
-      <div className='border-zinc-400 dark:border-zinc-700 absolute bottom-[12.8rem] left-[25.5px] rounded-bl-4xl border-b-3 border-l-3 w-[9rem] h-20'></div>
-      <div className='border-zinc-400 dark:border-zinc-700 absolute bottom-[95.5px] left-[75px] rounded-tr-4xl border-r-3 border-t-3 w-[8rem] h-[7rem]'></div>
-      <div className='border-zinc-400 dark:border-zinc-700 absolute bottom-[2.5rem] left-[12.4999rem] rounded-b-4xl border-b-3 border-r-3 border-l-3 w-[70rem] h-14'></div>
-      <div className='border-zinc-400 dark:border-zinc-700 absolute bottom-[7.76rem] right-[25.5px] rounded-br-4xl border-b-3 border-r-3 w-[9rem] h-20'></div>
-      <div className='border-zinc-400 dark:border-zinc-700 absolute bottom-[78.5px] right-[75px] rounded-tl-4xl border-l-3 border-t-3 w-[8rem] h-[3rem]'></div>
-      <div className='border-zinc-400 dark:border-zinc-700 absolute top-20 right-[26px] rounded-tr-4xl border-r-3 border-t-3 w-7 h-[28rem]'></div>
-      <div className='border-zinc-400 dark:border-zinc-700 absolute top-0 right-[3rem] rounded-bl-4xl border-b-3 border-l-3 w-[16.5rem] h-[82px]'></div>
+      <div className='border-zinc-600 absolute top-0 left-12 rounded-br-4xl border-r-3 border-b-3 w-[9.5rem] h-[82px]'></div>
+      <div className='border-zinc-600 absolute top-20 left-[25.5px] rounded-tl-4xl border-l-3 border-t-3 w-7 h-[25rem]'></div>
+      <div className='border-zinc-600 absolute bottom-[12.8rem] left-[25.5px] rounded-bl-4xl border-b-3 border-l-3 w-[9rem] h-20'></div>
+      <div className='border-zinc-600 absolute bottom-[95.5px] left-[75px] rounded-tr-4xl border-r-3 border-t-3 w-[8rem] h-[7rem]'></div>
+      <div className='border-zinc-600 absolute bottom-[2.5rem] left-[12.4999rem] rounded-b-4xl border-b-3 border-r-3 border-l-3 w-[70rem] h-14'></div>
+      <div className='border-zinc-600 absolute bottom-[7.76rem] right-[25.5px] rounded-br-4xl border-b-3 border-r-3 w-[9rem] h-20'></div>
+      <div className='border-zinc-600 absolute bottom-[78.5px] right-[75px] rounded-tl-4xl border-l-3 border-t-3 w-[8rem] h-[3rem]'></div>
+      <div className='border-zinc-600 absolute top-20 right-[26px] rounded-tr-4xl border-r-3 border-t-3 w-7 h-[28rem]'></div>
+      <div className='border-zinc-600 absolute top-0 right-[3rem] rounded-bl-4xl border-b-3 border-l-3 w-[16.5rem] h-[82px]'></div>
     </div>
   </div>
 )
