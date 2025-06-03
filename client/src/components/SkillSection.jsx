@@ -29,7 +29,7 @@ const pastelColors = [
 
 const SkillCard = ({skill})=>{
   return(
-    <div  className="flex bg-blue-100  flex-col border py-2 md:py-4 px-4 md:px-7 rounded-2xl hover:scale-90 transition-transform duration-400 border-zinc-400 text-2xl md:text-5xl items-center">
+    <div  className="flex bg-blue-100  flex-col border py-2 md:py-4 px-5 md:px-10 rounded-2xl hover:scale-90 transition-transform duration-400 border-zinc-400 text-2xl md:text-5xl items-center">
       {skill.icon}
       <span className="mt-2 text-zinc-700 text-sm md:text-lg font-medium">{skill.name}</span>
     </div>

@@ -41,7 +41,7 @@ const Codexa = () => {
       exit={{ opacity: 0, y: -20 }} // Exit state: fade out and move up
       transition={{ duration: 0.5 }} // Transition duration
     >
-      <div className='px-5 sm:px-10 bg-zinc-100 font-neue text-zinc-800'>
+      <div className='px-5 sm:px-10 bg-zinc-200 font-neue text-zinc-800'>
         <div className='pt-28 pb-20 text-center'>
           <h1 className='px-5 text-5xl lg:text-9xl text-zinc-800 font-semibold text-center uppercase'>
             codexa

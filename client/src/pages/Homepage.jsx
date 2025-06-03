@@ -21,8 +21,8 @@ const Homepage = () => {
     <div className='bg-zinc-200 w-[100%] overflow-hidden'>
         <HeroSection />
         <ProjectsSection />
-        <SkillSection />
         <AboutSection/>
+        <SkillSection />
     </div>
     </>
   )

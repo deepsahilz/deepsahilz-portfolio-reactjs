@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
+import { MdArrowOutward } from "react-icons/md";
+
 
 const ProjectCard = ({ project, className }) => {
   const navigate = useNavigate();
@@ -39,8 +41,9 @@ const ProjectCard = ({ project, className }) => {
         className="fixed z-50 pointer-events-none "
         style={{ left: 0, top: 0 }}
       >
-        <div className="bg-white text-black px-3 py-2 text-sm rounded-full font-medium shadow-md">
+        <div className="bg-white flex gap-1 items-center text-black px-3 py-2 text-sm rounded-full font-medium shadow-md">
           View Details  
+          <MdArrowOutward className='text-lg'/>
         </div>
       </div>
 

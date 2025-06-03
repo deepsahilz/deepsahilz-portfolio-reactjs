@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 const navLinks = ['Work', 'About', 'Contact'];
 
 const Navbar = () => {
@@ -21,9 +22,9 @@ const Navbar = () => {
   }, [lastScrollY]);
 
   return (
-    <div className={`fixed flex justify-center w-full z-50 transition-transform duration-300 ${showNavbar ? 'translate-y-0' : '-translate-y-full'}`}>
-      <div className='rounded-xl w-full mix-blend-difference '>
-        <div className='flex justify-between items-center py-5 px-6 md:px-10 text-zinc-800 '>
+    <div className={`fixed flex justify-center  w-full z-50 transition-transform duration-300 ${showNavbar ? 'translate-y-0' : '-translate-y-full'}`}>
+      <div className='rounded-b-xl w-full  bg-zinc-200'>
+        <div className='flex justify-between items-center py-3 md:py-5 px-6 md:px-10 text-zinc-800 '>
           <div onClick={() => navigate("/")} className='font-bold overflow-hidden relative h-7  cursor-pointer text-2xl font-neue'>
             <span className='block  transition-transform  duration-300 ease-in-out hover:-translate-y-full'>
                   <span className='block '>deepsahilz</span>
@@ -60,9 +61,9 @@ const Navbar = () => {
             menuOpen ? 'max-h-40 opacity-100 translate-y-0' : 'max-h-0 opacity-0 -translate-y-2'
           }`}
         >
-          <ul className='flex flex-col gap-4 uppercase pt-2'>
+          <ul className='flex flex-col gap-2 pb-4 uppercase pt-3 '>
             {navLinks.map((text, i) => (
-              <li key={i} onClick={() => setMenuOpen(false)} className='text-lg'>
+              <li key={i} onClick={() => setMenuOpen(false)} className=''>
                 {text}
               </li>
             ))}

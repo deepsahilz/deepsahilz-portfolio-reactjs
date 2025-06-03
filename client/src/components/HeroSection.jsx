@@ -117,7 +117,7 @@ useEffect(() => {
                 </div>
               </div>
               <h1 className='text-xl font-semibold font-nb mb-6 md:mb-4 md:ml-2 text-zinc-500 '>
-                21, Sahildeep Singh
+                Sahildeep Singh
               </h1>
               <h1 className='text-3xl md:max-w-[48rem] mb-24 md:mb-0 font-neue text-zinc-600  md:ml-2'>
                 A full stack developer & designer focused on building fast, functional, and damn good-looking web apps.
@@ -141,7 +141,7 @@ useEffect(() => {
       </div>
     </div>
 
-    <div className='absolute pointer-events-none hidden md:block top-0 bottom-0 w-full h-full'>
+    <div className='absolute pointer-events-none hidden z-[100] md:block top-0 bottom-0 w-full h-full'>
       <div className='border-zinc-600 absolute top-0 left-12 rounded-br-4xl border-r-3 border-b-3 w-[9.5rem] h-[82px]'></div>
       <div className='border-zinc-600 absolute top-20 left-[25.5px] rounded-tl-4xl border-l-3 border-t-3 w-7 h-[25rem]'></div>
       <div className='border-zinc-600 absolute bottom-[12.8rem] left-[25.5px] rounded-bl-4xl border-b-3 border-l-3 w-[9rem] h-20'></div>

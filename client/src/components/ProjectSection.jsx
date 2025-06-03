@@ -133,15 +133,25 @@ const ProjectSection = () => {
   //   },
   // ]
   return (
-    <div className='  w-full font-neue bg-zinc-100  rounded-t-4xl border-t overflow-hidden border-zinc-300 pb-20 text-zinc-800 '>
+    <div className='  w-full font-neue bg-zinc-100  rounded-t-4xl border-t overflow-hidden border-zinc-400 pb-20 text-zinc-800 '>
       <div className='mb-15 pt-[5rem] md:pt-[7rem] border-b pb-10   border-zinc-400'>
-        <div className="flex justify-between items-end px-6 md:px-10">
-          <h1 className='text-4xl md:text-3xl font-semibold text-zinc-800 bg-[#9f0]'>Featured<br className='md:hidden'/> Projects</h1>
-          <h1 className='text-md  text-zinc-100 flex items-center gap-2 bg-zinc-800 uppercase rounded-full px-6 py-2'>
-            <FaGithub className='text-xl mb-[2px]'/>
-            View all<span className='hidden md:visible'>projects</span> 
-              <MdArrowOutward className='text-xl'/>
-            </h1>
+        <div className="flex justify-between items-end  px-6 md:px-10">
+          
+          <div className=''>
+            <h1 className='text-3xl md:text-3xl font-semibold text-zinc-800 inline-block bg-[#9f0]'>Featured<br className='md:hidden'/> Projects</h1>
+            <h4 className='mt-1 hidden md:flex font-semibold'>Some of my cooooooool projects</h4>
+          </div>
+          
+          <div className=''>
+          
+            <div className='text-md group cursor-pointer text-zinc-100 flex  items-center gap-2 bg-zinc-800 uppercase rounded-full px-4 md:px-6 py-2'>
+              <FaGithub className='text-xl mb-[2px] hidden md:flex'/>
+              <span className='text-sm md:text-base'>View all</span>
+              <MdArrowOutward className='md:text-xl rotate-45 group-hover:-rotate-0  group-hover:scale-110 transition-transform '/>
+            </div>
+            <h4 className='mt-1 hidden md:flex font-semibold'>View all projects on Github</h4>
+          </div>
+
         </div>
       </div>
         <div className='relative px-6 md:px-10'>
