@@ -13,6 +13,12 @@ useEffect(() => {
 }, []);
 
 
+
+
+
+
+
+
 //   useEffect(() => {
 //   const follower = followerRef.current;
 //   const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
@@ -101,33 +107,27 @@ useEffect(() => {
       scroll down
     </div>
 
-    <div className='flex items-end w-full md:h-screen pt-20 px-6 md:px-10'>
-      <div className='relative h-full w-full'>
-        <div className='w-full'>
-          <div className='flex justify-between items-end'>
-            <div className='mt-20'>
-              <div className='flex gap-6'>
-                <div className='md:flex text-6xl md:text-8xl md:h-[6.5rem] font-semibold mb-3 '>
-                  {/* here */}
-                  <div className=' dpImg w-1 h-24 overflow-hidden flex items-center rounded-3xl mr-2'>
-                  <img src='../src/assets/images/myPic.png' className='min-w-40'/>
-                  </div>
-                  <h1 className=''>Hi there, </h1>
-                  <h1 className='mt-2 md:mt-0 md:ml-4'> I am<span className='bg-[#9f0] ml-3 text-zinc-900'>Sahil</span></h1>
+    <div className='flex  items-end w-full h-screen px-6 md:px-10 pb-10'>
+      <div className='relative h-full w-full '>
+        <div className='w-full flex h-full justify-center items-center '>
+
+          <div className='md:text-center w-full absolute top-[50%] left-[50%] -translate-[50%] flex  flex-col md:items-center '>
+                <div className='flex md:w-[60rem] flex-col text-6xl md:text-[10rem]   font-semibold mb-10 '>
+                  <h1 className='md:text-left'>Hi there, </h1>
+                  <h1 className='mt-2 md:mt-0 md:ml-4 text-nowrap  md:text-right'> I am<span className='bg-[#9f0] ml-3 pr-2 md:pr-9 italic text-zinc-900'>Sahil</span></h1>
                 </div>
-              </div>
-              <h1 className='text-xl font-semibold font-nb mb-6 md:mb-4 md:ml-2 text-zinc-500 '>
-                Sahildeep Singh
+                {/* <div className='md:flex text-6xl md:text-8xl md:h-[6.5rem] font-semibold mb-3 '>
+                  <h1 className=' '>Hi there, </h1>
+                  <h1 className='mt-2 md:mt-0 md:ml-4'> I am<span className='bg-[#9f0] ml-3 text-zinc-900'>Sahil</span></h1>
+                </div> */}
+              <h1 className='text-2xl  md:max-w-[48rem] md:mb-0 font-neue text-zinc-600  md:ml-2'>
+                A <span>full stack developer</span> & designer focused on building fast, functional, and damn good-looking web apps.
               </h1>
-              <h1 className='text-3xl md:max-w-[48rem] mb-24 md:mb-0 font-neue text-zinc-600  md:ml-2'>
-                A full stack developer & designer focused on building fast, functional, and damn good-looking web apps.
-              </h1>
-            </div>
           </div>
 
           <div className='absolute bottom-10 text-right hidden md:block right-0 w-full'>
             <div className='flex justify-between items-end'>
-              <div className='w-[13rem] h-[13rem] -mb-10 -ml-10'>
+              <div className='w-[13rem] h-[13rem] -mb-20 -ml-10'>
                 <AnimatedD />
               </div>
               {/* <div className='justify-end '>
@@ -141,7 +141,7 @@ useEffect(() => {
       </div>
     </div>
 
-    <div className='absolute pointer-events-none hidden z-[100] md:block top-0 bottom-0 w-full h-full'>
+    {/* <div className='absolute pointer-events-none hidden z-[100] md:block top-0 bottom-0 w-full h-full'>
       <div className='border-zinc-600 absolute top-0 left-12 rounded-br-4xl border-r-3 border-b-3 w-[9.5rem] h-[82px]'></div>
       <div className='border-zinc-600 absolute top-20 left-[25.5px] rounded-tl-4xl border-l-3 border-t-3 w-7 h-[25rem]'></div>
       <div className='border-zinc-600 absolute bottom-[12.8rem] left-[25.5px] rounded-bl-4xl border-b-3 border-l-3 w-[9rem] h-20'></div>
@@ -151,8 +151,36 @@ useEffect(() => {
       <div className='border-zinc-600 absolute bottom-[78.5px] right-[75px] rounded-tl-4xl border-l-3 border-t-3 w-[8rem] h-[3rem]'></div>
       <div className='border-zinc-600 absolute top-20 right-[26px] rounded-tr-4xl border-r-3 border-t-3 w-7 h-[28rem]'></div>
       <div className='border-zinc-600 absolute top-0 right-[3rem] rounded-bl-4xl border-b-3 border-l-3 w-[16.5rem] h-[82px]'></div>
-    </div>
+    </div> */}
+
+<div>
+
+</div>
+
+
+
+
+
+
+
+
+
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 )
 
 }

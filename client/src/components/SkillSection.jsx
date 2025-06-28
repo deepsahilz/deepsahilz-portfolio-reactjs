@@ -11,8 +11,12 @@ const skills = [
   { icon: <FaNodeJs className="text-green-600" />, name: 'Node.js' },
   { icon: <SiMongodb className="text-green-500" />, name: 'MongoDB' },
   { icon: <SiMysql className="text-blue-600" />, name: 'MySQL' },
-  { icon: <SiTailwindcss className="text-sky-400" />, name: 'Tailwind' },
+  { icon: <SiTailwindcss className="text-sky-400" />, name: 'TailwindCSS' },
   { icon: <SiGreensock className="text-green-400" />, name: 'GSAP' },
+  { icon: <FaGithub className="text-zinc-800" />, name: 'GitHub' },
+  { icon: <FaHtml5 className="text-orange-500" />, name: 'C/C++' },
+  { icon: <FaCss3Alt className="text-blue-500 " />, name: 'Photoshop' },
+  { icon: <FaFigma className="text-yellow-400" />, name: 'Figma' },
 ]
 
 const others = [
@@ -29,7 +33,7 @@ const pastelColors = [
 
 const SkillCard = ({skill})=>{
   return(
-    <div  className="flex bg-blue-100  flex-col border py-2 md:py-4 px-5 md:px-10 rounded-2xl hover:scale-90 transition-transform duration-400 border-zinc-400 text-2xl md:text-5xl items-center">
+    <div  className="flex bg-blue-100   flex-col border py-2 md:py-4 px-5 md:px-10 rounded-2xl hover:scale-90 transition-transform duration-400 border-zinc-400 text-2xl md:text-5xl items-center">
       {skill.icon}
       <span className="mt-2 text-zinc-700 text-sm md:text-lg font-medium">{skill.name}</span>
     </div>
@@ -39,14 +43,15 @@ const SkillCard = ({skill})=>{
 
 const SkillSection = () => {
   return (
-    <div className='bg-zinc-200  flex  justify-between px-6 md:px-10 py-20 '>
+    <div className='bg-zinc-100 min-h-screen  flex  justify-between px-6 md:px-10 py-30 '>
       <div className=''>
-        <h1 className='text-3xl md:text-3xl font-semibold text-zinc-800 bg-[#9f0] inline-block'>
-          Things I’m<br className='md:hidden'/> goooood at
+        {/* <h1 className='text-3xl md:text-3xl font-semibold text-zinc-800 bg-[#9f0] inline-block'> */}
+        <h1 className='text-3xl md:text-6xl  font-semibold text-zinc-800 font-nb  inline-block'>
+          Things I’m<br className='md:hidden'/> good at
         </h1>
 
         <div className='mt-12 '>
-          <h1 className='mb-5 text-xl font-semibold text-zinc-500 '>Web technologies and tools</h1>
+          <h1 className='mb-5 text-xl font-semibold text-zinc-500 '>Technologies and tools</h1>
           <div className=" flex gap-4 md:gap-4 flex-wrap">
             {skills.map((skill, index) => (
               <div key={index} className='flex items-center'>
@@ -58,7 +63,7 @@ const SkillSection = () => {
             ))}
           </div>
         </div>
-        <div className='mt-12 '>
+        {/* <div className='mt-12 '>
           <h1 className='mb-5 text-xl font-semibold text-zinc-500 '>Others</h1>
           <div className=" flex gap-4 flex-wrap">
             {others.map((skill, index) => (
@@ -70,7 +75,7 @@ const SkillSection = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
       </div>
     </div>

@@ -5,7 +5,7 @@ import { FaArrowTurnDown } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <div className='flex flex-col md:flex-row justify-between items-start gap-6 md:gap-0 font-neue min-h-[20rem] px-6 md:px-10 py-10 text-zinc-100 bg-zinc-950'>
+    <div className='flex flex-col md:flex-row justify-between  items-start gap-6 md:gap-0 font-neue min-h-[20rem] px-6 md:px-10 py-10 text-zinc-100 bg-zinc-950'>
 
 
       <div className='text-5xl hidden md:flex md:text-8xl font-semibold'>@deepsahilz</div>

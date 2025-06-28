@@ -6,6 +6,7 @@ import Homepage from './pages/Homepage';
 import Codexa from './pages/Codexa';
 import Layout from './components/Layout';
 import CatGame from './pages/CatGame';
+import ProjectPage from './pages/ProjectPage';
 
 const App = () => {
   const location = useLocation();
@@ -33,7 +34,7 @@ const App = () => {
           <Route path="/*" element={<CatGame />} />
         <Route element={<Layout />}>
           <Route path="/" element={<Homepage />} />
-          <Route path="/codexa" element={<Codexa />} />
+          <Route path="/projects/:projectName" element={<ProjectPage />} />
         </Route>
       </Routes>
     </AnimatePresence>

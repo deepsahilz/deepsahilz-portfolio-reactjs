@@ -1,72 +1,115 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
-import { MdArrowOutward } from "react-icons/md";
-
 
 const ProjectCard = ({ project, className }) => {
   const navigate = useNavigate();
   const cursorRef = useRef(null);
+  const svgRef = useRef(null);
   const [hovering, setHovering] = useState(false);
 
+  // Move the cursor follower
   useEffect(() => {
     const move = (e) => {
       gsap.to(cursorRef.current, {
-        x: e.clientX,
-        y: e.clientY,
+        x: e.clientX-50,
+        y: e.clientY-50,
         ease: "power2.out",
         duration: 0.3,
-        
       });
     };
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
   }, []);
 
+  // Show/hide based on hover
   useEffect(() => {
     gsap.to(cursorRef.current, {
       autoAlpha: hovering ? 1 : 0,
       scale: hovering ? 1 : 0.6,
       duration: 0.2,
-      
       ease: "power2.out"
     });
   }, [hovering]);
+
+  // Rotate the text infinitely
+  useEffect(() => {
+    if (!svgRef.current) return;
+
+    const rotateAnim = gsap.to(svgRef.current, {
+      rotate: 360,
+      transformOrigin: "50% 50%",
+      duration: 6,
+      repeat: -1,
+      ease: "none",
+    });
+
+    return () => rotateAnim.kill();
+  }, []);
 
   return (
     <>
       {/* Cursor follower */}
       <div
         ref={cursorRef}
-        className="fixed z-50 pointer-events-none "
-        style={{ left: 0, top: 0 }}
+        className="fixed z-50 pointer-events-none backdrop-blur-lg overflow-hidden rounded-full"
+        style={{ left: 0, top: 0, width: 100, height: 100 }}
       >
-        <div className="bg-white flex gap-1 items-center text-black px-3 py-2 text-sm rounded-full font-medium shadow-md">
-          View Details  
-          <MdArrowOutward className='text-lg'/>
+        <div className="relative w-[100px] h-[100px]">
+          <svg ref={svgRef} className="w-full h-full" viewBox="0 0 100 100">
+            <defs>
+              <path
+                id="circle"
+                d="M50,50 m-35,0 a35,35 0 1,1 70,0 a35,35 0 1,1 -70,0"
+                fill="none"
+              />
+            </defs>
+            <text fill="white" fontSize="10" fontFamily="Arial" letterSpacing="2">
+              <textPath xlinkHref="#circle" startOffset="0%">
+                VIEW DETAILS • VIEW DETAILS •
+              </textPath>
+            </text>
+          </svg>
+          <div className="absolute top-1/2 left-1/2 w-2 h-2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-full" />
+          <div className="absolute bottom-0 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 bg-white blur-3xl rounded-full" />
         </div>
       </div>
 
       {/* Project Card */}
       <div className={`flex flex-col gap-3 font-neue text-zinc-800 ${className}`}>
         <div
-          onClick={() => navigate(project.url)}
-          onMouseEnter={() => setHovering(true)}
-          onMouseLeave={() => setHovering(false)}
-          className="h-[17rem] md:h-[22rem] group cursor-pointer flex justify-center items-center overflow-hidden text-zinc-700"
+          onClick={() => navigate(`/projects${project.url}`)}
+          className="h-[17rem] md:h-[22rem]   group cursor-pointer flex justify-center items-center overflow-hidden text-zinc-700"
         >
-          <div className="w-full h-full group-hover:scale-95 duration-800 overflow-hidden bg-zinc-900 transition-transform rounded-lg">
-            <img className="w-full h-full object-cover group-hover:opacity-50 group-hover:scale-110 duration-900 transition-all" src={project.thumbnail} />
+          <div
+                    onMouseEnter={() => setHovering(true)}
+          onMouseLeave={() => setHovering(false)}
+ 
+          className="w-full h-full relative group-hover:scale-95 p-5  duration-800 overflow-hidden flex justify-center items-center bg-zinc-900 transition-transform  rounded-lg">
+            <img
+              src={project.thumbnail}
+              className="group-hover:opacity-50 rounded-lg group-hover:scale-130 duration-900 transition-all"
+              // className=" rounded-lg group-hover:scale-110 duration-900 transition-all"
+              alt={project.name}
+            />
+            {/* <div className='w-full h-full opacity-0 group-hover:opacity-50 transition-opacity bg-green-400 absolute '></div> */}
           </div>
         </div>
 
-        <div className='flex justify-between'>
-          <h1 className='text-lg flex mt-1 font-semibold items-center'>{project.name}</h1>
+        <div className="flex justify-between">
+          <h1 className="text-xl  flex mt-1 font-semibold items-center">
+            {project.name}
+          </h1>
         </div>
 
-        <div className='flex gap-2 flex-wrap'>
+        <div className="flex gap-2 flex-wrap">
           {project.tools.map((tool, i) => (
-            <div key={i} className='px-3 md:px-4 uppercase md:py-1 py-0.5 border text-sm rounded-lg border-zinc-800'>{tool}</div>
+            <div
+              key={i}
+              className="px-3 md:px-4 uppercase md:py-1 py-0.5 border text-sm  rounded-lg border-zinc-800"
+            >
+              {tool}
+            </div>
           ))}
         </div>
       </div>

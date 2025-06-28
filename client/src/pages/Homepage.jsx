@@ -1,28 +1,43 @@
-import React, { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import React, { useEffect, useRef } from 'react'
 import HeroSection from '../components/HeroSection'
 import ProjectsSection from '../components/ProjectSection'
 import SkillSection from '../components/SkillSection'
 import AboutSection from '../components/AboutSection'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Footer from '../components/Footer'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Homepage = () => {
+  // const sectionRef = useRef(null);
 
-  const containerRef = useRef(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  })
-
-  // Make Projects scroll over Hero *very slowly*
-  // const y = useTransform(scrollYProgress, [0, 0.3], ["100vh", "0vh"])
-
+  // useEffect(() => {
+  //   gsap.to(sectionRef.current, {
+  //     y: -400, // move it up slowly
+  //     ease: 'none',
+  //     scrollTrigger: {
+  //       trigger: sectionRef.current,
+  //       start: 'top top',
+  //       end: 'bottom top',
+  //       pin:true,
+  //       scrub: true,
+  //     },
+  //   });
+  // }, []);
+  
   return (
     <>
     <div className='bg-zinc-200 w-[100%] overflow-hidden'>
+        {/* <div className='z-[10]' ref={sectionRef}> */}
         <HeroSection />
-        <ProjectsSection />
-        <AboutSection/>
-        <SkillSection />
+        {/* </div> */}
+        {/* <div className='absolute z-[40] top-[100vh]'> */}
+          <ProjectsSection />
+          <AboutSection/>
+          <SkillSection />
+          {/* <Footer/> */}
+        {/* </div> */}
     </div>
     </>
   )

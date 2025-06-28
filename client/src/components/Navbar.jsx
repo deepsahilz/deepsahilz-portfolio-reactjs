@@ -23,17 +23,17 @@ const Navbar = () => {
 
   return (
     <div className={`fixed flex justify-center  w-full z-50 transition-transform duration-300 ${showNavbar ? 'translate-y-0' : '-translate-y-full'}`}>
-      <div className='rounded-b-xl w-full  bg-zinc-200'>
-        <div className='flex justify-between items-center py-3 md:py-5 px-6 md:px-10 text-zinc-800 '>
-          <div onClick={() => navigate("/")} className='font-bold overflow-hidden relative h-7  cursor-pointer text-2xl font-neue'>
-            <span className='block  transition-transform  duration-300 ease-in-out hover:-translate-y-full'>
-                  <span className='block '>deepsahilz</span>
+      <div className='rounded-b-xl w-full '>
+        <div className='flex justify-between mix-blend-difference  items-center py-3 md:py-5 px-6 md:px-10 text-zinc-900 '>
+          <div onClick={() => navigate("/")} className='font-bold  overflow-hidden relative h-7  cursor-pointer text-2xl font-neue'>
+            <span className='block  transition-transform   duration-300 ease-in-out hover:-translate-y-full'>
+                  <span className='block text-zinc-900 '>deepsahilz</span>
                   <span className='block absolute left-0  top-full'>deepsahilz</span>
                 </span>
           </div>
 
           {/* Desktop Nav */}
-          <ul className='hidden md:flex gap-5 mix-blend-difference backdrop-blur-sm uppercase'>
+          <ul className='hidden md:flex gap-5 backdrop-blur-sm md:not-[backdrop-blur-sm]: uppercase'>
             {navLinks.map((text, i) => (
               <li key={i} className='overflow-hidden relative h-6 cursor-pointer hover:text-zinc-500'>
                 <span className='block text-lg transition-transform duration-300 ease-in-out hover:-translate-y-full'>
