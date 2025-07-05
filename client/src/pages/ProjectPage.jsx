@@ -1,10 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import codexa_searchbar from "../assets/images/codexa_searchbar.png"
+import kreativkid1 from "../assets/images/kreativkid.png"
+import kreativkid2 from "../assets/images/kreativkid_work.png"
+import mysql1 from "../assets/images/compass2.png"
 import codexa_searchbarvid from "../assets/videos/codexa_searchbar.mp4"
 import codexa_comments from "../assets/images/codexa_comments.png"
 import codexa_commentsvid from "../assets/videos/codexa_comments.mp4"
-import { useParams } from 'react-router-dom';
+import kreativkid11 from "../assets/videos/kreativkid1.mp4"
+import kreativkid22 from "../assets/videos/kreativkid2.mp4"
+import mysql11 from "../assets/videos/mysql1.mp4"
+import { Link, useParams } from 'react-router-dom';
 // import codexa_chat from "../assets/videos/codexa_chat.mp4"
 
 const projects = [
@@ -22,26 +28,55 @@ const projects = [
             imgSrc: codexa_comments,
             vidSrc: codexa_commentsvid,
             },],
-            features:["HELLO HI BYE very good work bro","grokokoko HI BYE very good work bro","HELLO HI BYEeyeyey very good work bro",],
+            features:["Smart search with history and suggestions", "Project showcase with image/video previews","Commenting and feedback on projects.","Tag-based project categorization and filtering.","Like, save, and follow functionality for projects/users.","Add collaborator feature for working teams."],
             stack:["react","javascript","express","sockets"]
     },
-    {   name: "mysqlCompass",
-        description:"GUI tool for visualizing and managing SQL database",
-        concept: "Codexa is created to provide a social platform to developers, students and tech geeks to showcase their projects and learn from others, avoiding the hassle to find inspiration.",
-        highlights: [
-            {
-            text: "Advance SearchBar with history and suggestions",
-            imgSrc: codexa_searchbar,
-            vidSrc: codexa_searchbarvid,
-            },
-            {
-            text: "Comment section with nested replies and likes",
-            imgSrc: codexa_comments,
-            vidSrc: codexa_commentsvid,
-            },],
-            features:["HELLO HI BYE very good work bro","grokokoko HI BYE very good work bro","HELLO HI BYEeyeyey very good work bro",],
-            stack:["react","javascript","express","sockets"]
-    }
+    {
+  name: "mysqlCompass",
+  description: "GUI tool for managing and visualizing MySQL databases",
+  concept: "Inspired by MongoDB Compass, this tool offers an intuitive interface to visualize, edit, and manage MySQL data efficiently with user-friendly features.",
+  highlights: [
+    {
+      text: "",
+      imgSrc: mysql1,
+      vidSrc: mysql11,
+    },
+    
+  ],
+  isPending:true,
+  features: [
+    "Smart table viewer with auto row expansion",
+    "Edit cells directly or via modals",
+    "Search and filter data easily with history"
+  ],
+  stack: ["react", "tailwind", "node", "mysql"]
+},
+{
+  name: "kreativkid",
+  description: "Portfolio website for an artist to express his art and work.",
+  concept: "KreativKid is a portfolio website designed to highlight an artist’s creativity through a clean and expressive portfolio layout, blending bold visuals and smooth interactions maintaining a visual language throughout.",
+  highlights: [
+    {
+      text: "Interactive hero section and home page",
+      imgSrc: kreativkid1,
+      vidSrc: kreativkid11,
+    },
+    {
+      text: "Dynamic Gallery with Before-After Image Comparison",
+      imgSrc: kreativkid2,
+      vidSrc: kreativkid22,
+    },
+  ],
+  features: [
+    "Animated transitions between sections",
+    "Responsive and modern layout for all screen sizes",
+    "Emphasis on visuals with minimal UI distractions"
+  ],
+  stack: ["react", "tailwind", "gsap"]
+}
+
+
+
 ]
 
 
@@ -72,6 +107,7 @@ const ProjectPage = () => {
 
           <div className='mb-14'>
             <h1 className='text-2xl md:text-4xl font-semibold mb-2 md:mb-5'>Concept</h1>
+            {(Project.isPending == true)&&<h2 className='text-2xl text-zinc-700'>//Currently in progress and not completed</h2> }
             <h2 className='text-xl md:text-3xl text-zinc-700 '>{Project.concept}</h2>
           </div>
 
@@ -84,7 +120,7 @@ const ProjectPage = () => {
         <div>
           
 
-          <div className='mb-14'>1
+          <div className='mb-14'>
             <h1 className='text-2xl md:text-4xl font-semibold mb-4 md:mb-5'>Project Highlights</h1>
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-10 md:gap-y-14'>
               {Project.highlights.map((item, i) => (

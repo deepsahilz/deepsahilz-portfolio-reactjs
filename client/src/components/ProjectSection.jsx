@@ -1,14 +1,16 @@
 import React from 'react'
 import ProjectCard from './ProjectCard'
 import codexa_ss from '../assets/images/codexa_ss1.jpg'
-import chatapp from '../assets/images/chatapp.webp'
-import compass from '../assets/images/compass.webp'
+import chatapp from '../assets/images/kreativkid.png'
+import compass from '../assets/images/compass2.png'
 import game404 from '../assets/images/404game.webp'
 import { FaGithub } from 'react-icons/fa6'
 import { MdArrowOutward } from "react-icons/md";
+import { Link, useNavigate } from 'react-router-dom'
 
 
 const ProjectSection = () => {
+  const navigate = useNavigate();
   const projects = [
     {
       id:1,
@@ -26,14 +28,14 @@ const ProjectSection = () => {
       tools:["react","tailwind css","gsap","lenis"],
       thumbnail:chatapp,
     },
-    {
-      id:3,
-      name:"MERN Chat App",
-      url:"/chatapp",
-      type:"web app",
-      tools:["react","nodejs","express","mongodb"],
-      thumbnail:chatapp,
-    },
+    // {
+    //   id:3,
+    //   name:"MERN Chat App",
+    //   url:"/chatapp",
+    //   type:"web app",
+    //   tools:["react","nodejs","express","mongodb"],
+    //   thumbnail:chatapp,
+    // },
     {
       id:4,
       name:"MySQL compass",
@@ -42,14 +44,14 @@ const ProjectSection = () => {
       tools:["Desktop app","react","nodejs","electron"],
       thumbnail:compass,
     },
-    {
-      id:5,
-      name:"404 mini interaction game",
-      url:"/404game",
-      type:"mini web game",
-      tools:["react","nodejs","electron"],
-      thumbnail:game404,
-    },
+    // {
+    //   id:5,
+    //   name:"404 mini interaction game",
+    //   url:"/404game",
+    //   type:"mini web game",
+    //   tools:["react","nodejs","electron"],
+    //   thumbnail:game404,
+    // },
     // {
     //   id:6,
     //   name:"Ochi Clone",
@@ -82,11 +84,13 @@ const ProjectSection = () => {
                 ))}
             </div>
         </div>
-            <button className='mt-20 group cursor-pointer ml-[50%] -translate-x-[50%] text-zinc-100 flex items-center gap-2 bg-zinc-800 hover:bg-zinc-950 transition-all uppercase rounded-lg px-4 md:px-6 py-3'>
+            <Link to="https://github.com/deepsahilz" className='mt-20 group inline-block cursor-pointer ml-[50%] -translate-x-[50%]  '>
+            <div className='flex text-zinc-100 transition-all uppercase rounded-lg   bg-zinc-800 hover:bg-zinc-950 justify-center items-center gap-2 px-4 md:px-6 py-3'>
               <FaGithub className='text-2xl mb-[2px] hidden md:flex'/>
               <span className='text-sm md:text-base'>View all Projects</span>
               <MdArrowOutward className='md:text-xl rotate-45 group-hover:-rotate-0  group-hover:scale-120 duration-300 transition-transform '/>
-            </button>
+            </div>
+            </Link>
     </div>
   )
 }

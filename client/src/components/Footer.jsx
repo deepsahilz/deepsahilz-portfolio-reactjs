@@ -19,9 +19,9 @@ const Footer = () => {
 
       <div className='flex flex-col gap-1  md:text-lg justify-right  md:items-end uppercase'>
         <span className='text-zinc-500 mb-2'>socials</span>
-        <a href='#' className='underline text-[16px] flex items-center gap-2'><FaGithub className='text-zinc-500'/>Github</a>
-        <a href='#' className='underline text-[16px] flex items-center gap-2'><FaLinkedin className='text-zinc-500'/>LinkedIn</a>
-        <a href='#' className='underline text-[16px] flex items-center gap-2'><FaInstagram className='text-zinc-500'/>Instagram</a>
+        <a href='https://github.com/deepsahilz' className='underline text-[16px] flex items-center gap-2'><FaGithub className='text-zinc-500'/>Github</a>
+        <a href='https://www.linkedin.com/in/sahil-singh-0421b7275/' className='underline text-[16px] flex items-center gap-2'><FaLinkedin className='text-zinc-500'/>LinkedIn</a>
+        {/* <a href='#' className='underline text-[16px] flex items-center gap-2'><FaInstagram className='text-zinc-500'/>Instagram</a> */}
       </div>
       <div className='text-5xl mt-8 md:hidden md:text-8xl font-semibold'>@deepsahilz</div>
     </div>
