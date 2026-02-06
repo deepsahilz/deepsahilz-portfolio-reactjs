@@ -3,11 +3,13 @@ import { motion } from 'framer-motion';
 import codexa_searchbar from "../assets/images/codexa_searchbar.png"
 import kreativkid1 from "../assets/images/kreativkid.png"
 import kreativkid2 from "../assets/images/kreativkid_work.png"
+import iristhumb from "../assets/images/irisThumb.png"
 import mysql1 from "../assets/images/compass2.png"
 import codexa_searchbarvid from "../assets/videos/codexa_searchbar.mp4"
 import codexa_comments from "../assets/images/codexa_comments.png"
 import codexa_commentsvid from "../assets/videos/codexa_comments.mp4"
 import kreativkid11 from "../assets/videos/kreativkid1.mp4"
+import irisvid from "../assets/videos/iris-walkthrough.mp4"
 import kreativkid22 from "../assets/videos/kreativkid2.mp4"
 import mysql11 from "../assets/videos/mysql1.mp4"
 import { Link, useParams } from 'react-router-dom';
@@ -29,7 +31,7 @@ const projects = [
             vidSrc: codexa_commentsvid,
             },],
             features:["Smart search with history and suggestions", "Project showcase with image/video previews","Commenting and feedback on projects.","Tag-based project categorization and filtering.","Like, save, and follow functionality for projects/users.","Add collaborator feature for working teams."],
-            stack:["react","javascript","express","sockets"]
+            stack:["react.js","mongodb","express.js","web sockets"]
     },
     {
   name: "mysqlCompass",
@@ -49,7 +51,7 @@ const projects = [
     "Edit cells directly or via modals",
     "Search and filter data easily with history"
   ],
-  stack: ["react", "tailwind", "node", "mysql"]
+  stack: ["react.js", "tailwindcss", "node", "mysql"]
 },
 {
   name: "kreativkid",
@@ -72,8 +74,30 @@ const projects = [
     "Responsive and modern layout for all screen sizes",
     "Emphasis on visuals with minimal UI distractions"
   ],
-  stack: ["react", "tailwind", "gsap"]
-}
+  stack: ["react.js", "tailwindcss", "gsap"]
+},
+ {   name: "IRIS2026",
+        description:"Official techfest website and event management platform of GNDU, Amritsar",
+        concept: "IRIS is a full-stack event management platform designed to handle registrations, payments, and administration for a large-scale technical fest, focusing on reliability, speed, and a clean user experience.",
+   highlights: [
+    {
+      text: "Site walkthrough",
+      imgSrc: iristhumb,
+      vidSrc: irisvid,
+    },
+   
+  ],
+  features: [
+  "Secure user sign-in and account access",
+  "Smooth event registration with flexible team options",
+  "Multiple payment options with instant confirmation",
+  "Automatic ticket creation with unique reference ID",
+  "Easy-to-use admin dashboard for managing events",
+  "Clean, modern, and fully responsive interface",
+],
+
+  stack: ["Next.js", "Supabase", "Tailwindcss","GSAP","Postgresql"],
+    },
 
 
 

@@ -112,7 +112,7 @@ useEffect(() => {
         <div className='w-full flex h-full justify-center items-center '>
 
           <div className='md:text-center w-full absolute top-[50%] left-[50%] -translate-[50%] flex  flex-col md:items-center '>
-                <div className='flex md:w-[60rem] flex-col text-6xl md:text-[10rem]   font-semibold mb-10 '>
+                <div className='flex md:w-[35rem] lg:w-[60rem] flex-col text-6xl md:text-8xl lg:text-[10rem] font-semibold mb-10 '>
                   <h1 className='md:text-left'>Hi there, </h1>
                   <h1 className='mt-2 md:mt-0 md:ml-4 text-nowrap  md:text-right'> I am<span className='bg-[#9f0] ml-3 pr-2 md:pr-9 italic text-zinc-900'>Sahil</span></h1>
                 </div>
@@ -141,17 +141,17 @@ useEffect(() => {
       </div>
     </div>
 
-    {/* <div className='absolute pointer-events-none hidden z-[100] md:block top-0 bottom-0 w-full h-full'>
-      <div className='border-zinc-600 absolute top-0 left-12 rounded-br-4xl border-r-3 border-b-3 w-[9.5rem] h-[82px]'></div>
-      <div className='border-zinc-600 absolute top-20 left-[25.5px] rounded-tl-4xl border-l-3 border-t-3 w-7 h-[25rem]'></div>
+    <div className='absolute pointer-events-none hidden z-[100] xl:block top-0 bottom-0 w-full h-full'>
+      <div className='border-zinc-400 absolute top-0 left-12 rounded-br-4xl border-r-3 border-b-3 w-[9.5rem] h-[82px]'></div>
+      <div className='border-zinc-400 absolute top-20 left-[25.5px] rounded-tl-4xl border-l-3 border-t-3 w-7 h-[25rem]'></div>
       <div className='border-zinc-600 absolute bottom-[12.8rem] left-[25.5px] rounded-bl-4xl border-b-3 border-l-3 w-[9rem] h-20'></div>
-      <div className='border-zinc-600 absolute bottom-[95.5px] left-[75px] rounded-tr-4xl border-r-3 border-t-3 w-[8rem] h-[7rem]'></div>
-      <div className='border-zinc-600 absolute bottom-[2.5rem] left-[12.4999rem] rounded-b-4xl border-b-3 border-r-3 border-l-3 w-[70rem] h-14'></div>
+      <div className='border-zinc-400 absolute bottom-[95.5px] left-[75px] rounded-tr-4xl border-r-3 border-t-3 w-[8rem] h-[7rem]'></div>
+      <div className='border-zinc-400 absolute bottom-[2.5rem] left-[12.4999rem] rounded-b-4xl border-b-3 border-r-3 border-l-3 w-[70rem] h-14'></div>
       <div className='border-zinc-600 absolute bottom-[7.76rem] right-[25.5px] rounded-br-4xl border-b-3 border-r-3 w-[9rem] h-20'></div>
-      <div className='border-zinc-600 absolute bottom-[78.5px] right-[75px] rounded-tl-4xl border-l-3 border-t-3 w-[8rem] h-[3rem]'></div>
-      <div className='border-zinc-600 absolute top-20 right-[26px] rounded-tr-4xl border-r-3 border-t-3 w-7 h-[28rem]'></div>
-      <div className='border-zinc-600 absolute top-0 right-[3rem] rounded-bl-4xl border-b-3 border-l-3 w-[16.5rem] h-[82px]'></div>
-    </div> */}
+      <div className='border-zinc-400 absolute bottom-[78.5px] right-[75px] rounded-tl-4xl border-l-3 border-t-3 w-[8rem] h-[3rem]'></div>
+      <div className='border-zinc-400 absolute top-20 right-[26px] rounded-tr-4xl border-r-3 border-t-3 w-7 h-[28rem]'></div>
+      <div className='border-zinc-400 absolute top-0 right-[3rem] rounded-bl-4xl border-b-3 border-l-3 w-[16.5rem] h-[82px]'></div>
+    </div>
 
 <div>
 

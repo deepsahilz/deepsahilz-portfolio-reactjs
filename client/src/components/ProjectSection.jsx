@@ -3,7 +3,8 @@ import ProjectCard from './ProjectCard'
 import codexa_ss from '../assets/images/codexa_ss1.jpg'
 import chatapp from '../assets/images/kreativkid.png'
 import compass from '../assets/images/compass2.png'
-import game404 from '../assets/images/404game.webp'
+import irisThumb from '../assets/images/irisThumb.png'
+// import game404 from '../assets/images/404game.webp'
 import { FaGithub } from 'react-icons/fa6'
 import { MdArrowOutward } from "react-icons/md";
 import { Link, useNavigate } from 'react-router-dom'
@@ -25,25 +26,25 @@ const ProjectSection = () => {
       name:"KreativKid Artist portfolio",
       url:"/kreativkid",
       type:"website",
-      tools:["react","tailwind css","gsap","lenis"],
+      tools:["react.js","tailwind css","gsap","lenis"],
       thumbnail:chatapp,
     },
-    // {
-    //   id:3,
-    //   name:"MERN Chat App",
-    //   url:"/chatapp",
-    //   type:"web app",
-    //   tools:["react","nodejs","express","mongodb"],
-    //   thumbnail:chatapp,
-    // },
     {
-      id:4,
-      name:"MySQL compass",
-      url:"/mysqlCompass",
-      type:"Desktop app",
-      tools:["Desktop app","react","nodejs","electron"],
-      thumbnail:compass,
+      id:3,
+      name:"IRIS 2026 techfest site",
+      url:"/IRIS2026",
+      type:"website",
+      tools:["Next.js","supabase","postgresql"],
+      thumbnail:irisThumb,
     },
+    // {
+    //   id:4,
+    //   name:"MySQL compass",
+    //   url:"/mysqlCompass",
+    //   type:"Desktop app",
+    //   tools:["Desktop app","react","nodejs","electron"],
+    //   thumbnail:compass,
+    // },
     // {
     //   id:5,
     //   name:"404 mini interaction game",
@@ -87,7 +88,7 @@ const ProjectSection = () => {
             <Link to="https://github.com/deepsahilz" className='mt-20 group inline-block cursor-pointer ml-[50%] -translate-x-[50%]  '>
             <div className='flex text-zinc-100 transition-all uppercase rounded-lg   bg-zinc-800 hover:bg-zinc-950 justify-center items-center gap-2 px-4 md:px-6 py-3'>
               <FaGithub className='text-2xl mb-[2px] hidden md:flex'/>
-              <span className='text-sm md:text-base'>View all Projects</span>
+              <span className='text-sm md:text-base'>More on Github</span>
               <MdArrowOutward className='md:text-xl rotate-45 group-hover:-rotate-0  group-hover:scale-120 duration-300 transition-transform '/>
             </div>
             </Link>
