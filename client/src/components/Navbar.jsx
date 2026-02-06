@@ -47,7 +47,7 @@ const Navbar = () => {
     <>
       {/* NAVBAR */}
       <div
-        className={`fixed top-0 flex justify-center w-full z-50 transition-transform duration-300 ${
+        className={`fixed top-0 flex justify-center backdrop-blur-md lg:backdrop-blur-none bg-white/30 lg:bg-transparent w-full z-50 transition-transform duration-300 ${
           showNavbar ? "translate-y-0" : "-translate-y-full"
         }`}
       >
@@ -105,7 +105,7 @@ const Navbar = () => {
 
       {/* MOBILE MENU */}
       <div
-        className={`md:hidden fixed inset-0 bg-white z-40 transition-all duration-500 ${
+        className={`md:hidden fixed  inset-0 bg-white z-40 transition-all duration-500 ${
           menuOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
