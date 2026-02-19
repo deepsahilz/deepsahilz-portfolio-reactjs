@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const navLinks = [
   { label: "Work", id: "work" },
-  { label: "About", id: "about" },
+  { label: "About", id: "about" }, // commented out
   { label: "Contact", id: "contact" },
 ];
 
@@ -13,6 +13,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [activeLink, setActiveLink] = useState("");
 
   // Show / hide navbar on scroll
   useEffect(() => {
@@ -34,11 +35,15 @@ const Navbar = () => {
     return () => (document.body.style.overflow = "unset");
   }, [menuOpen]);
 
-  // 🔥 SCROLL FUNCTION
-  const scrollToSection = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+  // Nav click handler
+  const handleNavClick = (id) => {
+    if (id === "work") {
+      navigate("/work");
+      setActiveLink("work");
+    } else if (id === "contact") {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+      setActiveLink("contact");
     }
     setMenuOpen(false);
   };
@@ -73,14 +78,16 @@ const Navbar = () => {
             </div>
 
             {/* DESKTOP NAV */}
-            <ul className="hidden md:flex gap-5 uppercase md:mix-blend-difference">
+            <ul className="hidden md:flex gap-7 uppercase md:mix-blend-difference">
               {navLinks.map((item, i) => (
                 <li
                   key={i}
-                  onClick={() => scrollToSection(item.id)}
-                  className="overflow-hidden relative h-6 cursor-pointer hover:opacity-70"
+                  onClick={() => handleNavClick(item.id)}
+                  className={`overflow-hidden relative h-6 cursor-pointer hover:opacity-70 ${
+                    activeLink === item.id ? "text-zinc-800" : ""
+                  }`}
                 >
-                  <span className="block text-lg transition-transform duration-300 hover:-translate-y-full">
+                  <span className="block  transition-transform duration-300 hover:-translate-y-full">
                     <span className="block">{item.label}</span>
                     <span className="block absolute left-0 top-full">
                       {item.label}
@@ -105,7 +112,7 @@ const Navbar = () => {
 
       {/* MOBILE MENU */}
       <div
-        className={`md:hidden fixed  inset-0 bg-white z-40 transition-all duration-500 ${
+        className={`md:hidden fixed inset-0 bg-white z-40 transition-all duration-500 ${
           menuOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
@@ -120,8 +127,10 @@ const Navbar = () => {
             {navLinks.map((item, i) => (
               <li
                 key={i}
-                onClick={() => scrollToSection(item.id)}
-                className="text-5xl font-founders font-semibold text-zinc-900 cursor-pointer hover:text-zinc-600"
+                onClick={() => handleNavClick(item.id)}
+                className={`text-5xl font-founders font-semibold text-zinc-900 cursor-pointer hover:text-zinc-600 ${
+                  activeLink === item.id ? "text-zinc-800" : ""
+                }`}
               >
                 {item.label}
               </li>

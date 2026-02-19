@@ -29,10 +29,10 @@ const ProjectSection = () => {
       </div>
 
       {/* GitHub Link */}
-      <Link to="https://github.com/deepsahilz" className='mt-20 group inline-block cursor-pointer ml-[50%] -translate-x-[50%]'>
+      <Link to="/work" className='mt-20 group inline-block cursor-pointer ml-[50%] -translate-x-[50%]'>
         <div className='flex text-zinc-100 transition-all uppercase rounded-lg bg-zinc-800 hover:bg-zinc-950 justify-center items-center gap-2 px-4 md:px-6 py-3'>
-          <FaGithub className='text-2xl mb-[2px] hidden md:flex'/>
-          <span className='text-sm md:text-base'>More on Github</span>
+          {/* <FaGithub className='text-2xl mb-[2px] hidden md:flex'/> */}
+          <span className='text-sm md:text-base'>View more</span>
           <MdArrowOutward className='md:text-xl rotate-45 group-hover:-rotate-0 group-hover:scale-120 duration-300 transition-transform'/>
         </div>
       </Link>

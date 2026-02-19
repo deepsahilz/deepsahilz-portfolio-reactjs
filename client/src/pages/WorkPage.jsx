@@ -6,12 +6,17 @@ import { MdArrowOutward } from "react-icons/md"
 import { projects } from '../data/projectsData'
 
 const WorkPage = () => {
+
+    
   return (
-    <div className='w-full font-neue bg-zinc-100 text-zinc-800 pb-20 rounded-t-4xl border-t border-zinc-400 overflow-hidden'>
+    <div className='w-full font-neue bg-zinc-100 text-zinc-800 pb-20  overflow-hidden'>
       
       {/* Page Header */}
       <div className='mb-15 pt-[5rem] md:pt-[7rem] border-b pb-10 border-zinc-400'>
         <h1 className='font-founders uppercase text-7xl leading-none px-10'>All Projects</h1>
+        <p className="max-w-3xl text-zinc-600 mt-4 text-lg px-10">
+  Projects I’ve built over the past few months and years — from hackathon prototypes to real client work, spanning simple landing pages to full-stack applications.
+</p>
       </div>
 
       {/* Projects Grid */}

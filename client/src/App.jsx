@@ -33,8 +33,8 @@ const App = () => {
       <Routes location={location} key={location.pathname}>
         <Route element={<Layout />}>
           <Route path="/" element={<Homepage />} />
-          <Route path="/work" element={<WorkPage />} />
           <Route path="/work/:projectName" element={<ProjectPage />} />
+          <Route path="/work" element={<WorkPage />} />
         </Route>
         {/* fallback 404 / catch-all route should be last */}
         <Route path="/*" element={<CatGame />} />
