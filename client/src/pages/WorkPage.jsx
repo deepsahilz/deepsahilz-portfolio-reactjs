@@ -1,29 +1,24 @@
 import React from 'react'
-import ProjectCard from './ProjectCard'
-import { FaGithub } from 'react-icons/fa6'
-import { MdArrowOutward } from "react-icons/md";
 import { Link } from 'react-router-dom'
+import ProjectCard from '../components/ProjectCard'
+import { FaGithub } from 'react-icons/fa6'
+import { MdArrowOutward } from "react-icons/md"
 import { projects } from '../data/projectsData'
 
-const ProjectSection = () => {
-  // Filter only featured projects
-  const featuredProjects = projects.filter(p => p.isFeatured);
-
+const WorkPage = () => {
   return (
-    <div className='w-full font-neue bg-zinc-100 rounded-t-4xl border-t overflow-hidden border-zinc-400 pb-20 text-zinc-800'>
+    <div className='w-full font-neue bg-zinc-100 text-zinc-800 pb-20 rounded-t-4xl border-t border-zinc-400 overflow-hidden'>
       
-      {/* Header */}
+      {/* Page Header */}
       <div className='mb-15 pt-[5rem] md:pt-[7rem] border-b pb-10 border-zinc-400'>
-        <h1 className='font-founders uppercase text-7xl leading-none px-10'>
-          Featured projects
-        </h1>
+        <h1 className='font-founders uppercase text-7xl leading-none px-10'>All Projects</h1>
       </div>
 
       {/* Projects Grid */}
-      <div className='px-6 md:px-10'>
+      <div className='px-6 md:px-10 mt-10'>
         <div className='grid xl:grid-cols-3 lg:grid-cols-2 gap-x-5 md:gap-y-16 gap-y-10 w-full'>
-          {featuredProjects.map((project, i) => (
-            <ProjectCard key={project.slug} project={project} className="" />
+          {projects.map(project => (
+            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
       </div>
@@ -40,4 +35,4 @@ const ProjectSection = () => {
   )
 }
 
-export default ProjectSection
+export default WorkPage

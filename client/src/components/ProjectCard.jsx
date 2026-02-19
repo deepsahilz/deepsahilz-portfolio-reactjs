@@ -8,12 +8,13 @@ const ProjectCard = ({ project, className }) => {
   const svgRef = useRef(null);
   const [hovering, setHovering] = useState(false);
 
-  // Move the cursor follower
+  // Cursor follower
   useEffect(() => {
     const move = (e) => {
+      if (!cursorRef.current) return;
       gsap.to(cursorRef.current, {
-        x: e.clientX-50,
-        y: e.clientY-50,
+        x: e.clientX - 50,
+        y: e.clientY - 50,
         ease: "power2.out",
         duration: 0.3,
       });
@@ -22,8 +23,9 @@ const ProjectCard = ({ project, className }) => {
     return () => window.removeEventListener("mousemove", move);
   }, []);
 
-  // Show/hide based on hover
+  // Show/hide cursor
   useEffect(() => {
+    if (!cursorRef.current) return;
     gsap.to(cursorRef.current, {
       autoAlpha: hovering ? 1 : 0,
       scale: hovering ? 1 : 0.6,
@@ -32,10 +34,9 @@ const ProjectCard = ({ project, className }) => {
     });
   }, [hovering]);
 
-  // Rotate the text infinitely
+  // Rotate text
   useEffect(() => {
     if (!svgRef.current) return;
-
     const rotateAnim = gsap.to(svgRef.current, {
       rotate: 360,
       transformOrigin: "50% 50%",
@@ -43,7 +44,6 @@ const ProjectCard = ({ project, className }) => {
       repeat: -1,
       ease: "none",
     });
-
     return () => rotateAnim.kill();
   }, []);
 
@@ -78,35 +78,38 @@ const ProjectCard = ({ project, className }) => {
       {/* Project Card */}
       <div className={`flex flex-col gap-3 font-neue text-zinc-800 ${className}`}>
         <div
-          onClick={() => navigate(`/projects${project.url}`)}
-          className="h-[17rem] md:h-[22rem]   group cursor-pointer flex justify-center items-center overflow-hidden text-zinc-700"
+          onClick={() => navigate(`/work/${project.slug || ''}`)}
+          className="h-[17rem] md:h-[22rem] group cursor-pointer flex justify-center items-center overflow-hidden text-zinc-700"
         >
           <div
-                    onMouseEnter={() => setHovering(true)}
-          onMouseLeave={() => setHovering(false)}
- 
-          className="w-full h-full relative group-hover:scale-95 p-5  duration-800 overflow-hidden flex justify-center items-center bg-zinc-900 transition-transform  rounded-lg">
+            onMouseEnter={() => setHovering(true)}
+            onMouseLeave={() => setHovering(false)}
+            className="w-full h-full relative group-hover:scale-95 p-5 duration-800 overflow-hidden flex justify-center items-center bg-zinc-900 transition-transform rounded-lg"
+          >
             <img
-              src={project.thumbnail}
+              src={project.thumbnail || ''}
               className="group-hover:opacity-50 rounded-lg group-hover:scale-130 duration-900 transition-all"
-              // className=" rounded-lg group-hover:scale-110 duration-900 transition-all"
-              alt={project.name}
+              alt={project.name || 'Project'}
             />
-            {/* <div className='w-full h-full opacity-0 group-hover:opacity-50 transition-opacity bg-green-400 absolute '></div> */}
           </div>
         </div>
 
-        <div className="flex justify-between">
-          <h1 className="text-xl  flex mt-1 font-semibold items-center">
-            {project.name}
+        {/* Name + Tagline */}
+        <div className="flex flex-col">
+          <h1 className="text-xl flex mt-1 font-semibold items-center">
+            {project.name || 'Untitled Project'}
           </h1>
+          {project.tagline && (
+            <p className="text-sm text-zinc-600 mt-1">{project.tagline}</p>
+          )}
         </div>
 
+        {/* Tools / Stack Tags */}
         <div className="flex gap-2 flex-wrap">
-          {project.tools.map((tool, i) => (
+          {(project.stack || []).map((tool, i) => (
             <div
               key={i}
-              className="px-3 md:px-4 uppercase md:py-1 py-0.5 border text-sm  rounded-lg border-zinc-800"
+              className="px-3 md:px-4 uppercase md:py-1 py-0.5 border text-sm rounded-lg border-zinc-800"
             >
               {tool}
             </div>
