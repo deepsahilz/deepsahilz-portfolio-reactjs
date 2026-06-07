@@ -154,7 +154,7 @@ const Footer = () => {
           </div>
 
           {/* Contact Card (Col span 3) */}
-          <div className="md:col-span-3">
+          <div className="hidden md:flex md:col-span-3">
             <div className="bg-zinc-900/30 border border-zinc-800/80 rounded-2xl p-5 hover:border-zinc-800 transition-all duration-350 flex flex-col justify-between h-full group">
               <div className="mb-6">
                 <span className="text-[10px] font-bold tracking-widest text-zinc-500 uppercase block mb-2">

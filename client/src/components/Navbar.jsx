@@ -95,7 +95,7 @@ const Navbar = () => {
         className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-zinc-950/85 backdrop-blur-xl border border-zinc-800/80 shadow-lg flex transition-all duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-28 opacity-0 pointer-events-none"
           } ${menuOpen
             ? "w-[calc(100%-2rem)] max-w-sm rounded-2xl flex-col p-4"
-            : "w-[calc(100%-2rem)] md:w-auto rounded-full py-2 px-3 md:py-2.5 md:px-7 flex-row items-center justify-between"
+            : "w-[calc(100%-2rem)] md:w-auto rounded-2xl md:rounded-full py-2 px-3 md:py-2.5 md:px-7 flex-row items-center justify-between"
           }`}
       >
         {/* HEADER BAR (Logo + Controls) */}

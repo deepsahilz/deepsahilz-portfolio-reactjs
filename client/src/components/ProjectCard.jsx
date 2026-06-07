@@ -53,7 +53,7 @@ const ProjectCard = ({ project, className }) => {
       <div className={`flex flex-col gap-3 font-neue text-zinc-800 ${className}`}>
         <div
           onClick={() => navigate(`/work/${project.slug || ''}`)}
-          className="h-[17rem] md:h-[20rem] group cursor-pointer flex justify-center items-center overflow-hidden text-zinc-700"
+          className="h-[15rem] md:h-[20rem] group cursor-pointer flex justify-center items-center overflow-hidden text-zinc-700"
         >
           <div
             onMouseEnter={() => setHovering(true)}
@@ -92,11 +92,11 @@ const ProjectCard = ({ project, className }) => {
         </div>
 
         {/* Tools / Stack Tags */}
-        <div className="flex gap-1.5 flex-wrap">
+        <div className="flex gap-2 flex-wrap">
           {(project.stack || []).map((tool, i) => (
             <span
               key={i}
-              className="px-4 py-2 text-xs uppercase tracking-wider font-semibold bg-zinc-300/30 text-zinc-700 border border-zinc-400  rounded-xl hover:bg-zinc-900 hover:text-zinc-100 hover:border-zinc-900 hover:scale-105 duration-300 transition-all cursor-default select-none"
+              className="px-2 md:px-4 py-1 md:py-2 text-xs uppercase tracking-wider font-semibold bg-zinc-300/30 text-zinc-700 border border-zinc-400  rounded-lg md:rounded-xl hover:bg-zinc-900 hover:text-zinc-100 hover:border-zinc-900 hover:scale-105 duration-300 transition-all cursor-default select-none"
             >
               {tool}
             </span>

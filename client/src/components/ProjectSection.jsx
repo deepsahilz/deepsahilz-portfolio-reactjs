@@ -16,7 +16,7 @@ const ProjectSection = () => {
       <div className='mb-10 pt-[5rem] md:pt-[7rem] px-6 md:px-10'>
         <div className='flex flex-col md:flex-row md:items-center justify-between border-b pb-10 border-zinc-400 gap-6'>
           <div>
-            <h1 className='font-founders uppercase  text-[5rem]  leading-[0.8]'>
+            <h1 className='font-founders uppercase text-5xl sm:text-7xl md:text-8xl lg:text-[5rem] leading-[0.8]'>
               Featured projects
             </h1>
           </div>
@@ -26,17 +26,13 @@ const ProjectSection = () => {
             <p className='text-lg mb-4'>
               A collection of digital experiences focusing on motion, interaction, and clean aesthetics.
             </p>
-            {/* <div className='flex md:justify-end gap-2'>
-              <span className='px-3 py-1 rounded-full border border-zinc-400 text-xs uppercase'>2024 — 2026</span>
-              <span className='px-3 py-1 rounded-full border border-zinc-400 text-xs uppercase'>{featuredProjects.length} Projects</span>
-            </div> */}
           </div>
         </div>
       </div>
 
       {/* Projects Grid */}
       <div className='px-6 md:px-10'>
-        <div className='grid xl:grid-cols-3 lg:grid-cols-2 gap-x-5 md:gap-y-16 gap-y-10 w-full'>
+        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-5 md:gap-y-16 gap-y-10 w-full'>
           {featuredProjects.map((project, i) => (
             <ProjectCard key={project.slug} project={project} className="" />
           ))}

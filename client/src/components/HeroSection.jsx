@@ -111,25 +111,30 @@ const HeroSection = () => {
         <div className='relative h-full w-full '>
           <div className='w-full flex h-full justify-center items-center '>
 
-            <div className='md:text-center w-full absolute top-[50%] left-[50%] -translate-[50%] flex  flex-col md:items-center '>
-              <div className='flex items-center md:w-[35rem] lg:w-full flex-col text-6xl md:text-8xl lg:text-[7rem] font-semibold mb-10 '>
-                <h1 className='inline-flex items-center md:text-left lg:text-center tracking-tight'>Hello<div className='w-40 h-20 rounded-full mx-6 -mb-2 bg-blue-400  overflow-hidden'><img src="/images/sahil_13.png" alt="Sahil" className="w-full w-full -mt-5 px-2" /></div> I'm Sahil </h1>
-                <h1 className='inline-flex items-center md:text-left  lg:text-center text-[5.8rem] text-zinc-800  tracking-tight'>I   craft ideas into products  </h1>
-                {/* <h1 className='mt-2 md:mt-0 md:ml-4 text-nowrap  md:text-right'> I am<span className='bg-[#9f0] ml-3 pr-2 md:pr-9 italic text-zinc-900'>Sahil</span></h1> */}
+            <div className='text-center w-full absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center px-8 md:px-10'>
+              <div className='flex items-center justify-center flex-col text-4xl sm:text-6xl md:text-8xl lg:text-[7rem] font-semibold mb-6 md:mb-10 w-full'>
+                <h1 className='flex flex-wrap items-center justify-center tracking-tight text-center leading-none'>
+                  <span className='mr-2 md:mr-0'> Hello </span>
+                  <div className='w-24 h-12 hidden md:flex sm:w-32 sm:h-16 md:w-40 md:h-20 rounded-full mx-3 sm:mx-4 md:mx-6 bg-blue-400 overflow-hidden items-center justify-center shrink-0'>
+                    <img src="/images/sahil_13.png" alt="Sahil" className="w-full h-full object-cover scale-110 mt-1" />
+                  </div>
+                  <span> I'm Sahil</span>
+                  <div className='w-32 h-12 flex md:hidden  rounded-3xl mx-3 mt-2 sm:mx-4 md:mx-6 bg-blue-400 overflow-hidden items-center justify-center shrink-0'>
+                    <img src="/images/sahil_13.png" alt="Sahil" className="w-full h-full object-cover scale-110 mt-1" />
+                  </div>
+                </h1>
+                <h1 className='text-3xl sm:text-5xl md:text-7xl lg:text-[5.8rem] text-zinc-800 tracking-tight text-center mt-3 leading-tight max-w-5xl'>
+                  I craft ideas into products
+                </h1>
               </div>
-              {/* <div className='md:flex text-6xl md:text-8xl md:h-[6.5rem] font-semibold mb-3 '>
-                  <h1 className=' '>Hi there, </h1>
-                  <h1 className='mt-2 md:mt-0 md:ml-4'> I am<span className='bg-[#9f0] ml-3 text-zinc-900'>Sahil</span></h1>
-                </div> */}
-              <h1 className='text-2xl  md:max-w-[48rem] md:mb-0 font-neue text-zinc-600  md:ml-2'>
-                {/* Full stack Developer & designer focused on building fast, functional, and damn good-looking web apps. */}
+              <h2 className='text-base sm:text-xl md:text-2xl max-w-xl md:max-w-3xl font-neue text-zinc-600 text-center leading-relaxed px-2'>
                 Developer & designer focused on building fast, functional, and damn good-looking web apps.
-              </h1>
+              </h2>
             </div>
 
-            <div className='absolute bottom-10 text-right hidden md:block right-0 w-full'>
+            <div className='absolute bottom-10 text-right right-0 w-full'>
               <div className='flex justify-between items-end'>
-                <div className='w-[13rem] h-[13rem] -mb-20 -ml-10'>
+                <div className='w-[8rem] h-[8rem] -mb-12 -ml-6 md:w-[13rem] md:h-[13rem] md:-mb-20 md:-ml-10'>
                   <AnimatedD />
                 </div>
                 {/* <div className='justify-end '>
@@ -143,17 +148,14 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className='absolute pointer-events-none hidden z-[100] xl:block top-0 bottom-0 w-full h-full'>
-        {/* <div className='border-zinc-400 absolute top-0 left-12 rounded-br-4xl border-r-3 border-b-3 w-[9.5rem] h-[82px]'></div> */}
-        {/* <div className='border-zinc-400 absolute top-10  left-12  border-t-3 w-[9.5rem] h-20'></div> */}
-        <div className='border-zinc-400 absolute top-10 left-[25.5px] right-[26px] rounded-tl-4xl border-l-3 border-t-3 rounded-tr-4xl  h-[26rem]'></div>
-        <div className='border-zinc-400 absolute bottom-[12.8rem] left-[25.5px] rounded-bl-4xl border-b-3 border-l-3 w-[5rem] h-20'></div>
-        <div className='border-zinc-400 absolute bottom-[95.5px] left-[75px] rounded-tr-[6rem] border-r-3 border-t-3 w-[8rem] h-[7rem]'></div>
-        <div className='border-zinc-400 absolute bottom-[2.5rem] left-[12.55rem] rounded-b-4xl border-b-3 border-r-3 border-l-3 min-w-[67.25vw] w-[69.69rem] h-14'></div>
-        <div className='border-zinc-400 absolute bottom-[7.76rem] right-[25.5px] rounded-br-4xl border-b-3 border-r-3 w-[9rem] h-20'></div>
-        <div className='border-zinc-400 absolute bottom-[78.5px] right-[75px] rounded-tl-4xl border-l-3 border-t-3 w-[8.25rem] h-[3rem]'></div>
-        <div className='border-zinc-400 absolute top-10 right-[26px] rounded-tr-4xl border-r-3 border-t-3 w-7 h-[31rem]'></div>
-        {/* <div className='border-zinc-400 absolute top-0 right-[3rem] rounded-bl-4xl border-b-3 border-l-3 w-[16.5rem] h-[82px]'></div> */}
+      <div className='absolute pointer-events-none z-[100] top-0 bottom-0 w-full h-full'>
+        <div className='border-zinc-400 absolute top-6 left-[15.5px] right-[16px] rounded-tl-3xl border-l-2 border-t-2 rounded-tr-3xl h-[18rem] md:top-10 md:left-[25.5px] md:right-[26px] md:rounded-tl-4xl md:border-l-3 md:border-t-3 md:rounded-tr-4xl md:h-[26rem]'></div>
+        <div className='border-zinc-400 absolute bottom-[8.5rem] left-[15.5px] rounded-bl-3xl border-b-2 border-l-2 w-[3rem] h-12 md:bottom-[12.8rem] md:left-[25.5px] md:rounded-bl-4xl md:border-b-3 md:border-l-3 md:w-[5rem] md:h-20'></div>
+        <div className='border-zinc-400 absolute bottom-[60px] left-[45px] rounded-tr-[3rem] border-r-2 border-t-2 w-[4rem] h-[3.5rem] md:bottom-[95.5px] md:left-[75px] md:rounded-tr-[6rem] md:border-r-3 md:border-t-3 md:w-[8rem] md:h-[7rem]'></div>
+        <div className='border-zinc-400 absolute bottom-[1.8rem] left-[4.8rem] right-[4.8rem] rounded-b-3xl border-b-2 border-r-2 border-l-2 h-10 md:bottom-[2.5rem] md:left-[12.55rem] md:right-auto md:min-w-[67.25vw] md:w-[69.69rem] md:h-14 md:border-b-3 md:border-r-3 md:border-l-3 md:rounded-b-4xl'></div>
+        <div className='border-zinc-400 absolute bottom-[5.2rem] right-[16px] rounded-br-3xl border-b-2 border-r-2 w-[5rem] h-12 md:bottom-[7.76rem] md:right-[25.5px] md:rounded-br-4xl md:border-b-3 md:border-r-3 md:w-[9rem] md:h-20'></div>
+        <div className='border-zinc-400 absolute bottom-[52px] right-[45px] rounded-tl-3xl border-l-2 border-t-2 w-[4.25rem] h-[2rem] md:bottom-[78.5px] md:right-[75px] md:rounded-tl-4xl md:border-l-3 md:border-t-3 md:w-[8.25rem] md:h-[3rem]'></div>
+        <div className='border-zinc-400 absolute top-6 right-[16px] rounded-tr-3xl border-r-2 border-t-2 w-4 h-[20rem] md:top-10 md:right-[26px] md:rounded-tr-4xl md:border-r-3 md:border-t-3 md:w-7 md:h-[31rem]'></div>
       </div>
 
       <div>

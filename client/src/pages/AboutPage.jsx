@@ -38,14 +38,14 @@ const AboutPage = () => {
   return (
     <div className="w-full bg-zinc-200 font-neue text-zinc-800 pb-24 overflow-hidden">
       {/* Page Header */}
-      <div className="mb-12 pt-[5rem] md:pt-[7rem] border-2 m-10 rounded-3xl pb-8 border-zinc-400">
+      <div className="mb-12 pt-[5rem] md:pt-[7rem] border-2 mt-24 mx-4 md:m-10 rounded-3xl pb-8 border-zinc-400">
 
-        <h1 className="font-founders uppercase text-7xl  leading-none px-6 md:px-10">
+        <h1 className="font-founders uppercase text-5xl sm:text-7xl md:text-8xl leading-none px-6 md:px-10">
           About me
         </h1>
         {/* </motion.h1> */}
         <p
-          className="max-w-3xl text-zinc-600 mt-4 text-lg md:text-xl px-6 md:px-10"
+          className="max-w-3xl text-zinc-600 mt-4 text-base md:text-lg px-6 md:px-10"
         >
           Developer & designer focused on building fast, functional, and visually compelling web applications.
         </p>
@@ -205,7 +205,7 @@ const AboutPage = () => {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.02 }}
                   whileHover={{ scale: 1.05, y: -2 }}
-                  className="bg-white hover:bg-zinc-900 border border-zinc-300/80 hover:border-zinc-900 text-zinc-700 hover:text-zinc-100 font-medium py-3 px-6 rounded-full cursor-default transition-all duration-300 flex items-center gap-2 shadow-sm hover:shadow"
+                  className="bg-white hover:bg-zinc-900 border border-zinc-300/80 hover:border-zinc-900 text-zinc-700 hover:text-zinc-100 font-medium py-2.5 px-4 md:py-3 md:px-6 rounded-full cursor-default transition-all duration-300 flex items-center gap-2 shadow-sm hover:shadow"
                 >
                   <span className="text-sm md:text-base font-neue font-medium">{skill.name}</span>
                   {/* <span className="text-[10px] uppercase px-1.5 py-0.5 rounded-full bg-zinc-100 hover:bg-zinc-800 text-zinc-400 border border-zinc-200">

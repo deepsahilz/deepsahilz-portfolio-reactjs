@@ -12,9 +12,11 @@ const WorkPage = () => {
     <div className='w-full font-neue bg-zinc-200 text-zinc-800 pb-20  overflow-hidden'>
 
       {/* Page Header */}
-      <div className='mb-15 pt-[5rem] md:pt-[7rem] border-2 m-10 rounded-3xl pb-8 border-zinc-400'>
-        <h1 className='font-founders uppercase text-7xl leading-none px-10'>All Projects</h1>
-        <p className="max-w-3xl text-zinc-600 mt-4 text-lg px-10">
+      <div className="mb-12 pt-[5rem] md:pt-[7rem] border-2 mt-24 mx-4 md:m-10 rounded-3xl pb-8 border-zinc-400">
+
+        <h1 className="font-founders uppercase text-5xl sm:text-7xl md:text-8xl leading-none px-6 md:px-10">
+          All Projects</h1>
+        <p className="max-w-3xl text-zinc-600 mt-4 text-base md:text-lg px-5 md:px-10">
           Projects I’ve built over the past few months and years — from hackathon prototypes to real use applications, spanning simple landing pages to full-stack applications.
         </p>
       </div>

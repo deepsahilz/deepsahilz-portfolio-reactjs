@@ -81,14 +81,14 @@ const ContactPage = () => {
   return (
     <div className="w-full bg-zinc-200 font-neue text-zinc-800 pb-20 overflow-hidden">
       {/* Page Header */}
-      <div className="mb-15 pt-[5rem] md:pt-[7rem] border-2 m-10 rounded-3xl pb-8 border-zinc-400">
+      <div className="mb-15 pt-[5rem] md:pt-[7rem] border-2 mt-24 mx-4 md:m-10 rounded-3xl pb-8 border-zinc-400">
         <h1
-          className="font-founders uppercase text-7xl leading-none px-6 md:px-10"
+          className="font-founders uppercase text-5xl sm:text-7xl md:text-8xl leading-none px-6 md:px-10"
         >
           Contact
         </h1>
         <p
-          className="max-w-3xl text-zinc-600 mt-4 text-lg md:text-xl px-6 md:px-10"
+          className="max-w-3xl text-zinc-600 mt-4 text-base md:text-lg px-6 md:px-10"
         >
           Have an idea, project, or collaboration in mind? Drop a message below or reach out directly.
         </p>
