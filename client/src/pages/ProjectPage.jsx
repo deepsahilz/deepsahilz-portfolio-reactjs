@@ -125,6 +125,15 @@ const ProjectPage = () => {
                   onMouseOut={e => { e.target.pause(); e.target.currentTime = 0; }}
                   onClick={e => { e.target.paused ? e.target.play() : (e.target.pause(), e.target.currentTime = 0); }}
                 />
+                {item.vidSrc && (
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-500 group-hover:opacity-0 z-20">
+                    <div className="w-12 h-12 rounded-full bg-zinc-950/70 backdrop-blur-sm border border-zinc-100/20 text-zinc-100 flex items-center justify-center shadow-lg transition-all duration-300">
+                      <svg className="w-6 h-6 fill-current text-zinc-100 ml-0.5" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
