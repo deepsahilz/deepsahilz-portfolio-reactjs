@@ -3,12 +3,16 @@ import { motion } from 'framer-motion';
 import { useParams } from 'react-router-dom';
 import { projects } from '../data/projectsData';
 
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 28 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1], delay },
+});
+
 const ProjectPage = () => {
   const { projectName } = useParams();
-
-  // Find project by slug
   const Project = projects.find(p => p.slug === projectName);
-  if (!Project) return (<div className='text-7xl h-screen pt-20'>No project found</div>);
+  if (!Project) return <div className='text-7xl h-screen pt-20'>No project found</div>;
 
   return (
     <motion.div
@@ -16,86 +20,104 @@ const ProjectPage = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5 }}
+      className='min-h-screen bg-zinc-200 font-neue text-zinc-800'
     >
-      <div className='px-5 border-b pb-10 md:pb-20 sm:px-10 bg-zinc-200 font-neue text-zinc-800'>
-        
-        {/* Header */}
-        <div className='pt-[12rem] mb-20 text-center'>
-          <h1 className='px-5 text-5xl lg:text-9xl text-zinc-800 font-semibold text-center uppercase'>
-            {"{ "}{Project.name}{" }"}
-          </h1>
-          <p className='sm:text-lg'>{Project.description}</p>
-        </div>
+      {/* ── HEADER (unchanged) ── */}
+      <div className='px-5 sm:px-10 pt-[10rem] pb-12 text-center '>
+        <h1 className='text-5xl lg:text-9xl font-semibold uppercase '>
+          {"{ "}{Project.name}{" }"}
+        </h1>
+        <p className='mt-4 sm:text-lg text-zinc-700'>{Project.description}</p>
+      </div>
 
-        {/* Concept */}
-        <div className='flex justify-between mb-14'>
-          <div>
-            <h1 className='text-2xl md:text-4xl font-semibold mb-2 md:mb-5'>Concept</h1>
-            {Project.isPending && (
-              <h2 className='text-2xl text-zinc-700'>
-                // Currently in progress and not completed
-              </h2>
-            )}
-            <h2 className='text-xl md:text-3xl text-zinc-700'>{Project.concept}</h2>
-          </div>
-        </div>
+      {/* ── BENTO GRID ── */}
+      <div className='px-5 sm:px-10 py-10 md:py-16 grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-auto'>
 
-        {/* Project Highlights */}
-        <div className='mb-14'>
-          <h1 className='text-2xl md:text-4xl font-semibold mb-4 md:mb-5'>Project Highlights</h1>
-          <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-10 md:gap-y-14'>
-            {Project.highlights.map((item, i) => (
-              <div key={i}>
-                <h1 className="text-lg md:text-xl mb-2 text-zinc-700">
-                  <span className='bg-[#9f0] px-1'>#</span> {item.text}
-                </h1>
-                <div className="bg-zinc-800 cursor-pointer relative group hover:scale-95 duration-500 transition-all flex justify-center items-center h-[15rem] md:h-[30rem] border border-zinc-300 md:p-10 shadow-md rounded-xl">
-                  <div className="relative overflow-hidden w-full h-full transition-transform duration-700 group-hover:scale-110 rounded-lg flex justify-center items-center">
-                    <img
-                      src={item.imgSrc}
-                      className="transition-opacity rounded-lg opacity-70 duration-500 sm:group-hover:opacity-0 sm:block hidden md:max-w-full md:max-h-full"
-                    />
-                    <video
-                      src={item.vidSrc}
-                      className="px-5 sm:px-0 sm:absolute transition-opacity rounded-lg overflow-hidden duration-500 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 md:max-w-full md:max-h-full"
-                      muted
-                      loop
-                      autoPlay
-                      onMouseOver={e => e.target.play()}
-                      onMouseOut={e => { e.target.pause(); e.target.currentTime = 0; }}
-                      onClick={e => { e.target.paused ? e.target.play() : (e.target.pause(), e.target.currentTime = 0); }}
-                    />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* ── CONCEPT — full width ── */}
+        <motion.div
+          {...fadeUp(0.05)}
+          className='md:col-span-8 bg-zinc-100 border border-zinc-300 rounded-2xl p-8 md:p-12'
+        >
+          <span className='text-xs uppercase tracking-widest font-semibold mb-4 block'>Description</span>
+          {Project.isPending && (
+            <p className='text-zinc-500 text-sm mb-3'>// Currently in progress and not completed</p>
+          )}
+          <p className='text-2xl md:text-3xl  leading-snug max-w-5xl'>{Project.concept}</p>
+        </motion.div>
 
-        {/* Features */}
-        <div className='mb-14'>
-          <h1 className='text-2xl md:text-4xl font-semibold mb-4 md:mb-5'>Other features</h1>
-          <ul className='text-lg md:text-xl flex flex-col gap-2'>
-            {Project.features.map((item, idx) => (
-              <div key={idx} className='flex gap-2'>
-                <div className='bg-[#9f0] px-1 w-8 h-7 inline-block'>0{idx}</div>
-                <li>{item}</li>
-              </div>
-            ))}
-          </ul>
-        </div>
-
-        {/* Tech Stack */}
-        <div className='mb-14'>
-          <h1 className='text-2xl md:text-4xl font-semibold mb-3 md:mb-5'>Tech Stack</h1>
+        {/* ── TECH STACK — left, smaller ── */}
+        <motion.div
+          {...fadeUp(0.1)}
+          className='md:col-span-4 bg-zinc-100 border border-zinc-300 rounded-2xl p-8 flex flex-col justify-between'
+        >
+          <span className='text-xs uppercase tracking-widest  font-semibold mb-6 block'>Tech Stack</span>
           <div className='flex flex-wrap gap-2'>
             {Project.stack.map((item, i) => (
-              <div key={i} className='px-3 md:px-5 uppercase py-1 md:py-2 md:text-lg border rounded-lg border-zinc-700'>
+              <div
+                key={i}
+                className='px-3 py-1 text-sm uppercase border border-zinc-700 rounded-lg   transition-colors duration-300'
+              >
                 {item}
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
+
+        {/* ── OTHER FEATURES — right, taller ── */}
+        <motion.div
+          {...fadeUp(0.15)}
+          className='md:col-span-6 bg-zinc-100 border border-zinc-300 rounded-2xl p-8'
+        >
+          <span className='text-xs uppercase tracking-widest font-semibold mb-6 block'>Feature List</span>
+          <ul className='flex flex-col gap-3'>
+            {Project.features.map((item, idx) => (
+              <li key={idx} className='flex items-start gap-3  text-base md:text-lg'>
+                <span className='bg-[#9f0] text-zinc-950 font-bold text-xs px-1.5 py-0.5 rounded shrink-0 mt-1'>
+                  0{idx}
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+
+        {/* ── PROJECT HIGHLIGHTS — each card fills the grid ── */}
+        {/* <div className='md:col-span-12'>
+          <motion.span
+            {...fadeUp(0.2)}
+            className='text-xs uppercase tracking-widest text-[#9f0] font-semibold mb-4 block'
+          >
+            Project Highlights
+          </motion.span> */}
+        {/* <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'> */}
+        {Project.highlights.map((item, i) => (
+          <div key={i} className='col-span-6 relative'>
+            <div className="bg-zinc-800 cursor-pointer flex-col relative group hover:scale-95 duration-500 transition-all flex justify-center  h-[15rem] md:h-[30rem] border border-zinc-300 md:p-10 shadow-md rounded-xl">
+              <h1 className=" absolute top-5 left-5 text-lg mb-2 text-zinc-100">
+                <span className='bg-[#9f0] px-3 rounded-md mr-2'></span> {item.text}
+              </h1>
+              <div className="relative overflow-hidden pt-5 w-full h-full transition-transform duration-700 group-hover:scale-110 rounded-lg flex justify-center items-center">
+                <img
+                  src={item.imgSrc}
+                  className="transition-opacity rounded-lg opacity-70 duration-500 sm:group-hover:opacity-0 sm:block hidden md:max-w-full md:max-h-full"
+                />
+                <video
+                  src={item.vidSrc}
+                  className="px-5 sm:px-0 sm:absolute transition-opacity rounded-lg overflow-hidden duration-500 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 md:max-w-full md:max-h-full"
+                  muted
+                  loop
+                  autoPlay
+                  onMouseOver={e => e.target.play()}
+                  onMouseOut={e => { e.target.pause(); e.target.currentTime = 0; }}
+                  onClick={e => { e.target.paused ? e.target.play() : (e.target.pause(), e.target.currentTime = 0); }}
+                />
+              </div>
+            </div>
+          </div>
+        ))}
+        {/* </div> */}
+        {/* </div> */}
+
       </div>
     </motion.div>
   );

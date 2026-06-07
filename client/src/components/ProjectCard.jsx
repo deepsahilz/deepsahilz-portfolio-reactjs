@@ -5,7 +5,8 @@ import gsap from 'gsap';
 const ProjectCard = ({ project, className }) => {
   const navigate = useNavigate();
   const cursorRef = useRef(null);
-  const svgRef = useRef(null);
+  const leftHandRef = useRef(null);
+  const rightHandRef = useRef(null);
   const [hovering, setHovering] = useState(false);
 
   // Cursor follower
@@ -13,8 +14,10 @@ const ProjectCard = ({ project, className }) => {
     const move = (e) => {
       if (!cursorRef.current) return;
       gsap.to(cursorRef.current, {
-        x: e.clientX - 50,
-        y: e.clientY - 50,
+        x: e.clientX,
+        y: e.clientY,
+        xPercent: -50,
+        yPercent: -50,
         ease: "power2.out",
         duration: 0.3,
       });
@@ -23,7 +26,7 @@ const ProjectCard = ({ project, className }) => {
     return () => window.removeEventListener("mousemove", move);
   }, []);
 
-  // Show/hide cursor
+  // Show/hide cursor & hand animations
   useEffect(() => {
     if (!cursorRef.current) return;
     gsap.to(cursorRef.current, {
@@ -32,46 +35,41 @@ const ProjectCard = ({ project, className }) => {
       duration: 0.2,
       ease: "power2.out"
     });
-  }, [hovering]);
 
-  // Rotate text
-  useEffect(() => {
-    if (!svgRef.current) return;
-    const rotateAnim = gsap.to(svgRef.current, {
-      rotate: 360,
-      transformOrigin: "50% 50%",
-      duration: 6,
-      repeat: -1,
-      ease: "none",
-    });
-    return () => rotateAnim.kill();
-  }, []);
+    if (hovering) {
+      gsap.to(leftHandRef.current, {
+        x: 4,
+        yoyo: true,
+        repeat: -1,
+        duration: 0.4,
+        ease: "power1.inOut"
+      });
+      gsap.to(rightHandRef.current, {
+        x: -4,
+        yoyo: true,
+        repeat: -1,
+        duration: 0.4,
+        ease: "power1.inOut"
+      });
+    } else {
+      gsap.killTweensOf(leftHandRef.current);
+      gsap.killTweensOf(rightHandRef.current);
+      gsap.set([leftHandRef.current, rightHandRef.current], { x: 0 });
+    }
+  }, [hovering]);
 
   return (
     <>
       {/* Cursor follower */}
       <div
         ref={cursorRef}
-        className="fixed z-50 pointer-events-none backdrop-blur-lg overflow-hidden rounded-full"
-        style={{ left: 0, top: 0, width: 100, height: 100 }}
+        className="fixed z-50 pointer-events-none"
+        style={{ left: 0, top: 0, opacity: 0, visibility: 'hidden' }}
       >
-        <div className="relative w-[100px] h-[100px]">
-          <svg ref={svgRef} className="w-full h-full" viewBox="0 0 100 100">
-            <defs>
-              <path
-                id="circle"
-                d="M50,50 m-35,0 a35,35 0 1,1 70,0 a35,35 0 1,1 -70,0"
-                fill="none"
-              />
-            </defs>
-            <text fill="white" fontSize="10" fontFamily="Arial" letterSpacing="2">
-              <textPath xlinkHref="#circle" startOffset="0%">
-                VIEW DETAILS • VIEW DETAILS •
-              </textPath>
-            </text>
-          </svg>
-          <div className="absolute top-1/2 left-1/2 w-2 h-2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-full" />
-          <div className="absolute bottom-0 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 bg-white blur-3xl rounded-full" />
+        <div className="flex items-center gap-2 bg-zinc-900 text-white px-5 py-2.5 rounded-full shadow-2xl border border-zinc-700/50 backdrop-blur-md">
+           <span ref={leftHandRef} className="text-lg">👉</span>
+           <span className="font-semibold text-xs tracking-widest uppercase mt-[2px]">View More</span>
+           <span ref={rightHandRef} className="text-lg">👈</span>
         </div>
       </div>
 

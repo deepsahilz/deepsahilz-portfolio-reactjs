@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import HeroSection from "../components/HeroSection";
 import ProjectsSection from "../components/ProjectSection";
 import SkillSection from "../components/SkillSection";
+import SkillSection2 from "../components/SkillSection2";
 import AboutSection from "../components/AboutSection";
 import Footer from "../components/Footer";
 import gsap from "gsap";
@@ -36,9 +37,9 @@ const Homepage = () => {
     <>
       <div className="bg-zinc-200 w-full overflow-hidden relative">
         {/* Hero Section with parallax */}
-        <section 
-          id="home" 
-          ref={heroRef} 
+        <section
+          id="home"
+          ref={heroRef}
           className="relative z-0"
           style={{ willChange: 'transform' }}
         >

@@ -4,22 +4,27 @@
   font-family: 'founders';
   src: url('./assets/fonts/FoundersGrotesk-Semibold.woff2') format('woff2');
 }
+
 @font-face {
   font-family: 'neue';
-  src: url('./assets/fonts/NeueMontreal-Regular.woff2') format('woff2' );
+  src: url('./assets/fonts/NeueMontreal-Regular.woff2') format('woff2');
 }
+
 @font-face {
   font-family: 'nb';
-  src: url('./assets/fonts/NBInternationalProBoo.woff2') format('woff2' );
+  src: url('./assets/fonts/NBInternationalProBoo.woff2') format('woff2');
 }
+
 @font-face {
   font-family: 'rejouice';
-  src: url('./assets/fonts/Rejouice-Headline.woff2') format('woff2' );
+  src: url('./assets/fonts/Rejouice-Headline.woff2') format('woff2');
 }
+
 @font-face {
   font-family: 'milker';
   src: url('./assets/fonts/Milker.otf');
 }
+
 @font-face {
   font-family: 'arcade';
   src: url('./assets/fonts/arcade.TTF');
@@ -33,4 +38,25 @@
   --font-neue: 'neue', sans-serif;
   --font-founders: 'founders', sans-serif;
   --font-rejouice: 'rejouice', sans-serif;
+}
+
+@keyframes scribble {
+  0% {
+    transform: scaleX(0) rotate(-5deg);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scaleX(1.2) rotate(5deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scaleX(1) rotate(-2deg);
+    opacity: 0;
+  }
+}
+
+.animate-scribble {
+  animation: scribble 0.6s ease-in-out infinite;
 }
