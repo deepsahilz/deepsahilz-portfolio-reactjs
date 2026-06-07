@@ -1,8 +1,48 @@
 export const projects = [
   {
+    slug: "certify-now",
+    name: "Certify Now",
+    isFeatured: true,
+    tagline: "Certificate generation & distribution platform, no limits, free to use.",
+    description: "SaaS platform to design, issue, and distribute credentials/certificates dynamically.",
+    thumbnail: "/images/certify-now-thumb.png",
+    concept: "Certify-Now is a complete credentialing solution. It features a custom visual canvas editor using Fabric.js to design certificate templates with dynamic placeholders. Organizations can issue certificates to batches of users, dispatch personalized emails via Nodemailer, and provide secure QR-code verification pages.",
+    highlights: [],
+    features: [
+      "Visual certificate template designer with Fabric.js",
+      "Batch certificate generation and automated issuing",
+      "Dynamic PDF creation using PDF-lib",
+      "Automatic email dispatch with custom email templates via Nodemailer",
+      "Public credential verification pages via secure QR codes"
+    ],
+    stack: ["Next.js", "Prisma", "Supabase", "Fabric.js", "PDF-lib", "Nodemailer"],
+    liveUrl: "https://www.certifynow-v1.vercel.app/",
+    type: "webapp",
+  },
+  {
+    slug: "tss-gndu",
+    name: "TSS GNDU",
+    isFeatured: true,
+    tagline: "Official technical student society website of GNDU,Amritsar",
+    description: "Official website for the Technical Student Society of GNDU.",
+    thumbnail: "/images/tss-thumb.png",
+    concept: "The official web platform for the Technical Student Society of Guru Nanak Dev University, Amritsar. Designed with smooth scroll physics, modern UI transitions, and modular event cards to present flagship tech fest experiences, workshops, and student society profiles.",
+    highlights: [],
+    features: [
+      "Immersive UI transitions and smooth scroll via Lenis and GSAP",
+      "Modular directory displaying student competitions and workshops",
+      "Student profile portals and administrative views backed by Supabase",
+      "Fully optimized responsive layouts across all device screens"
+    ],
+    stack: ["Next.js", "GSAP", "Lenis", "Supabase", "Tailwind CSS"],
+    liveUrl: "https://www.tss-gndu.org/",
+    type: "website",
+  },
+
+  {
     slug: "iris2026",
     name: "IRIS 2026 Techfest",
-    isFeatured: true,
+    isFeatured: false,
     tagline: "Official techfest website and event management platform",
     description: "Official techfest website and event management platform of GNDU, Amritsar",
     thumbnail: "/images/iris_thumbnail.png",
@@ -24,7 +64,7 @@ export const projects = [
       "Responsive and minimal UI",
     ],
     stack: ["Next.js", "Supabase", "Full Stack"],
-    liveUrl: "https://iris2026.example.com",
+    liveUrl: "https://iris.tss-gndu.org/",
     type: "webapp",
   },
 
@@ -40,16 +80,16 @@ export const projects = [
       { text: "Platform walkthrough", imgSrc: "/images/quickdesk_thumbnail.png", vidSrc: "/videos/quickdesk-walkthrough.mp4" },
     ],
     features: ["Ticket creation", "Status tracking", "Responsive dashboard"],
-    stack: ["Nextjs", "Typescript", "PostgreSql","Clerk","Full stack"],
-    liveUrl: "https://quickdesk.vercel.app",
+    stack: ["Nextjs", "Typescript", "PostgreSql", "Clerk", "Full stack"],
+    liveUrl: "https://quickdesk.vercel.app/",
     type: "webapp",
   },
 
   {
     slug: "kreativkid",
     name: "KreativKid",
-    isFeatured: true,
-    tagline: "Portfolio website for an artist",
+    isFeatured: false,
+    tagline: "An artistic portfolio website for a digital artist.",
     description: "Portfolio website for an artist",
     thumbnail: "/images/kreativkid.png",
     concept:
@@ -71,8 +111,8 @@ export const projects = [
       "Responsive and modern layout",
       "Emphasis on visuals with minimal UI distractions",
     ],
-    stack: ["React.js", "GSAP","Frontend"],
-    liveUrl: "https://kreativkid.example.com",
+    stack: ["React.js", "GSAP", "Frontend"],
+    liveUrl: "https://kreativkid.vercel.app/",
     type: "website",
   },
 
@@ -80,8 +120,8 @@ export const projects = [
     slug: "codexa",
     name: "Codexa",
     isFeatured: true,
-    tagline: "Project sharing social media platform",
-    description: "Project sharing social media platform",
+    tagline: "Social media platform where you showcase your projects and get inspiration from others, goodbye boring project ideas. ",
+    description: "Social media platform where u flex your projects",
     thumbnail: "/images/codexa_ss1.jpg",
     concept:
       "Codexa is created to provide a social platform to developers, students, and tech geeks to showcase their projects and learn from others, avoiding the hassle to find inspiration.",
@@ -106,7 +146,7 @@ export const projects = [
       "Add collaborator feature for working teams",
     ],
     stack: ["React.js", "Express.js", "WebSockets", "MongoDB"],
-    liveUrl: "https://codexa.example.com",
+    liveUrl: "",
     type: "webapp",
   },
 
@@ -133,7 +173,7 @@ export const projects = [
     ],
     stack: ["React", "Tailwind", "Node.js", "MySQL"],
     isPending: true,
-    liveUrl: "https://mysqlcompass.example.com",
+    liveUrl: "",
     type: "desktop app",
   },
 
@@ -151,8 +191,8 @@ export const projects = [
       { text: "Landing page walkthrough", imgSrc: "/images/ochi_thumbnail.png", vidSrc: "/videos/ochi-walkthrough.mp4" },
     ],
     features: ["Responsive layout", "Animated components", "Clean UI replication"],
-    stack: ["React.js", "TailwindCSS","Framer Motion"],
-    liveUrl: "https://deepxochi.netlify.app",
+    stack: ["React.js", "TailwindCSS", "Framer Motion"],
+    liveUrl: "https://deepxochi.netlify.app/",
     type: "website",
   },
   {
@@ -166,9 +206,9 @@ export const projects = [
     highlights: [
       { text: "Landing page walkthrough", imgSrc: "/images/rejouice_thumbnail.png", vidSrc: "/videos/rejouice-walkthrough.mp4" },
     ],
-    features: ["Landing page replication", "Hover interactions", "Responsive UI","Optimized image and video load"],
-    stack: ["React.js", "TailwindCSS","Framer motion"],
-    liveUrl: "https://deepxrejouice.netlify.app",
+    features: ["Landing page replication", "Hover interactions", "Responsive UI", "Optimized image and video load"],
+    stack: ["React.js", "TailwindCSS", "Framer motion"],
+    liveUrl: "https://deepxrejouice.netlify.app/",
     type: "website",
   },
   {
@@ -184,8 +224,8 @@ export const projects = [
     ],
     features: ["Responsive hero", "CTA buttons", "Simple and clean layout"],
     stack: ["React.js", "TailwindCSS"],
-    liveUrl: "https://deepxbrainwave.netlify.app",
+    liveUrl: "https://deepxbrainwave.netlify.app/",
     type: "webapp",
   },
-  
+
 ];

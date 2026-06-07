@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useParams } from 'react-router-dom';
 import { projects } from '../data/projectsData';
+import { MdArrowOutward } from 'react-icons/md';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -50,17 +51,30 @@ const ProjectPage = () => {
           {...fadeUp(0.1)}
           className='md:col-span-4 bg-zinc-100 border border-zinc-300 rounded-2xl p-8 flex flex-col justify-between'
         >
-          <span className='text-xs uppercase tracking-widest  font-semibold mb-6 block'>Tech Stack</span>
-          <div className='flex flex-wrap gap-2'>
-            {Project.stack.map((item, i) => (
-              <div
-                key={i}
-                className='px-3 py-1 text-sm uppercase border border-zinc-700 rounded-lg   transition-colors duration-300'
-              >
-                {item}
-              </div>
-            ))}
+          <div>
+            <span className='text-xs uppercase tracking-widest font-semibold mb-6 block'>Tech Stack</span>
+            <div className='flex flex-wrap gap-2'>
+              {Project.stack.map((item, i) => (
+                <div
+                  key={i}
+                  className='px-3 py-1 text-sm uppercase border border-zinc-700 rounded-lg transition-colors duration-300'
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
+          {Project.liveUrl && (
+            <a
+              href={Project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 w-full group flex items-center justify-center gap-2 bg-zinc-900 text-zinc-100 hover:bg-zinc-950 transition-colors py-3.5 rounded-xl font-semibold uppercase tracking-wider text-sm cursor-pointer"
+            >
+              <span>Visit Live Project</span>
+              <MdArrowOutward className="text-lg group-hover:rotate-45 duration-300 transition-transform" />
+            </a>
+          )}
         </motion.div>
 
         {/* ── OTHER FEATURES — right, taller ── */}

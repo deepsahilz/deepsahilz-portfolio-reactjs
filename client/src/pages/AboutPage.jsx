@@ -38,28 +38,22 @@ const AboutPage = () => {
   return (
     <div className="w-full bg-zinc-200 font-neue text-zinc-800 pb-24 overflow-hidden">
       {/* Page Header */}
-      <div className="mb-12 pt-[5rem] md:pt-[7rem] border-b pb-8 border-zinc-400">
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="font-founders uppercase text-7xl md:text-8xl leading-none px-6 md:px-10"
-        >
+      <div className="mb-12 pt-[5rem] md:pt-[7rem] border-2 m-10 rounded-3xl pb-8 border-zinc-400">
+
+        <h1 className="font-founders uppercase text-7xl  leading-none px-6 md:px-10">
           About me
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+        </h1>
+        {/* </motion.h1> */}
+        <p
           className="max-w-3xl text-zinc-600 mt-4 text-lg md:text-xl px-6 md:px-10"
         >
           Developer & designer focused on building fast, functional, and visually compelling web applications.
-        </motion.p>
+        </p>
       </div>
 
       <div className="px-6 md:px-10 max-w-7xl mx-auto mt-10">
         {/* Bento Grid */}
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
@@ -67,7 +61,7 @@ const AboutPage = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {/* Card 1: Biography / Who I am (Spans 2 cols on lg/md) */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             className="md:col-span-2 bg-zinc-100/60 backdrop-blur-md border border-zinc-300/80 rounded-3xl p-6 md:p-10 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between min-h-[320px]"
           >
@@ -89,7 +83,7 @@ const AboutPage = () => {
           </motion.div>
 
           {/* Card 2: Quick Stats (Spans 1 col) */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             className="bg-zinc-950 text-zinc-100 rounded-3xl p-6 md:p-8 flex flex-col justify-between shadow-lg hover:scale-[1.01] transition-transform min-h-[320px]"
           >
@@ -122,7 +116,7 @@ const AboutPage = () => {
           </motion.div>
 
           {/* Card 3: Design & Craft Pillars (Spans 1 col) */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             className="bg-zinc-100/60 backdrop-blur-md border border-zinc-300/80 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col justify-between min-h-[320px]"
           >
@@ -147,7 +141,7 @@ const AboutPage = () => {
           </motion.div>
 
           {/* Card 4: Experiential Playbook (Spans 2 cols on lg/md) */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             className="md:col-span-2 bg-zinc-100/60 backdrop-blur-md border border-zinc-300/80 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col justify-between min-h-[320px]"
           >
@@ -214,9 +208,9 @@ const AboutPage = () => {
                   className="bg-white hover:bg-zinc-900 border border-zinc-300/80 hover:border-zinc-900 text-zinc-700 hover:text-zinc-100 font-medium py-3 px-6 rounded-full cursor-default transition-all duration-300 flex items-center gap-2 shadow-sm hover:shadow"
                 >
                   <span className="text-sm md:text-base font-neue font-medium">{skill.name}</span>
-                  <span className="text-[10px] uppercase px-1.5 py-0.5 rounded-full bg-zinc-100 hover:bg-zinc-800 text-zinc-400 border border-zinc-200">
+                  {/* <span className="text-[10px] uppercase px-1.5 py-0.5 rounded-full bg-zinc-100 hover:bg-zinc-800 text-zinc-400 border border-zinc-200">
                     {skill.category}
-                  </span>
+                  </span> */}
                 </motion.div>
               ))}
             </div>

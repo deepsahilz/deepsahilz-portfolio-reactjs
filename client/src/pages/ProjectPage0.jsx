@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useParams } from 'react-router-dom';
 import { projects } from '../data/projectsData';
+import { MdArrowOutward } from 'react-icons/md';
 
 const ProjectPage = () => {
     const { projectName } = useParams();
@@ -87,7 +88,20 @@ const ProjectPage = () => {
 
                 {/* Tech Stack */}
                 <div className='mb-14'>
-                    <h1 className='text-2xl md:text-4xl font-semibold mb-3 md:mb-5'>Tech Stack</h1>
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-3 md:mb-5">
+                        <h1 className='text-2xl md:text-4xl font-semibold'>Tech Stack</h1>
+                        {Project.liveUrl && (
+                            <a
+                                href={Project.liveUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group inline-flex items-center gap-2 bg-zinc-900 hover:bg-zinc-950 text-zinc-100 px-5 py-2.5 rounded-xl font-semibold uppercase tracking-wider text-sm cursor-pointer w-fit"
+                            >
+                                <span>Visit Live Project</span>
+                                <MdArrowOutward className="text-lg group-hover:rotate-45 duration-300 transition-transform" />
+                            </a>
+                        )}
+                    </div>
                     <div className='flex flex-wrap gap-2'>
                         {Project.stack.map((item, i) => (
                             <div key={i} className='px-3 md:px-5 uppercase py-1 md:py-2 md:text-lg border rounded-lg border-zinc-700'>

@@ -4,180 +4,12 @@ import { FaArrowTurnDown } from "react-icons/fa6";
 
 const HeroSection = () => {
   const followerRef = useRef(null);
-  const canvasRef = useRef(null);
 
   useEffect(() => {
     gsap.to(".dpImg", {
       width: 150,
       duration: 0.9,
     });
-  }, []);
-
-  // Interactive thread strings background animation using canvas
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const dpr = window.devicePixelRatio || 1;
-    
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
-    ctx.scale(dpr, dpr);
-
-    const mouse = { x: -1000, y: -1000 };
-
-    const handleMouseMove = (e) => {
-      const rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
-    };
-
-    const handleMouseLeave = () => {
-      mouse.x = -1000;
-      mouse.y = -1000;
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseleave', handleMouseLeave);
-
-    const numThreads = 5;
-    const numPoints = 18;
-    const threads = [];
-
-    const initThreads = () => {
-      threads.length = 0;
-      for (let i = 0; i < numThreads; i++) {
-        // Tight cluster anchored higher up (centered around 38% height, spaced by only 3% height)
-        const edgeY = height * (0.36 + (i / (numThreads - 1)) * 0.03);
-        const points = [];
-        
-        for (let j = 0; j <= numPoints; j++) {
-          const x = (j / numPoints) * width;
-          // Increased sag amounts to make them hang looser in the middle
-          const sagAmount = 35 + (i * 24);
-          const sag = Math.sin((j / numPoints) * Math.PI) * sagAmount;
-          const targetY = edgeY + sag;
-          
-          points.push({
-            x: x,
-            y: targetY,
-            targetY: targetY,
-            vy: 0,
-            mouseOffset: 0,
-            stiffness: 0.016 + (i * 0.002),
-            damping: 0.83,
-          });
-        }
-        threads.push({ points, baseRowY: edgeY });
-      }
-    };
-
-    initThreads();
-
-    const handleResize = () => {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-      ctx.scale(dpr, dpr);
-      initThreads();
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    let animationFrameId;
-    let time = 0;
-
-    const animate = () => {
-      time += 1;
-      ctx.clearRect(0, 0, width, height);
-
-      // Create a gorgeous gradient for visibility matching the site's accent palette
-      const gradient = ctx.createLinearGradient(0, 0, width, 0);
-      gradient.addColorStop(0, 'rgba(59, 130, 246, 0.45)');   // Electric Blue
-      gradient.addColorStop(0.5, 'rgba(159, 255, 68, 0.6)');  // Vibrant Lime Green
-      gradient.addColorStop(1, 'rgba(59, 130, 246, 0.45)');   // Electric Blue
-
-      const glowGradient = ctx.createLinearGradient(0, 0, width, 0);
-      glowGradient.addColorStop(0, 'rgba(59, 130, 246, 0.12)');
-      glowGradient.addColorStop(0.5, 'rgba(159, 255, 68, 0.18)');
-      glowGradient.addColorStop(1, 'rgba(59, 130, 246, 0.12)');
-
-      threads.forEach((thread, threadIdx) => {
-        thread.points.forEach((pt, ptIdx) => {
-          const isEdge = ptIdx === 0 || ptIdx === numPoints;
-          const swayFactor = isEdge ? 0 : 1;
-          
-          // Gentle default swaying movement (slower, smoother)
-          const defaultWave = Math.sin(time * 0.01 + pt.x * 0.002 + threadIdx * 2.2) * 5 * swayFactor;
-          let targetMouseOffset = 0;
-
-          if (mouse.x > -500) {
-            const dx = mouse.x - pt.x;
-            const dy = mouse.y - pt.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            const radius = 180; // interaction radius
-
-            if (dist < radius && !isEdge) {
-              const force = (radius - dist) / radius; // 0 to 1
-              // Smoothly push string vertically away from cursor
-              targetMouseOffset = (dy / dist) * force * 45;
-            }
-          }
-
-          // Smoothly interpolate current offset to target offset to prevent jitter
-          pt.mouseOffset += (targetMouseOffset - pt.mouseOffset) * 0.07;
-
-          // Horizontal position baseline restoration
-          const baselineX = (ptIdx / numPoints) * width;
-          pt.x += (baselineX - pt.x) * 0.05;
-
-          const targetY = pt.targetY + defaultWave + pt.mouseOffset;
-
-          const ay = (targetY - pt.y) * pt.stiffness;
-          pt.vy = (pt.vy + ay) * pt.damping;
-          pt.y += pt.vy;
-        });
-
-        // Draw curves smoothly
-        ctx.beginPath();
-        ctx.moveTo(thread.points[0].x, thread.points[0].y);
-        for (let j = 0; j < numPoints; j++) {
-          const xc = (thread.points[j].x + thread.points[j + 1].x) / 2;
-          const yc = (thread.points[j].y + thread.points[j + 1].y) / 2;
-          ctx.quadraticCurveTo(thread.points[j].x, thread.points[j].y, xc, yc);
-        }
-        ctx.lineTo(thread.points[numPoints].x, thread.points[numPoints].y);
-
-        // Faint glow path
-        ctx.strokeStyle = glowGradient;
-        ctx.lineWidth = 4.5;
-        ctx.stroke();
-
-        // Main thread stroke
-        ctx.strokeStyle = gradient;
-        ctx.lineWidth = 1.25;
-        ctx.stroke();
-      });
-
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      window.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(animationFrameId);
-    };
   }, []);
 
 
@@ -263,7 +95,6 @@ const HeroSection = () => {
 
   return (
     <div className='w-full bg-zinc-200 font-nb text-zinc-800 relative overflow-hidden'>
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-0" />
 
       {/* <div
         ref={followerRef}
@@ -276,14 +107,14 @@ const HeroSection = () => {
         scroll down
       </div> */}
 
-      <div className='flex items-end w-full h-screen px-6 md:px-10 pb-10 relative z-10'>
+      <div className='flex  items-end w-full h-screen px-6 md:px-10 pb-10'>
         <div className='relative h-full w-full '>
           <div className='w-full flex h-full justify-center items-center '>
 
             <div className='md:text-center w-full absolute top-[50%] left-[50%] -translate-[50%] flex  flex-col md:items-center '>
               <div className='flex items-center md:w-[35rem] lg:w-full flex-col text-6xl md:text-8xl lg:text-[7rem] font-semibold mb-10 '>
                 <h1 className='inline-flex items-center md:text-left lg:text-center tracking-tight'>Hello<div className='w-40 h-20 rounded-full mx-6 -mb-2 bg-blue-400  overflow-hidden'><img src="/images/sahil_13.png" alt="Sahil" className="w-full w-full -mt-5 px-2" /></div> I'm Sahil </h1>
-                <h1 className='inline-flex items-center md:text-left  lg:text-center text-[5.8rem] text-zinc-600  tracking-tight'>I   craft ideas into products  </h1>
+                <h1 className='inline-flex items-center md:text-left  lg:text-center text-[5.8rem] text-zinc-800  tracking-tight'>I   craft ideas into products  </h1>
                 {/* <h1 className='mt-2 md:mt-0 md:ml-4 text-nowrap  md:text-right'> I am<span className='bg-[#9f0] ml-3 pr-2 md:pr-9 italic text-zinc-900'>Sahil</span></h1> */}
               </div>
               {/* <div className='md:flex text-6xl md:text-8xl md:h-[6.5rem] font-semibold mb-3 '>

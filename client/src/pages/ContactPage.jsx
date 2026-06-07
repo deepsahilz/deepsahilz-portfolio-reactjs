@@ -24,8 +24,8 @@ const ContactPage = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    if (formErrors[name]) {
-      setFormErrors((prev) => ({ ...prev, [name]: "" }));
+    if (formErrors[name] || formErrors.submit) {
+      setFormErrors((prev) => ({ ...prev, [name]: "", submit: "" }));
     }
   };
 
@@ -41,7 +41,7 @@ const ContactPage = () => {
     return errors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = validateForm();
     if (Object.keys(errors).length > 0) {
@@ -50,34 +50,48 @@ const ContactPage = () => {
     }
 
     setIsSubmitting(true);
-    // Simulate API request
-    setTimeout(() => {
+
+    const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdG07mTrpd21fsinX8eIFJhlKtLuTYuSMJI9UcBocfOl7JXQQ/formResponse";
+    const params = new URLSearchParams();
+    params.append("entry.2005620554", formData.name);
+    params.append("entry.1045781291", formData.email);
+    params.append("entry.839337160", formData.subject);
+    params.append("entry.1260177860", formData.message);
+
+    try {
+      await fetch(formUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: params.toString(),
+      });
+
       setIsSubmitting(false);
       setIsSubmitted(true);
       setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 1500);
+    } catch (error) {
+      console.error("Error submitting form to Google Forms:", error);
+      setFormErrors({ submit: "Failed to send message. Please try again later." });
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className="w-full bg-zinc-200 font-neue text-zinc-800 pb-20 overflow-hidden">
       {/* Page Header */}
-      <div className="mb-15 pt-[5rem] md:pt-[7rem] border-b pb-10 border-zinc-400">
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="font-founders uppercase text-7xl md:text-8xl leading-none px-6 md:px-10"
+      <div className="mb-15 pt-[5rem] md:pt-[7rem] border-2 m-10 rounded-3xl pb-8 border-zinc-400">
+        <h1
+          className="font-founders uppercase text-7xl leading-none px-6 md:px-10"
         >
           Contact
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+        </h1>
+        <p
           className="max-w-3xl text-zinc-600 mt-4 text-lg md:text-xl px-6 md:px-10"
         >
           Have an idea, project, or collaboration in mind? Drop a message below or reach out directly.
-        </motion.p>
+        </p>
       </div>
 
       <div className="px-6 md:px-10 mt-10 max-w-7xl mx-auto">
@@ -106,9 +120,8 @@ const ContactPage = () => {
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
-                        className={`w-full bg-white border-2 rounded-xl py-3 px-4 outline-none transition-all ${
-                          formErrors.name ? "border-red-400 focus:border-red-500" : "border-zinc-300 focus:border-zinc-800"
-                        }`}
+                        className={`w-full bg-white border-2 rounded-xl py-3 px-4 outline-none transition-all ${formErrors.name ? "border-red-400 focus:border-red-500" : "border-zinc-300 focus:border-zinc-800"
+                          }`}
                         placeholder="John Doe"
                       />
                       {formErrors.name && (
@@ -127,9 +140,8 @@ const ContactPage = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        className={`w-full bg-white border-2 rounded-xl py-3 px-4 outline-none transition-all ${
-                          formErrors.email ? "border-red-400 focus:border-red-500" : "border-zinc-300 focus:border-zinc-800"
-                        }`}
+                        className={`w-full bg-white border-2 rounded-xl py-3 px-4 outline-none transition-all ${formErrors.email ? "border-red-400 focus:border-red-500" : "border-zinc-300 focus:border-zinc-800"
+                          }`}
                         placeholder="john@example.com"
                       />
                       {formErrors.email && (
@@ -164,15 +176,20 @@ const ContactPage = () => {
                         value={formData.message}
                         onChange={handleInputChange}
                         rows={5}
-                        className={`w-full bg-white border-2 rounded-xl py-3 px-4 outline-none transition-all resize-none ${
-                          formErrors.message ? "border-red-400 focus:border-red-500" : "border-zinc-300 focus:border-zinc-800"
-                        }`}
+                        className={`w-full bg-white border-2 rounded-xl py-3 px-4 outline-none transition-all resize-none ${formErrors.message ? "border-red-400 focus:border-red-500" : "border-zinc-300 focus:border-zinc-800"
+                          }`}
                         placeholder="Tell me about your project, goals, or questions..."
                       />
                       {formErrors.message && (
                         <span className="text-red-500 text-xs mt-1 font-medium">{formErrors.message}</span>
                       )}
                     </div>
+
+                    {formErrors.submit && (
+                      <div className="text-red-500 text-sm font-semibold bg-red-50 border border-red-200 rounded-xl p-3 text-center">
+                        {formErrors.submit}
+                      </div>
+                    )}
 
                     {/* Submit Button */}
                     <button
@@ -242,47 +259,51 @@ const ContactPage = () => {
                 </div>
               </div>
 
-              {/* Location */}
-              <div className="space-y-2">
-                <span className="text-zinc-500 text-sm font-semibold uppercase tracking-wider block">Based In</span>
-                <p className="text-xl font-bold text-zinc-800 font-neue">Punjab, India 🇮🇳</p>
-                <p className="text-sm text-zinc-500">Open for freelance opportunities and collaborations worldwide.</p>
+              {/* Social Links */}
+              <div className="space-y-4">
+                <span className="text-zinc-500 text-sm font-semibold uppercase tracking-wider block">Connect Online</span>
+                <div className="flex flex-col gap-3">
+                  {/* Github Link */}
+                  <a
+                    href="https://github.com/deepsahilz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between bg-zinc-100/60 border border-zinc-300/80 hover:bg-zinc-800 hover:text-zinc-100 hover:border-zinc-800 rounded-2xl p-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3">
+                      <FaGithub className="text-2xl text-zinc-500 group-hover:text-zinc-100 transition-colors" />
+                      <span className="font-semibold">GitHub</span>
+                    </div>
+                    <MdArrowOutward className="text-xl text-zinc-400 group-hover:text-zinc-100 group-hover:rotate-45 transition-all duration-300" />
+                  </a>
+
+                  {/* LinkedIn Link */}
+                  <a
+                    href="https://www.linkedin.com/in/sahil-singh-0421b7275/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between bg-zinc-100/60 border border-zinc-300/80 hover:bg-zinc-800 hover:text-zinc-100 hover:border-zinc-800 rounded-2xl p-4 transition-all group"
+                  >
+                    <div className="flex items-center gap-3">
+                      <FaLinkedin className="text-2xl text-zinc-500 group-hover:text-zinc-100 transition-colors" />
+                      <span className="font-semibold">LinkedIn</span>
+                    </div>
+                    <MdArrowOutward className="text-xl text-zinc-400 group-hover:text-zinc-100 group-hover:rotate-45 transition-all duration-300" />
+                  </a>
+                </div>
               </div>
+
+
             </div>
 
-            {/* Social Links */}
-            <div className="space-y-4">
-              <span className="text-zinc-500 text-sm font-semibold uppercase tracking-wider block">Connect Online</span>
-              <div className="flex flex-col gap-3">
-                {/* Github Link */}
-                <a
-                  href="https://github.com/deepsahilz"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between bg-zinc-100/60 border border-zinc-300/80 hover:bg-zinc-800 hover:text-zinc-100 hover:border-zinc-800 rounded-2xl p-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3">
-                    <FaGithub className="text-2xl text-zinc-500 group-hover:text-zinc-100 transition-colors" />
-                    <span className="font-semibold">GitHub</span>
-                  </div>
-                  <MdArrowOutward className="text-xl text-zinc-400 group-hover:text-zinc-100 group-hover:rotate-45 transition-all duration-300" />
-                </a>
 
-                {/* LinkedIn Link */}
-                <a
-                  href="https://www.linkedin.com/in/sahil-singh-0421b7275/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between bg-zinc-100/60 border border-zinc-300/80 hover:bg-zinc-800 hover:text-zinc-100 hover:border-zinc-800 rounded-2xl p-4 transition-all group"
-                >
-                  <div className="flex items-center gap-3">
-                    <FaLinkedin className="text-2xl text-zinc-500 group-hover:text-zinc-100 transition-colors" />
-                    <span className="font-semibold">LinkedIn</span>
-                  </div>
-                  <MdArrowOutward className="text-xl text-zinc-400 group-hover:text-zinc-100 group-hover:rotate-45 transition-all duration-300" />
-                </a>
-              </div>
+            {/* Location */}
+            <div className="space-y-2">
+              <span className="text-zinc-500 text-sm font-semibold uppercase tracking-wider block">Based In</span>
+              <p className="text-xl font-bold text-zinc-800 font-neue">Punjab, India 🇮🇳</p>
+              <p className="text-sm text-zinc-500">Open for freelance opportunities and collaborations worldwide.</p>
             </div>
+
           </div>
         </div>
       </div>
