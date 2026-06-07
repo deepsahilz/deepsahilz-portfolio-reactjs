@@ -1,22 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const skills = [
-  { name: "React", category: "Frontend" },
-  { name: "Next.js", category: "Frontend" },
-  { name: "JavaScript", category: "Language" },
-  { name: "Tailwind CSS", category: "Design" },
-  { name: "GSAP", category: "Animation" },
-  { name: "Framer Motion", category: "Animation" },
-  { name: "Node.js", category: "Backend" },
-  { name: "Express", category: "Backend" },
-  { name: "MongoDB", category: "Backend" },
-  { name: "MySQL", category: "Backend" },
-  { name: "Supabase", category: "Backend" },
-  { name: "Figma", category: "Design" },
-  { name: "Photoshop", category: "Design" },
-  { name: "GitHub", category: "Tools" },
-  { name: "C++", category: "Language" }
+const hobbies = [
+  { name: "Poetry" },
+  { name: "Sketching" },
+  { name: "Painting" },
+  { name: "Travelling" }
 ];
 
 const AboutPage = () => {
@@ -177,44 +166,30 @@ const AboutPage = () => {
           </motion.div>
         </motion.div>
 
-        {/* Skill Matrix Section */}
+        {/* Hobbies & Interests Section */}
         <div className="mt-16 md:mt-24 border-t border-zinc-300/60 pt-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-8"
-          >
+          <div className="space-y-8">
             <div>
-              <span className="text-zinc-400 text-xs font-semibold uppercase tracking-wider block mb-2">TOOLKIT</span>
+              <span className="text-zinc-400 text-xs font-semibold uppercase tracking-wider block mb-2">BEYOND CODE</span>
               <h2 className="text-4xl md:text-5xl font-bold uppercase font-founders text-zinc-900">
-                Skills & Technologies
+                Hobbies & Interests
               </h2>
               <p className="text-zinc-500 max-w-xl text-sm md:text-base mt-2">
-                A selection of programming languages, libraries, framework components, and creative software applications I use.
+                A few things I enjoy doing when I'm not coding or designing.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-3 mt-8">
-              {skills.map((skill, index) => (
-                <motion.div
+              {hobbies.map((hobby, index) => (
+                <div
                   key={index}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.02 }}
-                  whileHover={{ scale: 1.05, y: -2 }}
                   className="bg-white hover:bg-zinc-900 border border-zinc-300/80 hover:border-zinc-900 text-zinc-700 hover:text-zinc-100 font-medium py-2.5 px-4 md:py-3 md:px-6 rounded-full cursor-default transition-all duration-300 flex items-center gap-2 shadow-sm hover:shadow"
                 >
-                  <span className="text-sm md:text-base font-neue font-medium">{skill.name}</span>
-                  {/* <span className="text-[10px] uppercase px-1.5 py-0.5 rounded-full bg-zinc-100 hover:bg-zinc-800 text-zinc-400 border border-zinc-200">
-                    {skill.category}
-                  </span> */}
-                </motion.div>
+                  <span className="text-sm md:text-base font-neue font-medium">{hobby.name}</span>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>
