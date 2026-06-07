@@ -34,37 +34,19 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY, menuOpen]);
 
-  // Scroll spy to highlight active section on homepage
+  // Set active link based on pathname
   useEffect(() => {
-    if (location.pathname !== "/") {
-      if (location.pathname.startsWith("/work")) {
-        setActiveLink("work");
-      } else {
-        setActiveLink("");
-      }
-      return;
+    if (location.pathname === "/") {
+      setActiveLink("home");
+    } else if (location.pathname.startsWith("/work")) {
+      setActiveLink("work");
+    } else if (location.pathname === "/about") {
+      setActiveLink("about");
+    } else if (location.pathname === "/contact") {
+      setActiveLink("contact");
+    } else {
+      setActiveLink("");
     }
-
-    const handleScrollSpy = () => {
-      const sections = ["home", "work", "about", "contact"];
-      const scrollPosition = window.scrollY + window.innerHeight / 3;
-
-      for (const sectionId of sections) {
-        const el = document.getElementById(sectionId);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveLink(sectionId);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScrollSpy);
-    handleScrollSpy(); // run initial check
-    return () => window.removeEventListener("scroll", handleScrollSpy);
   }, [location.pathname]);
 
   // Lock body scroll when mobile menu is open
@@ -80,44 +62,27 @@ const Navbar = () => {
     if (id === "home") {
       if (location.pathname !== "/") {
         navigate("/");
-        setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }, 100);
       } else {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
-      setActiveLink("home");
     } else if (id === "work") {
-      if (location.pathname === "/work") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } else {
+      if (location.pathname !== "/work") {
         navigate("/work");
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
-      setActiveLink("work");
     } else if (id === "about") {
-      if (location.pathname !== "/") {
-        navigate("/");
-        setTimeout(() => {
-          const el = document.getElementById("about");
-          if (el) el.scrollIntoView({ behavior: "smooth" });
-        }, 100);
+      if (location.pathname !== "/about") {
+        navigate("/about");
       } else {
-        const el = document.getElementById("about");
-        if (el) el.scrollIntoView({ behavior: "smooth" });
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
-      setActiveLink("about");
     } else if (id === "contact") {
-      const el = document.getElementById("contact");
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
+      if (location.pathname !== "/contact") {
+        navigate("/contact");
       } else {
-        navigate("/");
-        setTimeout(() => {
-          const el = document.getElementById("contact");
-          if (el) el.scrollIntoView({ behavior: "smooth" });
-        }, 100);
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
-      setActiveLink("contact");
     }
     setMenuOpen(false);
   };

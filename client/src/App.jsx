@@ -7,6 +7,8 @@ import Layout from './components/Layout';
 import CatGame from './pages/CatGame';
 import ProjectPage from './pages/ProjectPage';
 import WorkPage from './pages/WorkPage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
 
 const App = () => {
   const location = useLocation();
@@ -35,6 +37,8 @@ const App = () => {
           <Route path="/" element={<Homepage />} />
           <Route path="/work/:projectName" element={<ProjectPage />} />
           <Route path="/work" element={<WorkPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Route>
         {/* fallback 404 / catch-all route should be last */}
         <Route path="/*" element={<CatGame />} />
