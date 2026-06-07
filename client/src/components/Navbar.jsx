@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
+  { label: "Home", id: "home" },
   { label: "Work", id: "work" },
-  { label: "About", id: "about" }, // commented out
+  { label: "About", id: "about" },
   { label: "Contact", id: "contact" },
 ];
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [activeLink, setActiveLink] = useState("");
+  const [activeLink, setActiveLink] = useState("home");
+  const [hoveredLink, setHoveredLink] = useState(null);
 
   // Show / hide navbar on scroll
   useEffect(() => {
@@ -21,7 +25,8 @@ const Navbar = () => {
       if (menuOpen) return;
 
       const currentY = window.scrollY;
-      setShowNavbar(currentY < lastScrollY || currentY < 10);
+      // Show navbar if scrolling up, or near top
+      setShowNavbar(currentY < lastScrollY || currentY < 20);
       setLastScrollY(currentY);
     };
 
@@ -29,20 +34,89 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY, menuOpen]);
 
-  // Lock body scroll when menu open
+  // Scroll spy to highlight active section on homepage
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      if (location.pathname.startsWith("/work")) {
+        setActiveLink("work");
+      } else {
+        setActiveLink("");
+      }
+      return;
+    }
+
+    const handleScrollSpy = () => {
+      const sections = ["home", "work", "about", "contact"];
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+      for (const sectionId of sections) {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveLink(sectionId);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScrollSpy);
+    handleScrollSpy(); // run initial check
+    return () => window.removeEventListener("scroll", handleScrollSpy);
+  }, [location.pathname]);
+
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "unset";
-    return () => (document.body.style.overflow = "unset");
+    return () => {
+      document.body.style.overflow = "unset";
+    };
   }, [menuOpen]);
 
   // Nav click handler
   const handleNavClick = (id) => {
-    if (id === "work") {
-      navigate("/work");
+    if (id === "home") {
+      if (location.pathname !== "/") {
+        navigate("/");
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 100);
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      setActiveLink("home");
+    } else if (id === "work") {
+      if (location.pathname === "/work") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        navigate("/work");
+      }
       setActiveLink("work");
+    } else if (id === "about") {
+      if (location.pathname !== "/") {
+        navigate("/");
+        setTimeout(() => {
+          const el = document.getElementById("about");
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      } else {
+        const el = document.getElementById("about");
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }
+      setActiveLink("about");
     } else if (id === "contact") {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+      const el = document.getElementById("contact");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      } else {
+        navigate("/");
+        setTimeout(() => {
+          const el = document.getElementById("contact");
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
       setActiveLink("contact");
     }
     setMenuOpen(false);
@@ -50,104 +124,185 @@ const Navbar = () => {
 
   return (
     <>
-      {/* NAVBAR */}
-      <div
-        className={`fixed top-0 flex justify-center backdrop-blur-md lg:backdrop-blur-none bg-white/30 lg:bg-transparent w-full z-50 transition-transform duration-300 ${
-          showNavbar ? "translate-y-0" : "-translate-y-full"
-        }`}
+      <motion.div
+        layout
+        // className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-zinc-950/85 backdrop-blur-xl border border-zinc-800/80 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex transition-all duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-28 opacity-0 pointer-events-none"
+        className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-zinc-950/85 backdrop-blur-xl border border-zinc-800/80 shadow-lg flex transition-all duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-28 opacity-0 pointer-events-none"
+          } ${menuOpen
+            ? "w-[calc(100%-2rem)] max-w-sm rounded-2xl flex-col p-4"
+            : "w-[calc(100%-2rem)] md:w-auto rounded-full py-2 px-3 md:py-2.5 md:px-4 flex-row items-center justify-between"
+          }`}
       >
-        <div className="rounded-b-xl w-full">
+        {/* HEADER BAR (Logo + Controls) */}
+        <div className={`flex items-center justify-between w-full ${menuOpen ? "mb-4" : ""}`}>
+          {/* LOGO */}
           <div
-            className={`flex justify-between items-center py-3 md:py-5 px-6 md:px-10 transition-all duration-300 ${
-              menuOpen ? "bg-white" : ""
-            }`}
+            onClick={() => handleNavClick("home")}
+            className="font-bold cursor-pointer text-xl font-neue text-zinc-100 flex items-center select-none"
           >
-            {/* LOGO */}
-            <div
-              onClick={() => navigate("/")}
-              className={`font-bold overflow-hidden relative h-7 cursor-pointer text-2xl font-neue ${
-                menuOpen ? "text-zinc-900" : "md:mix-blend-difference"
-              }`}
-            >
+            <span className="relative overflow-hidden h-7 block">
               <span className="block transition-transform duration-300 hover:-translate-y-full">
                 <span className="block">deepsahilz</span>
                 <span className="block absolute left-0 top-full">
                   deepsahilz
                 </span>
               </span>
-            </div>
-
-            {/* DESKTOP NAV */}
-            <ul className="hidden md:flex gap-7 uppercase md:mix-blend-difference">
-              {navLinks.map((item, i) => (
-                <li
-                  key={i}
-                  onClick={() => handleNavClick(item.id)}
-                  className={`overflow-hidden relative h-6 cursor-pointer hover:opacity-70 ${
-                    activeLink === item.id ? "text-zinc-800" : ""
-                  }`}
-                >
-                  <span className="block  transition-transform duration-300 hover:-translate-y-full">
-                    <span className="block">{item.label}</span>
-                    <span className="block absolute left-0 top-full">
-                      {item.label}
-                    </span>
-                  </span>
-                </li>
-              ))}
-            </ul>
-
-            {/* HAMBURGER */}
-            <div className="md:hidden z-50">
-              <button
-                onClick={() => setMenuOpen(!menuOpen)}
-                className="text-2xl w-8 h-8 flex items-center justify-center text-zinc-900"
-              >
-                {menuOpen ? "×" : "☰"}
-              </button>
-            </div>
+            </span>
+            {/* <span className="text-[#9f4] ml-0.5">•</span> */}
           </div>
-        </div>
-      </div>
 
-      {/* MOBILE MENU */}
-      <div
-        className={`md:hidden fixed inset-0 bg-white z-40 transition-all duration-500 ${
-          menuOpen ? "opacity-100 visible" : "opacity-0 invisible"
-        }`}
-      >
-        <div
-          className={`flex flex-col justify-center items-center h-full transition-all duration-500 ${
-            menuOpen
-              ? "translate-y-0 opacity-100"
-              : "translate-y-10 opacity-0"
-          }`}
-        >
-          <ul className="flex flex-col gap-8 uppercase text-center">
-            {navLinks.map((item, i) => (
-              <li
-                key={i}
-                onClick={() => handleNavClick(item.id)}
-                className={`text-5xl font-founders font-semibold text-zinc-900 cursor-pointer hover:text-zinc-600 ${
-                  activeLink === item.id ? "text-zinc-800" : ""
-                }`}
-              >
-                {item.label}
-              </li>
-            ))}
-          </ul>
+          {/* DESKTOP NAV */}
+          {!menuOpen && (
+            <div className="hidden md:flex items-center gap-2 pl-6">
+              <ul className="flex items-center gap-1">
+                {navLinks.map((item) => {
+                  const isActive = activeLink === item.id;
+                  return (
+                    <li
+                      key={item.id}
+                      onClick={() => handleNavClick(item.id)}
+                      onMouseEnter={() => setHoveredLink(item.id)}
+                      onMouseLeave={() => setHoveredLink(null)}
+                      className="relative px-3.5 py-1.5 cursor-pointer text-xs font-neue uppercase font-medium tracking-wider text-zinc-400 hover:text-zinc-100 transition-colors duration-200"
+                    >
+                      <span className="relative z-10">{item.label}</span>
 
-          <div className="mt-16 text-center">
-            <p className="text-zinc-500 text-sm">GET IN TOUCH</p>
-            <a
-              href="mailto:deepsahil.online@gmail.com"
-              className="text-lg text-zinc-900 hover:text-zinc-600"
+                      {/* Sliding hover pill */}
+                      {hoveredLink === item.id && (
+                        <motion.span
+                          layoutId="nav-hover-pill"
+                          className="absolute inset-0 bg-zinc-800/60 rounded-full -z-0"
+                          transition={{
+                            type: "spring",
+                            stiffness: 350,
+                            damping: 25,
+                          }}
+                        />
+                      )}
+
+                      {/* Active indicator dot */}
+                      {isActive && (
+                        <motion.span
+                          layoutId="active-indicator"
+                          className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#9f4]"
+                          transition={{
+                            type: "spring",
+                            stiffness: 300,
+                            damping: 20,
+                          }}
+                        />
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
+
+          {/* MOBILE / EXPAND MENU TOGGLE */}
+          <div className={`${menuOpen ? "block" : "md:hidden"} z-50`}>
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="w-8 h-8 flex items-center justify-center text-zinc-400 hover:text-zinc-100 transition-colors focus:outline-none"
             >
-              deepsahil.online@gmail.com
-            </a>
+              {menuOpen ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="18" x2="6" y1="6" y2="18" />
+                  <line x1="6" x2="18" y1="6" y2="18" />
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="4" x2="20" y1="12" y2="12" />
+                  <line x1="4" x2="20" y1="6" y2="6" />
+                  <line x1="4" x2="20" y1="18" y2="18" />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
-      </div>
+
+        {/* MOBILE EXPANDED MENU */}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+              className="flex flex-col px-2 pb-2 mt-2 w-full overflow-hidden"
+            >
+              <ul className="flex flex-col gap-3 mb-6">
+                {navLinks.map((item, i) => (
+                  <motion.li
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: -20, opacity: 0 }}
+                    transition={{ delay: i * 0.05, duration: 0.2 }}
+                    key={item.id}
+                    onClick={() => handleNavClick(item.id)}
+                    className={`text-3xl font-founders font-semibold uppercase tracking-wider cursor-pointer hover:text-[#9f4] transition-colors py-1 ${activeLink === item.id ? "text-[#9f4]" : "text-zinc-100"
+                      }`}
+                  >
+                    {item.label}
+                  </motion.li>
+                ))}
+              </ul>
+
+              {/* Mobile Contacts */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ delay: 0.2 }}
+                className="border-t border-zinc-800/80 pt-4"
+              >
+                <span className="text-zinc-500 text-xs uppercase tracking-wider block mb-1">
+                  Get in touch
+                </span>
+                <a
+                  href="mailto:deepsahil.online@gmail.com"
+                  className="text-zinc-300 hover:text-[#9f4] transition-colors font-neue text-sm break-all"
+                >
+                  deepsahil.online@gmail.com
+                </a>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+
+      {/* Dim overlay when mobile menu is open to focus attention */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setMenuOpen(false)}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 };
