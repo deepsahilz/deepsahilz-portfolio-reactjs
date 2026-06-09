@@ -9,6 +9,7 @@ import ProjectPage from './pages/ProjectPage';
 import WorkPage from './pages/WorkPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 const App = () => {
   const location = useLocation();
@@ -53,8 +54,8 @@ const App = () => {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Route>
-        {/* fallback 404 / catch-all route should be last */}
-        <Route path="/*" element={<CatGame />} />
+        {/* fallback 404 / catch-all route should be last and outside Layout */}
+        <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </AnimatePresence>
   );
