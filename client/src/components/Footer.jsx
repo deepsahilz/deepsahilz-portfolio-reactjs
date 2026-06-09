@@ -68,8 +68,8 @@ const Footer = () => {
   }
 
   return (
-    <section id="contact" className="w-full bg-zinc-950 text-zinc-100 font-neue">
-      <footer className="mx-auto px-6 md:px-10 py-16 md:py-20">
+    <footer id="contact" className="w-full bg-zinc-950 text-zinc-100 font-neue">
+      <div className="mx-auto px-6 md:px-10 py-16 md:py-20">
 
         {/* Main Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
@@ -217,8 +217,8 @@ const Footer = () => {
           </button>
 
         </div>
-      </footer>
-    </section>
+      </div>
+    </footer>
   )
 }
 

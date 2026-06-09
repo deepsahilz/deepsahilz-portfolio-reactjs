@@ -89,9 +89,10 @@ const Navbar = () => {
 
   return (
     <>
-      <motion.div
+      <motion.header
         layout
-        // className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-zinc-950/85 backdrop-blur-xl border border-zinc-800/80 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex transition-all duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-28 opacity-0 pointer-events-none"
+        id="main-header"
+        role="banner"
         className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-zinc-950/85 backdrop-blur-xl border border-zinc-800/80 shadow-lg flex transition-all duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-28 opacity-0 pointer-events-none"
           } ${menuOpen
             ? "w-[calc(100%-2rem)] max-w-sm rounded-2xl flex-col p-4"
@@ -118,7 +119,7 @@ const Navbar = () => {
 
           {/* DESKTOP NAV */}
           {!menuOpen && (
-            <div className="hidden md:flex items-center gap-2 pl-20">
+            <nav role="navigation" aria-label="Desktop Navigation" className="hidden md:flex items-center gap-2 pl-20">
               <ul className="flex items-center gap-1">
                 {navLinks.map((item) => {
                   const isActive = activeLink === item.id;
@@ -161,7 +162,7 @@ const Navbar = () => {
                   );
                 })}
               </ul>
-            </div>
+            </nav>
           )}
 
           {/* MOBILE / EXPAND MENU TOGGLE */}
@@ -209,11 +210,9 @@ const Navbar = () => {
         {/* MOBILE EXPANDED MENU */}
         <AnimatePresence>
           {menuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.25, ease: "easeInOut" }}
+            <nav
+              role="navigation"
+              aria-label="Mobile Navigation"
               className="flex flex-col px-2 pb-2 mt-2 w-full overflow-hidden"
             >
               <ul className="flex flex-col gap-3 mb-6">
@@ -251,10 +250,10 @@ const Navbar = () => {
                   deepsahil.online@gmail.com
                 </a>
               </motion.div>
-            </motion.div>
+            </nav>
           )}
         </AnimatePresence>
-      </motion.div>
+      </motion.header>
 
       {/* Dim overlay when mobile menu is open to focus attention */}
       <AnimatePresence>

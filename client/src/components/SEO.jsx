@@ -9,7 +9,8 @@ const SEO = ({
   title,
   description = "Portfolio of Sahil Singh (@deepsahilz), a developer and designer focused on building fast, functional, and visually rich web applications.",
   ogImage = "https://deepsahilz.vercel.app/deepcodes4.png",
-  schema = null
+  schema = null,
+  noIndex = false
 }) => {
   const location = useLocation();
   const currentUrl = `https://deepsahilz.vercel.app${location.pathname}`;
@@ -49,6 +50,7 @@ const SEO = ({
 
     // 2. Set Meta Tags
     setMetaTag('name', 'description', description);
+    setMetaTag('name', 'robots', noIndex ? 'noindex, nofollow' : 'index, follow');
     setLinkTag('canonical', currentUrl);
 
     // Open Graph
@@ -82,7 +84,7 @@ const SEO = ({
         schemaScript.remove();
       }
     }
-  }, [title, description, ogImage, currentUrl, schema]);
+  }, [title, description, ogImage, currentUrl, schema, noIndex]);
 
   return null;
 };

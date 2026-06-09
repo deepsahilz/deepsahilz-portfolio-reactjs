@@ -2,32 +2,32 @@
 
 @font-face {
   font-family: 'founders';
-  src: url('./assets/fonts/FoundersGrotesk-Semibold.woff2') format('woff2');
+  src: url('/fonts/FoundersGrotesk-Semibold.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'neue';
-  src: url('./assets/fonts/NeueMontreal-Regular.woff2') format('woff2');
+  src: url('/fonts/NeueMontreal-Regular.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'nb';
-  src: url('./assets/fonts/NBInternationalProBoo.woff2') format('woff2');
+  src: url('/fonts/NBInternationalProBoo.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'rejouice';
-  src: url('./assets/fonts/Rejouice-Headline.woff2') format('woff2');
+  src: url('/fonts/Rejouice-Headline.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'milker';
-  src: url('./assets/fonts/Milker.otf');
+  src: url('/fonts/Milker.otf');
 }
 
 @font-face {
   font-family: 'arcade';
-  src: url('./assets/fonts/arcade.TTF');
+  src: url('/fonts/arcade.TTF');
 }
 
 

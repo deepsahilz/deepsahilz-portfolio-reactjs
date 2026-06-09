@@ -1,0 +1,18 @@
+{
+  "name": "Sahil Singh | Portfolio & Web Application Developer",
+  "short_name": "Sahil Portfolio",
+  "description": "Portfolio of Sahil Singh (@deepsahilz), a developer and designer focused on building fast, functional, and visually compelling web applications.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#e4e4e7",
+  "theme_color": "#18181b",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/deezy.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

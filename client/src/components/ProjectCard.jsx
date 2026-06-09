@@ -63,7 +63,7 @@ const ProjectCard = ({ project, className }) => {
             <img
               src={project.thumbnail || ''}
               className="group-hover:opacity-50 rounded-lg group-hover:scale-130 duration-900 transition-all"
-              alt={project.name || 'Project'}
+              alt={`${project.name || 'Project'} Portfolio Thumbnail - ${project.tagline || ''}`}
             />
           </div>
         </div>
