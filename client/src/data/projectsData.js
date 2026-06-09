@@ -3,7 +3,7 @@ export const projects = [
     slug: "certify-now",
     name: "Certify Now",
     isFeatured: true,
-    tagline: "Certificate generation & distribution platform, no limits, free to use.",
+    tagline: "Certificate generation & distribution platform, no limits, free to use. Supports custom SMTP config for mailing.",
     description: "SaaS platform to design, issue, and distribute credentials/certificates dynamically.",
     thumbnail: "/images/certify-now-thumb.png",
     concept: "Certify-Now is a complete credentialing solution. It features a custom visual canvas editor using Fabric.js to design certificate templates with dynamic placeholders. Organizations can issue certificates to batches of users, dispatch personalized emails via Nodemailer, and provide secure QR-code verification pages.",
@@ -16,7 +16,7 @@ export const projects = [
       "Public credential verification pages via secure QR codes"
     ],
     stack: ["Next.js", "Prisma", "Supabase", "Fabric.js", "PDF-lib", "Nodemailer"],
-    liveUrl: "https://www.certifynow-v1.vercel.app/",
+    liveUrl: "https://certifynow-v1.vercel.app/",
     type: "webapp",
   },
   {

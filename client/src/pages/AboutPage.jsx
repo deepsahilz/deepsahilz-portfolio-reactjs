@@ -102,10 +102,10 @@ const AboutPage = () => {
                     <span className="text-zinc-500 text-sm">Age</span>
                     <span className="font-medium">22 Years</span>
                   </li>
-                  <li className="flex justify-between border-b border-zinc-800 pb-2">
+                  {/* <li className="flex justify-between border-b border-zinc-800 pb-2">
                     <span className="text-zinc-500 text-sm">Focus</span>
                     <span className="font-medium text-right">Full stack & Art</span>
-                  </li>
+                  </li> */}
                   <li className="flex justify-between border-b border-zinc-800 pb-2">
                     <span className="text-zinc-500 text-sm">Education</span>
                     <span className="font-medium">Masters Student</span>
@@ -125,87 +125,80 @@ const AboutPage = () => {
               className="bg-zinc-100/60 backdrop-blur-md border border-zinc-300/80 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col justify-between min-h-[320px]"
             >
               <div className="space-y-6">
-                <span className="text-zinc-400 text-xs font-semibold uppercase tracking-wider block">PILLARS</span>
-                <h3 className="text-xl font-bold text-zinc-900 uppercase font-founders tracking-wide">Areas of Interest</h3>
+                <span className="text-zinc-400 text-xs font-semibold uppercase tracking-wider block">Areas of Interest</span>
+                {/* <h3 className="text-xl font-bold text-zinc-900 uppercase font-founders tracking-wide">Areas of Interest</h3> */}
                 <ul className="space-y-4">
                   <li className="space-y-1">
-                    <h4 className="font-semibold text-zinc-900 text-base">Frontend Engineering</h4>
-                    <p className="text-zinc-500 text-sm">Crafting clean layouts, fluid interactions, and highly responsive page layouts.</p>
+                    <h4 className="font-semibold text-zinc-900 text-base">Full Stack & SaaS</h4>
+                    <p className="text-zinc-500 text-sm">Developing end-to-end web solutions, scalable backend APIs, and complete SaaS architectures.</p>
                   </li>
                   <li className="space-y-1">
-                    <h4 className="font-semibold text-zinc-900 text-base">Backend Architecture</h4>
-                    <p className="text-zinc-500 text-sm">Implementing REST endpoints, structured database models, and server performance.</p>
+                    <h4 className="font-semibold text-zinc-900 text-base">Visual Language & branding</h4>
+                    <p className="text-zinc-500 text-sm">Crafting a strong visual language for brands and interfaces, along with fluid animations and interactive designs.</p>
                   </li>
                   <li className="space-y-1">
-                    <h4 className="font-semibold text-zinc-900 text-base">Visual Art & Prototyping</h4>
-                    <p className="text-zinc-500 text-sm">Creating brand graphics, mockups, vector illustrations, and Figma layouts.</p>
+                    <h4 className="font-semibold text-zinc-900 text-base">Machine Learning & AI</h4>
+                    <p className="text-zinc-500 text-sm">Exploring neural networks, deep learning models, and integrating intelligent features into web products.</p>
                   </li>
                 </ul>
               </div>
             </motion.div>
 
             {/* Card 4: Experiential Playbook (Spans 2 cols on lg/md) */}
+            {/* Card 4: Side Quests Timeline (Spans 2 cols on lg/md) */}
             <motion.div
               variants={itemVariants}
               className="md:col-span-2 bg-zinc-100/60 backdrop-blur-md border border-zinc-300/80 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col justify-between min-h-[320px]"
             >
               <div className="space-y-6">
-                <span className="text-zinc-400 text-xs font-semibold uppercase tracking-wider block">PLAYBOOK</span>
-                <h3 className="text-xl font-bold text-zinc-900 uppercase font-founders tracking-wide">My Journey Timeline</h3>
+                <span className="text-zinc-400 text-xs font-semibold uppercase tracking-wider block">SIDE QUESTS</span>
+                {/* <h3 className="text-xl font-bold text-zinc-900 uppercase font-founders tracking-wide">My Journey Timeline</h3> */}
                 <div className="space-y-6 mt-4">
-                  <div className="flex gap-4 items-start">
-                    <span className="text-sm font-semibold bg-zinc-950 text-zinc-100 px-3 py-1 rounded-lg">PRESENT</span>
-                    <div className="space-y-1">
-                      <h4 className="font-semibold text-zinc-900">Masters Studies & Freelancing</h4>
-                      <p className="text-zinc-500 text-sm">Deepening technical understanding, developing customized products for local and global clients, and prototyping side builds.</p>
-                    </div>
+                  <div className="space-y-1">
+                    <h4 className="font-semibold text-zinc-900">Pursuing Master's Studies</h4>
+                    <p className="text-zinc-500 text-sm">Currently pursuing Master's studies in the Computer Science field, focusing on computing principles and theoretical studies.</p>
                   </div>
 
-                  <div className="flex gap-4 items-start">
-                    <span className="text-sm font-semibold bg-zinc-200 border border-zinc-300 text-zinc-800 px-3 py-1 rounded-lg">ONGOING</span>
-                    <div className="space-y-1">
-                      <h4 className="font-semibold text-zinc-900">Hackathon Developer</h4>
-                      <p className="text-zinc-500 text-sm">Collaborating in fast-paced software environments, building functional prototype projects, and solving core constraints under deadlines.</p>
-                    </div>
+                  <div className="space-y-1">
+                    <h4 className="font-semibold text-zinc-900">Technical Head at TSS GNDU</h4>
+                    <p className="text-zinc-500 text-sm">Serving as the Technical Head of the Technical Student Society at Guru Nanak Dev University, Amritsar. Handling all technical stuff and help in organizing departmental events.</p>
                   </div>
 
-                  <div className="flex gap-4 items-start">
-                    <span className="text-sm font-semibold bg-zinc-200 border border-zinc-300 text-zinc-800 px-3 py-1 rounded-lg">PAST 2Y</span>
-                    <div className="space-y-1">
-                      <h4 className="font-semibold text-zinc-900">Digital Art & Layout Assets</h4>
-                      <p className="text-zinc-500 text-sm">Working with graphic layouts, editing vector models, and developing clean brand concepts using Photoshop and Figma.</p>
-                    </div>
+                  <div className="space-y-1">
+                    <h4 className="font-semibold text-zinc-900">Graphic Design & Composite Art</h4>
+                    <p className="text-zinc-500 text-sm">Freelanced in creating digital graphics, vector designs, brand concepts, and composite artwork using Photoshop and Illustrator.</p>
                   </div>
                 </div>
               </div>
             </motion.div>
+
+            {/* Card 5: Hobbies & Interests (Spans 3 cols on lg, 2 cols on md) */}
+            <motion.div
+              variants={itemVariants}
+              className="lg:col-span-1 md:col-span-2 bg-zinc-100/60 backdrop-blur-md border border-zinc-300/80 rounded-3xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between min-h-[220px]"
+            >
+              <div className="space-y-6">
+                <div>
+                  <span className="text-zinc-400 text-xs font-semibold uppercase tracking-wider block mb-1">Hobbies & Interests</span>
+                  {/* <h3 className="text-xl font-bold text-zinc-900 uppercase font-founders tracking-wide">Hobbies & Interests</h3> */}
+                  {/* <p className="text-zinc-500 text-sm mt-1">
+                    A few things I enjoy doing when I'm not coding or designing.
+                  </p> */}
+                </div>
+
+                <div className="flex flex-wrap gap-2.5">
+                  {hobbies.map((hobby, index) => (
+                    <div
+                      key={index}
+                      className="bg-white hover:bg-zinc-900 border border-zinc-300/80 hover:border-zinc-900 text-zinc-700 hover:text-zinc-100 font-medium py-2 px-4 rounded-xl cursor-default transition-all duration-300 flex items-center gap-2 "
+                    >
+                      <span className="text-sm font-neue font-medium">{hobby.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
-
-          {/* Hobbies & Interests Section */}
-          <div className="mt-16 md:mt-24 border-t border-zinc-300/60 pt-16">
-            <div className="space-y-8">
-              <div>
-                <span className="text-zinc-400 text-xs font-semibold uppercase tracking-wider block mb-2">BEYOND CODE</span>
-                <h2 className="text-4xl md:text-5xl font-bold uppercase font-founders text-zinc-900">
-                  Hobbies & Interests
-                </h2>
-                <p className="text-zinc-500 max-w-xl text-sm md:text-base mt-2">
-                  A few things I enjoy doing when I'm not coding or designing.
-                </p>
-              </div>
-
-              <div className="flex flex-wrap gap-3 mt-8">
-                {hobbies.map((hobby, index) => (
-                  <div
-                    key={index}
-                    className="bg-white hover:bg-zinc-900 border border-zinc-300/80 hover:border-zinc-900 text-zinc-700 hover:text-zinc-100 font-medium py-2.5 px-4 md:py-3 md:px-6 rounded-full cursor-default transition-all duration-300 flex items-center gap-2 shadow-sm hover:shadow"
-                  >
-                    <span className="text-sm md:text-base font-neue font-medium">{hobby.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </>

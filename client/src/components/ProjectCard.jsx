@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { MdArrowOutward } from 'react-icons/md';
 
@@ -70,21 +70,31 @@ const ProjectCard = ({ project, className }) => {
 
         {/* Name + Tagline */}
         <div className="flex flex-col">
-          <h3 className="text-xl flex mt-1 font-semibold items-center">
+          <h3 className="text-xl flex flex-wrap mt-1 font-semibold items-center gap-2">
             <span>{project.name || 'Untitled Project'}</span>
-            {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="group inline-flex items-center gap-0.5 text-[10px] uppercase tracking-wider font-extrabold bg-zinc-300/40 hover:bg-zinc-800 text-zinc-600 hover:text-zinc-100 px-2 py-1 rounded-md border border-zinc-400/60 hover:border-zinc-800 transition-all duration-300 ml-2 cursor-pointer "
-                title="Visit Live Site"
+            <div className="flex items-center gap-2 flex-wrap">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="group inline-flex items-center gap-0.5 text-[10px] uppercase tracking-wider font-extrabold bg-zinc-300/40 hover:bg-zinc-800 text-zinc-600 hover:text-zinc-100 px-2 py-1 rounded-md border border-zinc-400/60 hover:border-zinc-800 transition-all duration-300 cursor-pointer"
+                  title="Visit Live Site"
+                >
+                  <span>Visit Live</span>
+                  <MdArrowOutward className="text-[10px] group-hover:rotate-45 transition-transform duration-300" />
+                </a>
+              )}
+              <Link
+                to={`/work/${project.slug || ''}`}
+                className="inline-flex sm:hidden items-center gap-0.5 text-[10px] uppercase tracking-wider font-extrabold bg-zinc-900 text-zinc-100 px-2.5 py-1 rounded-md cursor-pointer hover:bg-zinc-950 transition-all duration-300"
+                title="View Project Details"
               >
-                <span>Visit Live</span>
-                <MdArrowOutward className="text-[10px] group-hover:rotate-45 transition-transform duration-300" />
-              </a>
-            )}
+                <span>View Details</span>
+                <MdArrowOutward className="text-[10px]" />
+              </Link>
+            </div>
           </h3>
           {project.tagline && (
             <p className="text-sm text-zinc-600 mt-1">{project.tagline}</p>
@@ -92,7 +102,7 @@ const ProjectCard = ({ project, className }) => {
         </div>
 
         {/* Tools / Stack Tags */}
-        <div className="flex gap-2 flex-wrap">
+        <div className="hidden sm:flex gap-2 flex-wrap">
           {(project.stack || []).map((tool, i) => (
             <span
               key={i}

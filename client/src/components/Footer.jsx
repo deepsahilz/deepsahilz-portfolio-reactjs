@@ -192,29 +192,32 @@ const Footer = () => {
         </div>
 
         {/* Bottom Utility Bar */}
-        <div className="border-t border-zinc-900/80 mt-16  pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="border-t border-zinc-900/80 mt-10 md:mt-16 pt-6 md:pt-8 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6">
 
           {/* Copyright */}
           <div className="text-xs md:text-sm text-zinc-500 text-center md:text-left font-medium">
             &copy; {new Date().getFullYear()} Sahildeep Singh. All rights reserved.
           </div>
 
-          {/* Timezone clock */}
-          <div className="inline-flex items-center gap-2 text-xs md:text-sm text-zinc-450 font-medium bg-zinc-900/40 border border-zinc-900/60 rounded-full px-4 py-1.5 select-none">
-            <span className="text-zinc-500">PUNJAB, IN</span>
-            <span className="text-zinc-700 font-bold">•</span>
-            <span className="font-mono text-[#9f4]">{localTime || "00:00:00 AM"}</span>
-            <span className="text-zinc-500 text-[10px] uppercase font-bold tracking-wider">IST</span>
-          </div>
+          {/* Timezone and Back to top group for mobile compactness */}
+          <div className="flex flex-wrap items-center justify-center gap-3 w-full md:w-auto">
+            {/* Timezone clock */}
+            <div className="inline-flex items-center gap-2 text-xs md:text-sm text-zinc-450 font-medium bg-zinc-900/40 border border-zinc-900/60 rounded-full px-3.5 py-1.5 md:px-4 select-none">
+              <span className="text-zinc-500">PUNJAB, IN</span>
+              <span className="text-zinc-700 font-bold">•</span>
+              <span className="font-mono text-[#9f4]">{localTime || "00:00:00 AM"}</span>
+              <span className="text-zinc-500 text-[10px] uppercase font-bold tracking-wider">IST</span>
+            </div>
 
-          {/* Back to top */}
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="inline-flex items-center gap-2 text-xs md:text-sm text-zinc-400 hover:text-zinc-100 bg-zinc-900/40 hover:bg-zinc-900 border border-zinc-900 hover:border-zinc-800 rounded-full px-4 py-1.5 transition-all duration-200 hover:scale-105 group cursor-pointer font-medium"
-          >
-            <span>Back to top</span>
-            <FaArrowUp className="text-xs transition-transform duration-300 group-hover:-translate-y-0.5" />
-          </button>
+            {/* Back to top */}
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="inline-flex items-center gap-2 text-xs md:text-sm text-zinc-400 hover:text-zinc-100 bg-zinc-900/40 hover:bg-zinc-900 border border-zinc-900 hover:border-zinc-800 rounded-full px-3.5 py-1.5 md:px-4 transition-all duration-200 hover:scale-105 group cursor-pointer font-medium"
+            >
+              <span>Back to top</span>
+              <FaArrowUp className="text-xs transition-transform duration-300 group-hover:-translate-y-0.5" />
+            </button>
+          </div>
 
         </div>
       </div>
