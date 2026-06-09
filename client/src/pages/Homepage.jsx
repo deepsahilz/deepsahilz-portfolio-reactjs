@@ -5,6 +5,7 @@ import SkillSection from "../components/SkillSection";
 import SkillSection2 from "../components/SkillSection2";
 import AboutSection from "../components/AboutSection";
 import Footer from "../components/Footer";
+import SEO from "../components/SEO";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -33,8 +34,38 @@ const Homepage = () => {
     };
   }, []);
 
+  const homeSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Sahildeep Singh",
+    "alternateName": "Sahil Singh",
+    "url": "https://deepsahilz.vercel.app/",
+    "image": "https://deepsahilz.vercel.app/images/sahil_13.png",
+    "jobTitle": "Web Application Developer & Designer",
+    "knowsAbout": [
+      "Web Development",
+      "Frontend Engineering",
+      "Backend Architecture",
+      "React",
+      "Next.js",
+      "JavaScript",
+      "Tailwind CSS",
+      "GSAP",
+      "Graphic Design"
+    ],
+    "sameAs": [
+      "https://github.com/deepsahilz",
+      "https://www.linkedin.com/in/sahil-singh-0421b7275/"
+    ]
+  };
+
   return (
     <>
+      <SEO 
+        title="Portfolio & Web Application Developer" 
+        description="Portfolio of Sahil Singh (@deepsahilz). Developer and designer focused on building fast, functional, and visually rich web applications."
+        schema={homeSchema}
+      />
       <div className="bg-zinc-200 w-full overflow-hidden relative">
         {/* Hero Section with parallax */}
         <section

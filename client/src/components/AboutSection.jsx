@@ -18,9 +18,9 @@ const AboutSection = () => {
         <div className='flex flex-col xl:flex-row justify-between gap-8 md:gap-30 items-start'>
           {/* Left Column - Header & Tags */}
           <div className='space-y-5 md:space-y-8'>
-            <h1 className='text-6xl md:text-6xl lg:text-7xl lg:w-lg font-founders uppercase font-semibold text-zinc-800 leading-tight'>
+            <h2 className='text-6xl md:text-6xl lg:text-7xl lg:w-lg font-founders uppercase font-semibold text-zinc-800 leading-tight'>
               About me
-            </h1>
+            </h2>
 
             <div className='flex flex-wrap gap-2.5'>
               {tags.map((item, idx) => (

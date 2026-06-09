@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useParams } from 'react-router-dom';
 import { projects } from '../data/projectsData';
 import { MdArrowOutward } from 'react-icons/md';
+import SEO from '../components/SEO';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -15,14 +16,38 @@ const ProjectPage = () => {
   const Project = projects.find(p => p.slug === projectName);
   if (!Project) return <div className='text-7xl h-screen pt-20'>No project found</div>;
 
+  const projectSchema = {
+    "@context": "https://schema.org",
+    "@type": Project.type === "webapp" ? "SoftwareApplication" : "CreativeWork",
+    "name": Project.name,
+    "description": Project.description,
+    "url": `https://deepsahilz.vercel.app/work/${Project.slug}`,
+    "image": `https://deepsahilz.vercel.app${Project.thumbnail}`,
+    ...(Project.type === "webapp" && {
+      "applicationCategory": "WebApplication",
+      "operatingSystem": "All"
+    }),
+    "creator": {
+      "@type": "Person",
+      "name": "Sahildeep Singh"
+    }
+  };
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.5 }}
-      className='min-h-screen bg-zinc-200 font-neue text-zinc-800'
-    >
+    <>
+      <SEO 
+        title={Project.name} 
+        description={Project.tagline || Project.description}
+        ogImage={`https://deepsahilz.vercel.app${Project.thumbnail}`}
+        schema={projectSchema}
+      />
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.5 }}
+        className='min-h-screen bg-zinc-200 font-neue text-zinc-800'
+      >
       {/* ── HEADER ── */}
       <div className='px-6 md:px-10 pt-[8rem] md:pt-[10rem] pb-8 md:pb-12 text-center'>
         <h1 className='text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-semibold uppercase tracking-tight'>
@@ -106,6 +131,7 @@ const ProjectPage = () => {
                 <img
                   src={item.imgSrc}
                   className="absolute inset-0 w-full h-full object-cover transition-opacity rounded-lg opacity-70 duration-500 sm:group-hover:opacity-0 sm:block hidden"
+                  alt={`${Project.name} Highlight - ${item.text}`}
                 />
                 <video
                   src={item.vidSrc}
@@ -131,10 +157,10 @@ const ProjectPage = () => {
             </div>
           </div>
         ))}
-
       </div>
     </motion.div>
-  );
+  </>
+);
 };
 
 export default ProjectPage;

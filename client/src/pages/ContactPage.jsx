@@ -2,8 +2,17 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdArrowOutward, MdContentCopy, MdCheck } from "react-icons/md";
+import SEO from "../components/SEO";
 
 const ContactPage = () => {
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Sahildeep Singh",
+    "description": "Have an idea, project, or collaboration in mind? Drop a message or reach out directly to Sahil Singh.",
+    "url": "https://deepsahilz.vercel.app/contact"
+  };
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -79,7 +88,13 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="w-full bg-zinc-200 font-neue text-zinc-800 pb-20 overflow-hidden">
+    <>
+      <SEO 
+        title="Contact" 
+        description="Have an idea, project, or collaboration in mind? Reach out to Sahil Singh (@deepsahilz) via the contact form, direct email, or connect online."
+        schema={contactSchema}
+      />
+      <div className="w-full bg-zinc-200 font-neue text-zinc-800 pb-20 overflow-hidden">
       {/* Page Header */}
       <div className="mb-15 pt-[5rem] md:pt-[7rem] border-2 mt-24 mx-4 md:m-10 rounded-3xl pb-8 border-zinc-400">
         <h1
@@ -307,7 +322,8 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

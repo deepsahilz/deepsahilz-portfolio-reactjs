@@ -70,7 +70,7 @@ const ProjectCard = ({ project, className }) => {
 
         {/* Name + Tagline */}
         <div className="flex flex-col">
-          <h1 className="text-xl flex mt-1 font-semibold items-center">
+          <h3 className="text-xl flex mt-1 font-semibold items-center">
             <span>{project.name || 'Untitled Project'}</span>
             {project.liveUrl && (
               <a
@@ -85,7 +85,7 @@ const ProjectCard = ({ project, className }) => {
                 <MdArrowOutward className="text-[10px] group-hover:rotate-45 transition-transform duration-300" />
               </a>
             )}
-          </h1>
+          </h3>
           {project.tagline && (
             <p className="text-sm text-zinc-600 mt-1">{project.tagline}</p>
           )}

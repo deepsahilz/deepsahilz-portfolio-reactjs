@@ -1,16 +1,89 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<!--  Homepage  -->
-<url>
-<loc>https://deepsahilz.vercel.app/</loc>
-<lastmod>2026-02-21</lastmod>
-<changefreq>monthly</changefreq>
-<priority>1.0</priority>
-</url>
-<!--  Work Page  -->
-<url>
-<loc>https://deepsahilz.vercel.app/work</loc>
-<lastmod>2026-02-21</lastmod>
-<changefreq>yearly</changefreq>
-<priority>0.8</priority>
-</url>
+  <!-- Main Pages -->
+  <url>
+    <loc>https://deepsahilz.vercel.app/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://deepsahilz.vercel.app/work</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://deepsahilz.vercel.app/about</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://deepsahilz.vercel.app/contact</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Project Subpages -->
+  <url>
+    <loc>https://deepsahilz.vercel.app/work/certify-now</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://deepsahilz.vercel.app/work/tss-gndu</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://deepsahilz.vercel.app/work/iris2026</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://deepsahilz.vercel.app/work/quickdesk</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://deepsahilz.vercel.app/work/kreativkid</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://deepsahilz.vercel.app/work/codexa</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://deepsahilz.vercel.app/work/mysqlCompass</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://deepsahilz.vercel.app/work/ochi-clone</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://deepsahilz.vercel.app/work/rejouice-clone</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://deepsahilz.vercel.app/work/brainwave</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

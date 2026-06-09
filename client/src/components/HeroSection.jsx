@@ -113,16 +113,16 @@ const HeroSection = () => {
 
             <div className='text-center w-full absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center px-4 md:px-10'>
               <div className='flex items-center justify-center flex-col text-4xl sm:text-6xl md:text-8xl lg:text-[7rem] font-semibold mb-6 md:mb-10 w-full'>
-                <h1 className='flex flex-wrap items-center justify-center tracking-tight text-center leading-none'>
+                <h2 className='flex flex-wrap items-center justify-center tracking-tight text-center leading-none'>
                   <span className='mr-2 md:mr-0'> Hello </span>
                   <div className='w-24 h-12 hidden md:flex sm:w-32 sm:h-16 md:w-40 md:h-20 rounded-full mx-3 sm:mx-4 md:mx-6 bg-blue-400 overflow-hidden items-center justify-center shrink-0'>
-                    <img src="/images/sahil_13.png" alt="Sahil" className="w-full h-full object-cover scale-110 mt-1" />
+                    <img src="/images/sahil_13.png" alt="Sahil Singh Avatar - Developer & Designer" className="w-full h-full object-cover scale-110 mt-1" />
                   </div>
                   <span> I'm Sahil</span>
                   <div className='w-32 h-12 flex md:hidden  rounded-3xl mx-3 mt-2 sm:mx-4 md:mx-6 bg-blue-400 overflow-hidden items-center justify-center shrink-0'>
-                    <img src="/images/sahil_13.png" alt="Sahil" className="w-full h-full object-cover scale-110 mt-1" />
+                    <img src="/images/sahil_13.png" alt="Sahil Singh Avatar - Developer & Designer" className="w-full h-full object-cover scale-110 mt-1" />
                   </div>
-                </h1>
+                </h2>
                 <h1 className='text-3xl sm:text-5xl md:text-7xl lg:text-[5.8rem] text-zinc-800 tracking-tight text-center mt-3 leading-tight max-w-5xl'>
                   I craft ideas into products
                 </h1>

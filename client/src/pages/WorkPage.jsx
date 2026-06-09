@@ -1,34 +1,47 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import ProjectCard from '../components/ProjectCard'
+import SEO from '../components/SEO'
 import { FaGithub } from 'react-icons/fa6'
 import { MdArrowOutward } from "react-icons/md"
 import { projects } from '../data/projectsData'
 
 const WorkPage = () => {
-
+  const workSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Projects Portfolio | Sahil Singh",
+    "description": "Explore the full-stack web applications, front-end designs, and desktop utility builds created by Sahil Singh.",
+    "url": "https://deepsahilz.vercel.app/work"
+  };
 
   return (
-    <div className='w-full font-neue bg-zinc-200 text-zinc-800 pb-20  overflow-hidden'>
-
-      {/* Page Header */}
-      <div className="mb-12 pt-[5rem] md:pt-[7rem] border-2 mt-24 mx-4 md:m-10 rounded-3xl pb-8 border-zinc-400">
-
-        <h1 className="font-founders uppercase text-5xl sm:text-7xl md:text-8xl leading-none px-6 md:px-10">
-          All Projects</h1>
-        <p className="max-w-3xl text-zinc-600 mt-4 text-base md:text-lg px-5 md:px-10">
-          Projects I’ve built over the past few months and years — from hackathon prototypes to real use applications, spanning simple landing pages to full-stack applications.
-        </p>
-      </div>
-
-      {/* Projects Grid */}
-      <div className='px-6 md:px-10 mt-10'>
-        <div className='grid xl:grid-cols-3 lg:grid-cols-2 gap-x-5 md:gap-y-16 gap-y-10 w-full'>
-          {projects.map(project => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
+    <>
+      <SEO 
+        title="All Projects" 
+        description="Explore the full-stack web applications, front-end designs, and desktop utility builds created by Sahil Singh (@deepsahilz)."
+        schema={workSchema}
+      />
+      <div className='w-full font-neue bg-zinc-200 text-zinc-800 pb-20  overflow-hidden'>
+  
+        {/* Page Header */}
+        <div className="mb-12 pt-[5rem] md:pt-[7rem] border-2 mt-24 mx-4 md:m-10 rounded-3xl pb-8 border-zinc-400">
+  
+          <h1 className="font-founders uppercase text-5xl sm:text-7xl md:text-8xl leading-none px-6 md:px-10">
+            All Projects</h1>
+          <p className="max-w-3xl text-zinc-600 mt-4 text-base md:text-lg px-5 md:px-10">
+            Projects I’ve built over the past few months and years — from hackathon prototypes to real use applications, spanning simple landing pages to full-stack applications.
+          </p>
         </div>
-      </div>
+  
+        {/* Projects Grid */}
+        <div className='px-6 md:px-10 mt-10'>
+          <div className='grid xl:grid-cols-3 lg:grid-cols-2 gap-x-5 md:gap-y-16 gap-y-10 w-full'>
+            {projects.map(project => (
+              <ProjectCard key={project.slug} project={project} />
+            ))}
+          </div>
+        </div>
 
       {/* GitHub Link */}
       <Link to="https://github.com/deepsahilz" className='mt-20 group inline-block cursor-pointer ml-[50%] -translate-x-[50%]'>
@@ -39,6 +52,7 @@ const WorkPage = () => {
         </div>
       </Link>
     </div>
+    </>
   )
 }
 

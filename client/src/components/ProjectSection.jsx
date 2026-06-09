@@ -16,9 +16,9 @@ const ProjectSection = () => {
       <div className='mb-10 pt-[5rem] md:pt-[7rem] px-6 md:px-10'>
         <div className='flex flex-col md:flex-row md:items-center justify-between border-b pb-10 border-zinc-400 gap-6'>
           <div>
-            <h1 className='font-founders uppercase text-5xl sm:text-7xl md:text-8xl lg:text-[5rem] leading-[0.8]'>
+            <h2 className='font-founders uppercase text-5xl sm:text-7xl md:text-8xl lg:text-[5rem] leading-[0.8]'>
               Featured projects
-            </h1>
+            </h2>
           </div>
 
           {/* New Content: Brief Intro */}
