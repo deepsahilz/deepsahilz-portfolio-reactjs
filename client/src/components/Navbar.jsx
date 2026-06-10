@@ -129,7 +129,9 @@ const Navbar = () => {
                       onClick={() => handleNavClick(item.id)}
                       onMouseEnter={() => setHoveredLink(item.id)}
                       onMouseLeave={() => setHoveredLink(null)}
-                      className="relative px-3.5 py-1.5 cursor-pointer text-xs font-neue uppercase font-medium tracking-wider text-zinc-400 hover:text-zinc-100 transition-colors duration-200"
+                      className={`relative px-3.5 py-1.5 cursor-pointer text-xs font-neue uppercase font-medium tracking-wider transition-colors duration-200 ${
+                        isActive ? "text-zinc-100" : "text-zinc-400 hover:text-zinc-100"
+                      }`}
                     >
                       <span className="relative z-10">{item.label}</span>
 
@@ -224,8 +226,9 @@ const Navbar = () => {
                     transition={{ delay: i * 0.05, duration: 0.2 }}
                     key={item.id}
                     onClick={() => handleNavClick(item.id)}
-                    className={`text-3xl font-founders font-semibold uppercase tracking-wider cursor-pointer hover:text-[#9f4] transition-colors py-1 ${activeLink === item.id ? "text-[#9f4]" : "text-zinc-100"
-                      }`}
+                    className={`text-3xl font-founders font-semibold uppercase tracking-wider cursor-pointer transition-colors py-1 ${
+                      activeLink === item.id ? "text-zinc-100" : "text-zinc-400 hover:text-zinc-100"
+                    }`}
                   >
                     {item.label}
                   </motion.li>

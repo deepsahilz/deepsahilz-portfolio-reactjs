@@ -17,7 +17,7 @@ const SEO = ({
 
   useEffect(() => {
     // 1. Update Title
-    const formattedTitle = title ? `${title} | Sahil Singh` : "Sahil Singh | Portfolio & Web Application Developer";
+    const formattedTitle = title ? `${title} | Sahil Singh` : "Sahil Singh | Full Stack Developer";
     document.title = formattedTitle;
 
     // Helper to set or create meta tag

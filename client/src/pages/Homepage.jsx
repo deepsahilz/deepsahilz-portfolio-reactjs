@@ -61,9 +61,8 @@ const Homepage = () => {
 
   return (
     <>
-      <SEO 
-        title="Portfolio & Web Application Developer" 
-        description="Portfolio of Sahil Singh (@deepsahilz). Developer and designer focused on building fast, functional, and visually rich web applications."
+      <SEO
+        description="Portfolio of Sahil Singh (@deepsahilz). Full Stack Developer and designer focused on building fast, functional, and visually rich web applications."
         schema={homeSchema}
       />
       <div className="bg-zinc-200 w-full overflow-hidden relative">

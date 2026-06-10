@@ -44,7 +44,7 @@ const ProjectCard = ({ project, className }) => {
         className="fixed z-50 pointer-events-none"
         style={{ left: 0, top: 0, opacity: 0, visibility: 'hidden' }}
       >
-        <div className="flex items-center gap-2 bg-zinc-800 text-white px-5 py-2.5 rounded-full shadow-2xl border border-zinc-700/50 backdrop-blur-md">
+        <div className="flex items-center gap-2 bg-white text-zinc-950 px-5 py-2.5 rounded-full shadow-2xl border border-zinc-200/80 backdrop-blur-md">
           <span className="font-semibold text-xs tracking-widest uppercase mt-[2px]">View Details</span>
         </div>
       </div>
@@ -62,7 +62,7 @@ const ProjectCard = ({ project, className }) => {
           >
             <img
               src={project.thumbnail || ''}
-              className="group-hover:opacity-50 rounded-lg group-hover:scale-130 duration-900 transition-all"
+              className="group-hover:opacity-40 rounded-lg group-hover:scale-120 duration-900 transition-all"
               alt={`${project.name || 'Project'} Portfolio Thumbnail - ${project.tagline || ''}`}
             />
           </div>
@@ -88,7 +88,7 @@ const ProjectCard = ({ project, className }) => {
               )}
               <Link
                 to={`/work/${project.slug || ''}`}
-                className="inline-flex sm:hidden items-center gap-0.5 text-[10px] uppercase tracking-wider font-extrabold bg-zinc-900 text-zinc-100 px-2.5 py-1 rounded-md cursor-pointer hover:bg-zinc-950 transition-all duration-300"
+                className="inline-flex sm:hidden items-center gap-0.5 text-[10px] uppercase tracking-wider font-extrabold bg-zinc-900 text-zinc-100 px-2.5 py-1 rounded-md cursor-pointer hover:bg-zinc-950 border border-zinc-900 transition-all duration-300"
                 title="View Project Details"
               >
                 <span>View Details</span>
