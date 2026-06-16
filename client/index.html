@@ -49,7 +49,192 @@
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <!-- Static Fallback Content for SEO and AI Crawlers (ChatGPT, Claude, Gemini, etc.) -->
+    <div style="display: none;" aria-hidden="true">
+      <header>
+        <h1>Sahildeep (Sahil) Singh - Web Application Developer &amp; Designer Portfolio</h1>
+        <p>Portfolio of Sahil Singh (@deepsahilz), a full stack developer and designer focused on building fast, functional, and visually compelling web applications.</p>
+        <p>Based in Punjab, India. Email: deepsahilz@gmail.com</p>
+        <nav>
+          <a href="https://github.com/deepsahilz" rel="noopener noreferrer">GitHub Profile</a> | 
+          <a href="https://www.linkedin.com/in/sahil-singh-0421b7275/" rel="noopener noreferrer">LinkedIn Profile</a> | 
+          <a href="https://deepsahilz.vercel.app/" rel="noopener">Official Portfolio Website</a>
+        </nav>
+      </header>
+
+      <main>
+        <section id="about">
+          <h2>About Me</h2>
+          <p>
+            Hey, my name is Sahildeep Singh, currently 22, from Punjab, India. Most of what I know, I've learned through hands-on practice, reading docs, and asking the internet. I believe in learning by doing. I've spent the past couple of years working on personal projects, hackathon builds, and random ideas that made me better at what I love, building stuff that's useful, creative, or just plain cool.
+          </p>
+          <p>
+            I'm also into graphic design and digital art, with freelance experience in tools like Photoshop and Figma. Whether it's code or visuals, I like making things that serve a purpose and bring ideas to life. Always learning, always building.
+          </p>
+          <h3>Core Technical Skills</h3>
+          <ul>
+            <li><strong>Frontend:</strong> React, Next.js, JavaScript, TypeScript, Tailwind CSS, GSAP, Framer Motion, HTML5, CSS3</li>
+            <li><strong>Backend &amp; Databases:</strong> Node.js, Express.js, Supabase, MongoDB, PostgreSQL, Prisma, WebSockets</li>
+            <li><strong>Design &amp; Tools:</strong> Figma, Photoshop, Fabric.js, PDF-lib, Nodemailer, Clerk</li>
+          </ul>
+        </section>
+
+        <section id="projects">
+          <h2>Portfolio Projects</h2>
+          <ul>
+            <li>
+              <h3>Certify Now (Web Application / SaaS)</h3>
+              <p><strong>Tagline:</strong> Certificate generation &amp; distribution platform, no limits, free to use. Supports custom SMTP config for mailing.</p>
+              <p><strong>Concept &amp; Description:</strong> SaaS platform to design, issue, and distribute credentials/certificates dynamically. Features a custom visual canvas editor using Fabric.js to design certificate templates with dynamic placeholders. Organizations can issue certificates to batches of users, dispatch personalized emails via Nodemailer, and provide secure QR-code verification pages.</p>
+              <p><strong>Tech Stack:</strong> Next.js, Prisma, Supabase, Fabric.js, PDF-lib, Nodemailer</p>
+              <p><strong>Live Link:</strong> <a href="https://certifynow-v1.vercel.app/">https://certifynow-v1.vercel.app/</a></p>
+              <p><strong>Key Features:</strong></p>
+              <ul>
+                <li>Visual certificate template designer with Fabric.js</li>
+                <li>Batch certificate generation and automated issuing</li>
+                <li>Dynamic PDF creation using PDF-lib</li>
+                <li>Automatic email dispatch with custom email templates via Nodemailer</li>
+                <li>Public credential verification pages via secure QR codes</li>
+              </ul>
+            </li>
+
+            <li>
+              <h3>TSS GNDU (Official Student Society Website)</h3>
+              <p><strong>Tagline:</strong> Official technical student society website of GNDU, Amritsar</p>
+              <p><strong>Concept &amp; Description:</strong> The official web platform for the Technical Student Society of Guru Nanak Dev University, Amritsar. Designed with smooth scroll physics, modern UI transitions, and modular event cards to present flagship tech fest experiences, workshops, and student society profiles.</p>
+              <p><strong>Tech Stack:</strong> Next.js, GSAP, Lenis, Supabase, Tailwind CSS</p>
+              <p><strong>Live Link:</strong> <a href="https://www.tss-gndu.org/">https://www.tss-gndu.org/</a></p>
+              <p><strong>Key Features:</strong></p>
+              <ul>
+                <li>Immersive UI transitions and smooth scroll via Lenis and GSAP</li>
+                <li>Modular directory displaying student competitions and workshops</li>
+                <li>Student profile portals and administrative views backed by Supabase</li>
+                <li>Fully optimized responsive layouts across all device screens</li>
+              </ul>
+            </li>
+
+            <li>
+              <h3>IRIS 2026 Techfest (Web Application &amp; Event Management)</h3>
+              <p><strong>Tagline:</strong> Official techfest website and event management platform</p>
+              <p><strong>Concept &amp; Description:</strong> IRIS is a full-stack event management platform designed to handle registrations, payments, and administration for a large-scale technical fest of GNDU, Amritsar, focusing on reliability, speed, and a clean user experience.</p>
+              <p><strong>Tech Stack:</strong> Next.js, Supabase, Full Stack</p>
+              <p><strong>Live Link:</strong> <a href="https://iris.tss-gndu.org/">https://iris.tss-gndu.org/</a></p>
+              <p><strong>Key Features:</strong></p>
+              <ul>
+                <li>User authentication and protected routes</li>
+                <li>Event registration with team size validation</li>
+                <li>UPI QR + Razorpay payment flow</li>
+                <li>Ticket generation with unique ticket ID</li>
+                <li>Admin panel for event CRUD</li>
+                <li>Responsive and minimal UI</li>
+              </ul>
+            </li>
+
+            <li>
+              <h3>QuickDesk (Ticket Raising Platform)</h3>
+              <p><strong>Tagline:</strong> Ticket raising platform</p>
+              <p><strong>Concept &amp; Description:</strong> This project was created as a part of a hackathon organized by odoo X cgc group of colleges. It is a web app that simplifies ticket management for businesses, packed with a clear UI and transparent ticket tracking experience.</p>
+              <p><strong>Tech Stack:</strong> Nextjs, Typescript, PostgreSql, Clerk, Full stack</p>
+              <p><strong>Live Link:</strong> <a href="https://quickdesk.vercel.app/">https://quickdesk.vercel.app/</a></p>
+              <p><strong>Key Features:</strong></p>
+              <ul>
+                <li>Ticket creation</li>
+                <li>Status tracking</li>
+                <li>Responsive dashboard</li>
+              </ul>
+            </li>
+
+            <li>
+              <h3>KreativKid (Digital Artist Portfolio)</h3>
+              <p><strong>Tagline:</strong> An artistic portfolio website for a digital artist.</p>
+              <p><strong>Concept &amp; Description:</strong> KreativKid is a portfolio website designed to highlight an artist’s creativity through a clean and expressive layout, blending bold visuals and smooth interactions.</p>
+              <p><strong>Tech Stack:</strong> React.js, GSAP, Frontend</p>
+              <p><strong>Live Link:</strong> <a href="https://kreativkid.vercel.app/">https://kreativkid.vercel.app/</a></p>
+              <p><strong>Key Features:</strong></p>
+              <ul>
+                <li>Animated transitions between sections</li>
+                <li>Responsive and modern layout</li>
+                <li>Emphasis on visuals with minimal UI distractions</li>
+              </ul>
+            </li>
+
+            <li>
+              <h3>Codexa (Developers Social Network)</h3>
+              <p><strong>Tagline:</strong> Social media platform where you showcase your projects and get inspiration from others, goodbye boring project ideas.</p>
+              <p><strong>Concept &amp; Description:</strong> Codexa is created to provide a social platform to developers, students, and tech geeks to showcase their projects and learn from others, avoiding the hassle to find inspiration.</p>
+              <p><strong>Tech Stack:</strong> React.js, Express.js, WebSockets, MongoDB</p>
+              <p><strong>Key Features:</strong></p>
+              <ul>
+                <li>Smart search with history and suggestions</li>
+                <li>Project showcase with image/video previews</li>
+                <li>Commenting and feedback on projects</li>
+                <li>Tag-based project categorization and filtering</li>
+                <li>Like, save, and follow functionality</li>
+                <li>Add collaborator feature for working teams</li>
+              </ul>
+            </li>
+
+            <li>
+              <h3>MySQL Compass (Database GUI Desktop Tool)</h3>
+              <p><strong>Tagline:</strong> GUI tool for managing MySQL databases</p>
+              <p><strong>Concept &amp; Description:</strong> Inspired by MongoDB Compass, this tool offers an intuitive interface to visualize, edit, and manage MySQL data efficiently with user-friendly features.</p>
+              <p><strong>Tech Stack:</strong> React, Tailwind, Node.js, MySQL</p>
+              <p><strong>Key Features:</strong></p>
+              <ul>
+                <li>Smart table viewer with auto row expansion</li>
+                <li>Edit cells directly or via modals</li>
+                <li>Search and filter data easily with history</li>
+              </ul>
+            </li>
+
+            <li>
+              <h3>Ochi Clone (Interactive Frontend Clone)</h3>
+              <p><strong>Tagline:</strong> Clone of Ochi.design</p>
+              <p><strong>Concept &amp; Description:</strong> A faithful clone of the actual ochi.design site, created to learn layout, interactions, and animations from Ochi.design.</p>
+              <p><strong>Tech Stack:</strong> React.js, TailwindCSS, Framer Motion</p>
+              <p><strong>Live Link:</strong> <a href="https://deepxochi.netlify.app/">https://deepxochi.netlify.app/</a></p>
+              <p><strong>Key Features:</strong></p>
+              <ul>
+                <li>Responsive layout</li>
+                <li>Animated components</li>
+                <li>Clean UI replication</li>
+              </ul>
+            </li>
+
+            <li>
+              <h3>Rejouice Clone (Interactive Frontend Clone)</h3>
+              <p><strong>Tagline:</strong> Clone of Rejouice site</p>
+              <p><strong>Concept &amp; Description:</strong> Learning design replication and interactive elements from Rejouice. Cloned site to mimic Rejouice functionality and style.</p>
+              <p><strong>Tech Stack:</strong> React.js, TailwindCSS, Framer motion</p>
+              <p><strong>Live Link:</strong> <a href="https://deepxrejouice.netlify.app/">https://deepxrejouice.netlify.app/</a></p>
+              <p><strong>Key Features:</strong></p>
+              <ul>
+                <li>Landing page replication</li>
+                <li>Hover interactions</li>
+                <li>Responsive UI</li>
+                <li>Optimized image and video load</li>
+              </ul>
+            </li>
+
+            <li>
+              <h3>Brainwave Landing Page (Sleek Product Landing Page)</h3>
+              <p><strong>Tagline:</strong> Landing page for Brainwave application</p>
+              <p><strong>Concept &amp; Description:</strong> Designed a clean and minimal landing page for Brainwave platform, focusing on conversions and clear messaging for AI service.</p>
+              <p><strong>Tech Stack:</strong> React.js, TailwindCSS</p>
+              <p><strong>Live Link:</strong> <a href="https://deepxbrainwave.netlify.app/">https://deepxbrainwave.netlify.app/</a></p>
+              <p><strong>Key Features:</strong></p>
+              <ul>
+                <li>Responsive hero</li>
+                <li>CTA buttons</li>
+                <li>Simple and clean layout</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+      </main>
+    </div>
+  </div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 
